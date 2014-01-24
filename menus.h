@@ -18,7 +18,7 @@ int mainMenu()
     while (madechoice == 0)
     {
         cout << menuBar;
-        cout << "            Welcome to Geoff's Game!\n\n";
+        cout << "            Welcome to Geoff's Text Adventure!\n\n";
         cout << "                   (1) Start Game\n";
         cout << "                   (2) Settings\n";
         cout << "                   (3) Credits\n";
@@ -182,8 +182,8 @@ int credits()
 {
     //resetChoice();
     cout << menuBar;
-    cout << "       This silly system of menus was made by Geoff\n";
-    cout << "           Press '1' to return to Main Menu\n\n";
+    cout << "   This silly system of menus was made by Geoff\n";
+    cout << "       Press '1' to return to Main Menu\n\n";
     cout << menuBar;
     cin >> menuChoice;
     do
