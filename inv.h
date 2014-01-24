@@ -2,7 +2,8 @@ using namespace std;
 
 // Management System for Weapon Items
 int displayInventory();
-
+int moneybag = 0;
+int userInput = 0;
 int weapons_system()
 {
     const int NUM_WEAPONS = 13;
@@ -114,20 +115,30 @@ int consum_system()
 }
 
 //Array for maintaining the player's inventory.
-int player_inventory_sys()
-{
+//int player_inventory_sys()
+//{
+    int playerItemCount = 0;
     const int MAX_PLAYER_INV = 25;
-    const int player_inv_col = 5;
+    const int player_inv_col = 2;
     const int player_inv_row = MAX_PLAYER_INV / player_inv_col;
 
     int player_inv[player_inv_row][player_inv_col];
 
-}
+//}
 
 int displayInventory()
 {
     system("clear");
     cout << "You have " << moneybag << " gold pieces\n";
+    cout << "You're inventory consists of:\n";
+    for (int i = 0; i < playerItemCount; i++ )
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            cout << player_inv[i][j];
+        }
+        cout << "\n";
+    }
     cout << "Press '1' to continue\n";
     cin >> userInput;
 }
