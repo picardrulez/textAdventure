@@ -3,7 +3,7 @@ using namespace std;
 int userInput = 0;
 int playerInfo[2];
 int playerLocation = 0;
-
+int moneybag = 0;
 void createCharacter();
 
 void createCharacter() 
@@ -22,5 +22,9 @@ void createCharacter()
     cin >> userInput;
     playerInfo[1] = userInput;
     playerLocation = 1;
+    moneybag = initialFunds(playerInfo[1]);
+    cout << "Your initial funds are " << moneybag << " gold pieces.\n";
+    cout << "Press 1 to start your adventure.";
+    cin >> userInput;
     return;
 }

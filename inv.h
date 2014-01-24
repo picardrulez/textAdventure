@@ -1,6 +1,8 @@
 using namespace std;
 
 // Management System for Weapon Items
+int displayInventory();
+
 int weapons_system()
 {
     const int NUM_WEAPONS = 13;
@@ -120,4 +122,12 @@ int player_inventory_sys()
 
     int player_inv[player_inv_row][player_inv_col];
 
+}
+
+int displayInventory()
+{
+    system("clear");
+    cout << "You have " << moneybag << " gold pieces\n";
+    cout << "Press '1' to continue\n";
+    cin >> userInput;
 }

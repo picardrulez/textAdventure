@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "inv.h"
+#include <ctime>
 #include "menus.h"
+#include "money.h"
 #include "create.h"
+#include "inv.h"
 #include "level1.h"
 
 string answer;

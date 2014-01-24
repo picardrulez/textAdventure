@@ -154,11 +154,9 @@ int controls()
 {
     //resetChoice();
     cout << menuBar;
-    cout << "                    Controls\n\n";
-    cout << "                 'Enter' ==>  Shoot Gun\n";
-    cout << "                 'Spacebar' ==> Fire Missiles\n";
-    cout << "                 'Arrow Keys' ==> Move Ship\n\n";
-    cout << "                 Press '1' to return to settings.\n\n";
+    cout << "               Controls\n\n";
+    cout << "           'i' ==>  Display Inventory\n";
+    cout << "           Press '1' to return to settings.\n\n";
     cout << menuBar;
     cin >> menuChoice;
     do
