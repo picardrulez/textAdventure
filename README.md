@@ -12,8 +12,8 @@ file explanations:
 
 need to:
 * remove system calls
-* impliment the inventory system <----(mostly done)
-* add items in game randomly <----(function complete, needs implementation in game)
+* impliment the inventory system <----DONE 
+* add items in game randomly <----DONE
 * add a health system
 * add a fighting system
 * add a map
