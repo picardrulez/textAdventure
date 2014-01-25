@@ -35,6 +35,10 @@ void level1()
                 {
                     displayInventory();
                 }
+                else if (playerInput == "d")
+                {
+                    debugInventory();
+                }
             }
         }
         else if (playerLocation == 2)

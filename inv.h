@@ -9,7 +9,9 @@ string selection;
 string item;
 void addInventory(int table, int item);
 void createItem();
+void addPartyLiquor();
 int itemRoll = 0;
+int debugInventory();
 int displayInventory();
 
     const int NUM_WEAPONS = 13;
@@ -117,7 +119,7 @@ int displayInventory();
     int playerItemCount = 0;
     const int MAX_PLAYER_INV = 25;
     const int player_inv_col = 2;
-    const int player_inv_row = MAX_PLAYER_INV / player_inv_col;
+    const int player_inv_row = MAX_PLAYER_INV;
 
     int player_inv[player_inv_row][player_inv_col];
 
@@ -150,7 +152,25 @@ int displayInventory()
     cin >> userInput;
 }
 
-string findItemName(int itemNumber, int table)
+int debugInventory()
+{
+    int itemPos;
+    system("clear");
+    cout << "DEBUG INVENTORY\n";
+    for (int i = 0; i < playerItemCount; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            itemPos = player_inv[i][j];
+            cout << itemPos << ",";
+        }
+        cout << "\n";
+    }
+    cout << "Press '1' to continue\n";
+    cin >> userInput;
+}
+
+string findItemName(int table, int itemNumber)
 {
     if (table == 0)
     {
@@ -169,23 +189,28 @@ string findItemName(int itemNumber, int table)
 
 void addInventory(int table, int item)
 {
-    player_inv[playerItemCount++][0] = table;
+    player_inv[playerItemCount][0] = table;
     player_inv[playerItemCount][1] = item;
+    playerItemCount++;
 }
 
+void addPartyLiquor()
+{
+    player_inv[playerItemCount][0] = 2;
+    player_inv[playerItemCount][1] = 5;
+    playerItemCount++;
+}
 void createItem()
 {
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
-    itemType = (randomNumber % 3) + 1;
-    cout << "itemType is " << itemType << "\n";
+    itemType = (randomNumber % 3);
     int percentRoll = (randomNumber % 100) + 1;
-    cout << "Percentage Roll successful, result it " << percentRoll << "%\n";
     string itemArray;
 
-    if (itemType == 1)
+    if (itemType == 0)
     {
-        itemRoll = (randomNumber % NUM_WEAPONS) + 1;
+        itemRoll = (randomNumber % NUM_WEAPONS);
         bool wrongrare = true;
         while (wrongrare)
         {
@@ -194,19 +219,18 @@ void createItem()
             {
                 srand(static_cast<unsigned int>(time(0)));
                 randomNumber = rand();
-                itemRoll = (randomNumber % NUM_WEAPONS) + 1;
+                itemRoll = (randomNumber % NUM_WEAPONS);
             }
             else
             {
                 wrongrare = false;
             }
         }
-        cout << "Item is " << itemType << "," << itemRoll << "\n";
         return;
     }
-    else if (itemType == 2)
+    else if (itemType == 1)
     {
-        itemRoll = (randomNumber % NUM_ARMOR) + 1;
+        itemRoll = (randomNumber % NUM_ARMOR);
         bool wrongrare = true;
         while (wrongrare)
         {
@@ -215,19 +239,18 @@ void createItem()
             {
                 srand(static_cast<unsigned int>(time(0)));
                 randomNumber = rand();
-                itemRoll = (randomNumber % NUM_ARMOR) + 1;
+                itemRoll = (randomNumber % NUM_ARMOR);
             }
             else
             {
                 wrongrare = false;
             }
         }
-        cout << "Item is " << itemType << "," << itemRoll << "\n";
         return;
     }
-    else if (itemType == 3)
+    else if (itemType == 2)
     {
-        itemRoll = (randomNumber % NUM_CONSUM) + 1;
+        itemRoll = (randomNumber % NUM_CONSUM);
         bool wrongrare = true;
         while (wrongrare)
         {
@@ -236,14 +259,13 @@ void createItem()
             {
                 srand(static_cast<unsigned int>(time(0)));
                 randomNumber = rand();
-                itemRoll = (randomNumber % NUM_CONSUM) + 1;
+                itemRoll = (randomNumber % NUM_CONSUM);
             }
             else
             {
                 wrongrare = false;
             }
         }
-        cout << "Item is " << itemType << "," << itemRoll << "\n";
         return;
     }
 }
