@@ -3,10 +3,13 @@ using namespace std;
 // Management System for Weapon Items
 int moneybag = 0;
 int userInput = 0;
+int itemType = 0;
 string findItemName(int table, int itemNum);
 string selection;
 string item;
 void addInventory(int table, int item);
+void createItem();
+int itemRoll = 0;
 int displayInventory();
 
     const int NUM_WEAPONS = 13;
@@ -168,4 +171,75 @@ void addInventory(int table, int item)
 {
     player_inv[playerItemCount++][0] = table;
     player_inv[playerItemCount][1] = item;
+}
+
+void createItem()
+{
+    srand(static_cast<unsigned int>(time(0)));
+    int randomNumber = rand();
+    itemType = (randomNumber % 3) + 1;
+    int percentRoll = (randomNumber % 100) + 1;
+    cout << "Percentage Roll successful, result it " << percentRoll << "%\n";
+    string itemArray;
+
+    if (itemType == 0)
+    {
+        itemRoll = (randomNumber % NUM_WEAPONS) + 1;
+        bool wrongrare = true;
+        while (wrongrare)
+        {
+            int checkItem = weapons[itemRoll][5];
+            if (checkItem < percentRoll)
+            {
+                srand(static_cast<unsigned int>(time(0)));
+                randomNumber = rand();
+                itemRoll = (randomNumber % NUM_WEAPONS) + 1;
+            }
+            else
+            {
+                wrongrare = false;
+            }
+        }
+        return;
+    }
+    else if (itemType == 1)
+    {
+        itemRoll = (randomNumber % NUM_ARMOR) + 1;
+        bool wrongrare = true;
+        while (wrongrare)
+        {
+            int checkItem = inv_armor[itemRoll][4];
+            if (checkItem < percentRoll)
+            {
+                srand(static_cast<unsigned int>(time(0)));
+                randomNumber = rand();
+                itemRoll = (randomNumber % NUM_ARMOR) + 1;
+            }
+            else
+            {
+                wrongrare = false;
+            }
+        }
+        return;
+    }
+    else if (itemType == 2)
+    {
+        itemRoll = (randomNumber % NUM_CONSUM) + 1;
+        bool wrongrare = true;
+        while (wrongrare)
+        {
+            int checkItem = inv_consum[itemRoll][5];
+            if (checkItem < percentRoll)
+            {
+                srand(static_cast<unsigned int>(time(0)));
+                randomNumber = rand();
+                itemRoll = (randomNumber % NUM_CONSUM) + 1;
+            }
+            else
+            {
+                wrongrare = false;
+            }
+        }
+        return;
+    }
 }

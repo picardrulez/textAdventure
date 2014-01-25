@@ -23,10 +23,8 @@ void createCharacter()
     player_inv[0][0] = 0;
     player_inv[0][1] = 0;
     playerItemCount++;
-    addInventory(1,5);
-    addInventory(2,7);
-    addInventory(2,6);
-    addInventory(2,5);
+    createItem();
+    addInventory(itemType,itemRoll);
     moneybag = initialFunds(playerInfo[1]);
     cout << "Your initial funds are " << moneybag << " gold pieces.\n";
     cout << "Press 1 to start your adventure.";
