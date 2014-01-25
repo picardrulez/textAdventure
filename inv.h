@@ -11,6 +11,7 @@ void addInventory(int table, int item);
 void createItem();
 void addPartyLiquor();
 int itemRoll = 0;
+void checkForItem();
 int debugInventory();
 int displayInventory();
 void clearPlayerInv();
@@ -280,4 +281,37 @@ void clearPlayerInv()
         }
     }
     playerItemCount = 0;
+}
+void checkForItem()
+{
+    string playerInput;
+    srand(static_cast<unsigned int>(time(0)));
+    int randomNumber = rand();
+    int percentRoll = (randomNumber % 100) + 1;
+    if ( percentRoll < 50 )
+    {
+        system("clear");
+        createItem();
+        item = findItemName(itemType, itemRoll); 
+        cout << "You find a " << item << "!\n";
+        cout << "Press '1' to take it\n";
+        cout << "Press '2' to leave it\n";
+        cin >> playerInput;
+        if (playerInput == "1")
+        {
+            addInventory(itemType, itemRoll);
+        }
+        else if (playerInput == "2")
+        {
+            return;
+        }
+        else
+        {
+            return;
+        }
+    }
+    else
+    {
+        return;
+    }
 }

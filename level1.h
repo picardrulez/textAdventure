@@ -12,6 +12,7 @@ void level1()
     {
         if (playerLocation ==1) 
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
@@ -43,6 +44,7 @@ void level1()
         }
         else if (playerLocation == 2)
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
@@ -75,6 +77,7 @@ void level1()
         }
         else if (playerLocation == 3)
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
@@ -101,6 +104,7 @@ void level1()
         }
         else if (playerLocation == 4)
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
@@ -121,6 +125,7 @@ void level1()
         }
         else if (playerLocation == 5)
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
@@ -142,6 +147,7 @@ void level1()
         }
         else if (playerLocation == 6)
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
@@ -162,6 +168,7 @@ void level1()
         }
         else if (playerLocation == 7)
         {
+            checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
