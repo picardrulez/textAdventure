@@ -17,9 +17,12 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You are standing in the middle of a forest.  A path veers off to the East and to the west\n";
-                cout << "1:  Go East\n";
-                cout << "2:  Go West\n";
+                cout << menuBar << "\n";
+                cout << "    You are standing in the middle of a forest.\n";
+                cout << "    A path veers off to the East and to the west\n\n\n";
+                cout << "               1:  Go East\n";
+                cout << "               2:  Go West\n\n\n";
+                cout << menuBar;
                 cin >> playerInput;
         
                 if (playerInput == "1")
@@ -36,9 +39,9 @@ void level1()
                 {
                     displayInventory();
                 }
-                else if (playerInput == "d")
+                else if (playerInput == "m")
                 {
-                    debugInventory();
+                    gameMenu();
                 }
             }
         }
@@ -49,10 +52,13 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You travel deeper into the forest.  The path continues East, but there is a wooden hut.\n";
-                cout << "1:  Continue East\n";
-                cout << "2:  Enter Hut\n";
-                cout << "3:  Go West\n";
+                cout << menuBar << "\n";
+                cout << "You travel deeper into the forest.\n";
+                cout << "The path continues East, but there is a wooden hut.\n\n\n";
+                cout << "               1:  Continue East\n";
+                cout << "               2:  Enter Hut\n";
+                cout << "               3:  Go West\n\n";
+                cout << menuBar;
                 cin >> playerInput;
                 if( playerInput == "1")
                 {
@@ -73,6 +79,10 @@ void level1()
                 {
                     displayInventory();
                 }
+                else if (playerInput == "m")
+                {
+                    gameMenu();
+                }
             }
         }
         else if (playerLocation == 3)
@@ -82,9 +92,12 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You go West.  A river is flowing in front of you.  There is a small dock with a conoe.\n";
-                cout << "1:  Cross River\n";
-                cout << "2:  Enter Conoe\n";
+                cout << menuBar << "\n";
+                cout << "You go West.  A river is flowing in front of you.\n";
+                cout << "There is a small dock with a conoe.\n\n\n";
+                cout << "               1:  Cross River\n";
+                cout << "               2:  Enter Conoe\n\n\n";
+                cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
@@ -100,6 +113,10 @@ void level1()
                 {
                     displayInventory();
                 }
+                else if (playerInput == "m")
+                {
+                    gameMenu();
+                }
             }
         }
         else if (playerLocation == 4)
@@ -109,8 +126,13 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You coneinue East on your path.  A powerful wizard appears before you, extends his arms to reveal a large staff and crystal.  He sings arcane tones and sucks you into his crystal.\n";
-                cout << "1:  Exit\n";
+                cout << menuBar << "\n\n";
+                cout << "You continue East on your path.\n";
+                cout << "A powerful wizard appears before you, extends\n";
+                cout << "his arms to reveal a large staff and crystal.\n";
+                cout << "He sings arcane tones and sucks you into his crystal.\n\n";
+                cout << "               1:  Exit\n\n";
+                cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
@@ -121,6 +143,10 @@ void level1()
                 {
                     displayInventory();
                 }
+                else if (playerInput == "m")
+                {
+                    gameMenu();
+                }
             }
         }
         else if (playerLocation == 5)
@@ -130,8 +156,10 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You enter the hut.  A man is there selling items.\n";
-                cout << "1:  Exit\n";
+                cout << menuBar << "\n\n";
+                cout << "You enter the hut.  A man is there selling items.\n\n\n";
+                cout << "               1:  Exit\n\n\n\n";
+                cout << menuBar;
                 cin >> playerInput;
         
                 if (playerInput == "1")
@@ -143,6 +171,10 @@ void level1()
                 {
                     displayInventory();
                 }
+                else if (playerInput == "m")
+                {
+                    gameMenu();
+                }
             }
         }
         else if (playerLocation == 6)
@@ -152,8 +184,12 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You begin to wade across the river.  Out of the bushes on either side mud people appear and shoot you with blowguns.  You pass out.\n";
-                cout << "1:  Exit\n";
+                cout << menuBar << "\n\n";
+                cout << "You begin to wade across the river.\n";
+                cout << "Out of the bushes on either side mud people\n";
+                cout << "appear and shoot you with blowguns.  You pass out.\n\n";
+                cout << "               1:  Exit\n\n\n";
+                cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
@@ -163,6 +199,10 @@ void level1()
                 else if (playerInput == "i")
                 {
                     displayInventory();
+                }
+                else if (playerInput == "m")
+                {
+                    gameMenu();
                 }
             }
         }
@@ -173,8 +213,12 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << "You paddle down the river in the conoe.  As the river gets faster you ealize the waterfall you are heading straight towards.  You die!\n";
-                cout << "1:  Exit\n";
+                cout << menuBar << "\n";
+                cout << "You paddle down the river in the conoe.\n";
+                cout << "As the river gets faster you realize the \n";
+                cout << "waterfall you are heading straight towards.  You die!\n\n\n";
+                cout << "               1:  Exit\n\n\n";
+                cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
@@ -184,6 +228,10 @@ void level1()
                 else if (playerInput == "i")
                 {
                     displayInventory();
+                }
+                else if (playerInput == "m")
+                {
+                    gameMenu();
                 }
             }
         }

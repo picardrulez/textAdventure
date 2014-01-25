@@ -1,7 +1,7 @@
 using namespace std;
 
 // Management System for Weapon Items
-int moneybag = 0;
+//int moneybag = 0;
 int userInput = 0;
 int itemType = 0;
 string findItemName(int itemNumber, int table);
@@ -11,10 +11,9 @@ void addInventory(int table, int item);
 void createItem();
 void addPartyLiquor();
 int itemRoll = 0;
-int playerHealth = 100;
 void checkForItem();
 int debugInventory();
-int displayInventory();
+//int displayInventory();
 void clearPlayerInv();
 
     const int NUM_WEAPONS = 13;
@@ -128,10 +127,10 @@ void clearPlayerInv();
 
 int displayInventory()
 {
-    system("clear");
-    cout << "Your health is " << playerHealth << "\n";
-    cout << "You have " << moneybag << " gold pieces\n";
-    cout << "Your inventory consists of:\n";
+//    system("clear");
+//    cout << "Your health is " << playerHealth << "\n";
+//    cout << "You have " << moneybag << " gold pieces\n";
+//    cout << "Your inventory consists of:\n";
     int pos1;
     int pos2;
     for (int i = 0; i < playerItemCount; i++ )
@@ -152,8 +151,8 @@ int displayInventory()
             }
         }
     }
-    cout << "Press '1' to continue\n";
-    cin >> userInput;
+ //   cout << "Press '1' to continue\n";
+//    cin >> userInput;
 }
 
 int debugInventory()
@@ -302,9 +301,11 @@ void checkForItem()
         system("clear");
         createItem();
         item = findItemName(itemType, itemRoll); 
-        cout << "You find a " << item << "!\n";
+        cout << menuBar << "\n";
+        cout << "You find a " << item << "!\n\n\n";
         cout << "Press '1' to take it\n";
-        cout << "Press '2' to leave it\n";
+        cout << "Press '2' to leave it\n\n\n\n";
+        cout << menuBar;
         cin >> playerInput;
         if (playerInput == "1")
         {
