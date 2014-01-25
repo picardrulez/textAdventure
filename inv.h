@@ -11,6 +11,7 @@ void addInventory(int table, int item);
 void createItem();
 void addPartyLiquor();
 int itemRoll = 0;
+int playerHealth = 100;
 void checkForItem();
 int debugInventory();
 int displayInventory();
@@ -128,8 +129,9 @@ void clearPlayerInv();
 int displayInventory()
 {
     system("clear");
+    cout << "Your health is " << playerHealth << "\n";
     cout << "You have " << moneybag << " gold pieces\n";
-    cout << "You're inventory consists of:\n";
+    cout << "Your inventory consists of:\n";
     int pos1;
     int pos2;
     for (int i = 0; i < playerItemCount; i++ )
@@ -191,9 +193,16 @@ string findItemName(int table, int itemNumber)
 
 void addInventory(int table, int item)
 {
+    if (playerItemCount < MAX_PLAYER_INV )
+    {
     player_inv[playerItemCount][0] = table;
     player_inv[playerItemCount][1] = item;
     playerItemCount++;
+    }
+    else
+    {
+        cout << "Inventory is full.";
+    }
 }
 
 void addPartyLiquor()
