@@ -7,10 +7,11 @@ void initialItems();
 
 void createCharacter() 
 {
+    clearPlayerInv();
     cout << "Welcome to Geoff's Adventure.\n";
     cout << "What sex are you?\n";
-    cout << "1:  Boy\n";
-    cout << "2:  Girl\n";
+    cout << "1:  Male\n";
+    cout << "2:  Female\n";
     cin >> userInput;
     playerInfo[0] = userInput;
     system("clear");
