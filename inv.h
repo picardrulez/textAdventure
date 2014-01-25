@@ -6,6 +6,7 @@ int userInput = 0;
 string findItemName(int table, int itemNum);
 string selection;
 string item;
+void addInventory(int table, int item);
 int displayInventory();
 
     const int NUM_WEAPONS = 13;
@@ -161,4 +162,10 @@ string findItemName(int table, int itemNumber)
         item = inv_consum[itemNumber];
     }
     return item;
+}
+
+void addInventory(int table, int item)
+{
+    player_inv[playerItemCount++][0] = table;
+    player_inv[playerItemCount][1] = item;
 }
