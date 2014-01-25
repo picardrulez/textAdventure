@@ -1,11 +1,13 @@
 using namespace std;
 
 // Management System for Weapon Items
-int displayInventory();
 int moneybag = 0;
 int userInput = 0;
-int weapons_system()
-{
+string findTable(int table, int itemNum);
+string selection;
+string item;
+int displayInventory();
+
     const int NUM_WEAPONS = 13;
     string weapons[NUM_WEAPONS] = {
         "Sword",
@@ -40,11 +42,9 @@ int weapons_system()
         {11, 16, 300, 6, 5} ,
         {12, 5, 1, 2, 40}
     };
-}
+
 
 //Management System for Armor Items
-int armor_system()
-{
     const int NUM_ARMOR = 13;
     string inv_armor[NUM_ARMOR] = {
         "Helm",
@@ -79,11 +79,7 @@ int armor_system()
         {11, 7, 75, 75} ,
         {12, 9, 100, 50}
     };
-}
 
-//Management System for Consumable Items
-int consum_system()
-{
     const int NUM_CONSUM = 10;
     string inv_consum[NUM_CONSUM] = {
         "Healing Potion",
@@ -112,11 +108,8 @@ int consum_system()
         {8, 8, 0, 1, 35} ,
         {9, 5, 2, 1, 50}
         };
-}
 
 //Array for maintaining the player's inventory.
-//int player_inventory_sys()
-//{
     int playerItemCount = 0;
     const int MAX_PLAYER_INV = 25;
     const int player_inv_col = 2;
@@ -124,21 +117,40 @@ int consum_system()
 
     int player_inv[player_inv_row][player_inv_col];
 
-//}
-
 int displayInventory()
 {
     system("clear");
     cout << "You have " << moneybag << " gold pieces\n";
     cout << "You're inventory consists of:\n";
+    int pos1;
+    int pos2;
     for (int i = 0; i < playerItemCount; i++ )
     {
+        string tableName;
         for (int j = 0; j < 2; j++)
         {
-            cout << player_inv[i][j];
+            if (j == 0)
+            {
+                pos1 = player_inv[i][j];
+                //tableName = findTable(pos1);
+            }
+            else if (j == 1)
+            {
+                pos2 = player_inv[i][j];
+                cout << findTable(pos1, pos2) << "\n";
+                //cout << tableName[pos2] << "\n";
+            }
         }
-        cout << "\n";
     }
     cout << "Press '1' to continue\n";
     cin >> userInput;
+}
+
+string findTable(int table, int itemNumber)
+{
+    if (table == 0)
+    {
+        item = weapons[itemNumber];
+    }
+    return item;
 }

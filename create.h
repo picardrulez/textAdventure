@@ -20,8 +20,12 @@ void createCharacter()
     cin >> userInput;
     playerInfo[1] = userInput;
     playerLocation = 1;
-    player_inv[playerItemCount++][0] = 0;
-    player_inv[playerItemCount][1] = 0;
+    player_inv[0][0] = 0;
+    player_inv[0][1] = 0;
+    playerItemCount++;
+    player_inv[1][0] = 0;
+    player_inv[1][1] = 5;
+    playerItemCount++;
     moneybag = initialFunds(playerInfo[1]);
     cout << "Your initial funds are " << moneybag << " gold pieces.\n";
     cout << "Press 1 to start your adventure.";
