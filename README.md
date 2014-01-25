@@ -12,10 +12,10 @@ file explanations:
 
 need to:
 * remove system calls
-* impliment the inventory system
-* add items in game randomly
+* impliment the inventory system <----(mostly done)
+* add items in game randomly <----(function complete, needs implementation in game)
 * add a health system
 * add a fighting system
 * add a map
-* add an in game menu
-* make different difficulties
+* add an in game menu <----(in game inventory menu created, needs more work)
+* make different difficulties <----(difficulties are chooseable, they just don't do anything)
