@@ -126,12 +126,16 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << menuBar << "\n\n";
+                cout << menuBar;
                 cout << "You continue East on your path.\n";
                 cout << "A powerful wizard appears before you, extends\n";
                 cout << "his arms to reveal a large staff and crystal.\n";
-                cout << "He sings arcane tones and sucks you into his crystal.\n\n";
-                cout << "               1:  Exit\n\n";
+                int wizardhit = damage(20) + 5;
+                playerHealth -= wizardhit;
+                cout << "He sings arcane tones and sucks you into his crystal\n";
+                cout << "and deals " << wizardhit << " damage to you.\n\n";
+                cout << "               1:  Attack\n";
+                cout << "               2:  Go West\n\n";
                 cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")

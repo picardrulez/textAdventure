@@ -17,5 +17,5 @@ need to:
 * add a health system
 * add a fighting system
 * add a map
-* add an in game menu <----(in game inventory menu created, needs more work)
+* add an in game menu <----DONE
 * make different difficulties <----(difficulties are chooseable, they just don't do anything)

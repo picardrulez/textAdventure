@@ -6,6 +6,7 @@
 #include "money.h"
 #include "inv.h"
 #include "create.h"
+#include "battle.h"
 #include "level1.h"
 
 string answer;
