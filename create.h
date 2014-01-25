@@ -23,8 +23,17 @@ void createCharacter()
     player_inv[0][0] = 0;
     player_inv[0][1] = 0;
     playerItemCount++;
-    player_inv[1][0] = 0;
+    player_inv[1][0] = 1;
     player_inv[1][1] = 5;
+    playerItemCount++;
+    player_inv[2][0] = 2;
+    player_inv[2][1] = 7;
+    playerItemCount++;
+    player_inv[3][0] = 2;
+    player_inv[3][1] = 6;
+    playerItemCount++;
+    player_inv[4][0] = 2;
+    player_inv[4][1] = 5;
     playerItemCount++;
     moneybag = initialFunds(playerInfo[1]);
     cout << "Your initial funds are " << moneybag << " gold pieces.\n";

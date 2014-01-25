@@ -3,7 +3,7 @@ using namespace std;
 // Management System for Weapon Items
 int moneybag = 0;
 int userInput = 0;
-string findTable(int table, int itemNum);
+string findItemName(int table, int itemNum);
 string selection;
 string item;
 int displayInventory();
@@ -137,7 +137,7 @@ int displayInventory()
             else if (j == 1)
             {
                 pos2 = player_inv[i][j];
-                cout << findTable(pos1, pos2) << "\n";
+                cout << findItemName(pos1, pos2) << "\n";
                 //cout << tableName[pos2] << "\n";
             }
         }
@@ -146,11 +146,19 @@ int displayInventory()
     cin >> userInput;
 }
 
-string findTable(int table, int itemNumber)
+string findItemName(int table, int itemNumber)
 {
     if (table == 0)
     {
         item = weapons[itemNumber];
+    }
+    else if (table == 1)
+    {
+        item = inv_armor[itemNumber];
+    }
+    else if (table == 2)
+    {
+        item = inv_consum[itemNumber];
     }
     return item;
 }
