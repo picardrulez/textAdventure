@@ -4,7 +4,7 @@ using namespace std;
 int moneybag = 0;
 int userInput = 0;
 int itemType = 0;
-string findItemName(int table, int itemNum);
+string findItemName(int itemNumber, int table);
 string selection;
 string item;
 void addInventory(int table, int item);
@@ -17,7 +17,7 @@ int displayInventory();
         "Sword",
         "Iron Sword",
         "Steel Sword",
-        "Great Sword"
+        "Great Sword",
         "Axe",
         "Iron Axe",
         "Steel Axe",
@@ -150,7 +150,7 @@ int displayInventory()
     cin >> userInput;
 }
 
-string findItemName(int table, int itemNumber)
+string findItemName(int itemNumber, int table)
 {
     if (table == 0)
     {
@@ -178,11 +178,12 @@ void createItem()
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
     itemType = (randomNumber % 3) + 1;
+    cout << "itemType is " << itemType << "\n";
     int percentRoll = (randomNumber % 100) + 1;
     cout << "Percentage Roll successful, result it " << percentRoll << "%\n";
     string itemArray;
 
-    if (itemType == 0)
+    if (itemType == 1)
     {
         itemRoll = (randomNumber % NUM_WEAPONS) + 1;
         bool wrongrare = true;
@@ -200,9 +201,10 @@ void createItem()
                 wrongrare = false;
             }
         }
+        cout << "Item is " << itemType << "," << itemRoll << "\n";
         return;
     }
-    else if (itemType == 1)
+    else if (itemType == 2)
     {
         itemRoll = (randomNumber % NUM_ARMOR) + 1;
         bool wrongrare = true;
@@ -220,9 +222,10 @@ void createItem()
                 wrongrare = false;
             }
         }
+        cout << "Item is " << itemType << "," << itemRoll << "\n";
         return;
     }
-    else if (itemType == 2)
+    else if (itemType == 3)
     {
         itemRoll = (randomNumber % NUM_CONSUM) + 1;
         bool wrongrare = true;
@@ -240,6 +243,7 @@ void createItem()
                 wrongrare = false;
             }
         }
+        cout << "Item is " << itemType << "," << itemRoll << "\n";
         return;
     }
 }
