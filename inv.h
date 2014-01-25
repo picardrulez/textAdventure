@@ -13,6 +13,7 @@ void addPartyLiquor();
 int itemRoll = 0;
 int debugInventory();
 int displayInventory();
+void clearPlayerInv();
 
     const int NUM_WEAPONS = 13;
     string weapons[NUM_WEAPONS] = {
@@ -268,4 +269,15 @@ void createItem()
         }
         return;
     }
+}
+void clearPlayerInv()
+{
+    for (int i=0; i < playerItemCount; ++i )
+    {
+        for (int j=0; j < 2; ++j)
+        {
+            player_inv[i][j]=0;
+        }
+    }
+    playerItemCount = 0;
 }

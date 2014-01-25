@@ -3,6 +3,7 @@ using namespace std;
 int playerInfo[2];
 int playerLocation = 0;
 void createCharacter();
+void initialItems();
 
 void createCharacter() 
 {
@@ -20,14 +21,52 @@ void createCharacter()
     cin >> userInput;
     playerInfo[1] = userInput;
     playerLocation = 1;
-    player_inv[0][0] = 0;
-    player_inv[0][1] = 0;
-    playerItemCount++;
-    createItem();
-    addInventory(itemType, itemRoll);
+    initialItems();
     moneybag = initialFunds(playerInfo[1]);
     cout << "Your initial funds are " << moneybag << " gold pieces.\n";
     cout << "Press 1 to start your adventure.";
     cin >> userInput;
     return;
+}
+
+void initialItems()
+{
+    //Warrior Creation
+    if (playerInfo[1] == 1)
+    {
+        //add sword
+        addInventory(0, 0);
+        //add helm
+        addInventory(1, 0);
+        //add gauntlets
+        addInventory(1, 3);
+        //add boots
+        addInventory(1, 6);
+
+    }
+    //Druid Creation
+    else if (playerInfo[1] == 2)
+    {
+        //add riding boots
+        addInventory(1, 7);
+        //add magic potions
+        addInventory(2, 2);
+        addInventory(2, 2);
+        addInventory(2,2);
+        //add food
+        addInventory(2,9);
+    }
+    //Thief Creation
+    else if (playerInfo[1] == 3)
+    {
+        //Add axe
+        addInventory(0,4);
+        //add booze collection
+        addInventory(2,4);
+        addInventory(2,4);
+        addInventory(2,4);
+        //add rations
+        addInventory(2,7);
+        addInventory(2,7);
+    }
 }
