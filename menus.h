@@ -257,7 +257,7 @@ int statusMenu()
     cout << "             Health:  " << playerHealth << "\n";
     cout << "             Gold:  " << moneybag << "\n";
     cout << "              Your inventory contains:  \n\n";
-    cout << "            " << displayInventory() << "\n\n";
+    displayInventory();
     cout << "               Press 1 to return to Menu\n\n";
     cout << menuBar;
     cin >> menuChoice;

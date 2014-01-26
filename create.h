@@ -2,6 +2,9 @@ using namespace std;
 
 int playerInfo[2];
 int playerLocation = 0;
+int playersAC = 10;
+int playersSpeed = 5;
+int playersAttack = 7;
 void createCharacter();
 void initialItems();
 

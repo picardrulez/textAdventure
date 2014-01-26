@@ -13,7 +13,7 @@ void addPartyLiquor();
 int itemRoll = 0;
 void checkForItem();
 int debugInventory();
-//int displayInventory();
+int inventoryCheck();
 void clearPlayerInv();
 
     const int NUM_WEAPONS = 13;
@@ -125,12 +125,20 @@ void clearPlayerInv();
 
     int player_inv[player_inv_row][player_inv_col];
 
+int inventoryCheck()
+{
+    system("clear");
+    cout << menuBar;
+    cout << "                 Your health is " << playerHealth << "\n";
+    cout << "            You have " << moneybag << " gold pieces\n";
+    cout << "              Your inventory contains:\n\n";
+    displayInventory();
+    cout << "                Press '1' to continue\n";
+    cout << menuBar;
+    cin >> userInput;
+}
 int displayInventory()
 {
-//    system("clear");
-//    cout << "Your health is " << playerHealth << "\n";
-//    cout << "You have " << moneybag << " gold pieces\n";
-//    cout << "Your inventory consists of:\n";
     int pos1;
     int pos2;
     for (int i = 0; i < playerItemCount; i++ )
@@ -141,18 +149,15 @@ int displayInventory()
             if (j == 0)
             {
                 pos1 = player_inv[i][j];
-                //tableName = findTable(pos1);
             }
             else if (j == 1)
             {
                 pos2 = player_inv[i][j];
-                cout << findItemName(pos1, pos2) << "\n";
-                //cout << tableName[pos2] << "\n";
+                cout << "                   " << findItemName(pos1, pos2) << "\n";
             }
         }
     }
- //   cout << "Press '1' to continue\n";
-//    cin >> userInput;
+    cout << "\n";
 }
 
 int debugInventory()
@@ -296,15 +301,15 @@ void checkForItem()
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
     int percentRoll = (randomNumber % 100) + 1;
-    if ( percentRoll < 50 )
+    if ( percentRoll < 25 )
     {
         system("clear");
         createItem();
         item = findItemName(itemType, itemRoll); 
         cout << menuBar << "\n";
-        cout << "You find a " << item << "!\n\n\n";
-        cout << "Press '1' to take it\n";
-        cout << "Press '2' to leave it\n\n\n\n";
+        cout << "               You find a " << item << "!\n\n\n";
+        cout << "             Press '1' to take it\n";
+        cout << "             Press '2' to leave it\n\n\n\n";
         cout << menuBar;
         cin >> playerInput;
         if (playerInput == "1")

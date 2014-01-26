@@ -7,6 +7,7 @@
 #include "inv.h"
 #include "create.h"
 #include "battle.h"
+#include "enemies.h"
 #include "level1.h"
 
 string answer;
