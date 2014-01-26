@@ -4,6 +4,16 @@ using namespace std;
 //int moneybag = 0;
 int userInput = 0;
 int itemType = 0;
+int itemNumber;
+int pos1;
+int pos2;
+int playersHelmAC = 0;
+int playersGauntletAC = 0;
+int playersPlateAC = 0;
+int playersBootAC = 0;
+int playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC; 
+int playersSpeed = 1;
+int playersAttack = 1;
 string findItemName(int itemNumber, int table);
 string selection;
 string item;
@@ -14,6 +24,7 @@ int itemRoll = 0;
 void checkForItem();
 int debugInventory();
 int inventoryCheck();
+void equipMenu();
 void equipItem(int table, int itemNumber);
 void equipWeapon(int table, int itemNumber);
 void equipHelm(int table, int itemNumber);
@@ -133,11 +144,11 @@ void clearPlayerInv();
 
 //Arrays for player's equipped items
 
-int player_eweapon[1][2];
-int player_ehelm[1][2];
-int player_egauntlets[1][2];
-int player_eboots[1][2];
-int player_eplate[1][2];
+int player_eweapon[1][2] = {9,9};
+int player_ehelm[1][2] = {9,9};
+int player_egauntlets[1][2] = {9,9};
+int player_eboots[1][2] = {9,9};
+int player_eplate[1][2] = {9,9};
 
 int inventoryCheck()
 {
@@ -147,14 +158,82 @@ int inventoryCheck()
     cout << "            You have " << moneybag << " gold pieces\n";
     cout << "              Your inventory contains:\n\n";
     displayInventory();
-    cout << "                Press '1' to continue\n";
+    cout << "          (1)Equip / Use Item (2)Return\n\n";
     cout << menuBar;
     cin >> userInput;
+    if (userInput == 1)
+    {
+        equipMenu();
+    }
+    else if (userInput == 2)
+    {
+        return 0;
+    }
 }
 int displayInventory()
 {
-    int pos1;
-    int pos2;
+    cout << "           Equipped:\n\n";
+    cout << "           Weapon:  ";
+    pos1 = player_eweapon[0][0];
+    pos2 = player_eweapon[0][1];
+    if (pos1 == 9)
+    {
+        cout << "\n";
+    }
+    else
+    {
+        item = findItemName(pos1, pos2);
+        cout << item << "\n";
+    }
+    cout << "           Helm:  ";
+    pos1 = player_ehelm[0][0];
+    pos2 = player_ehelm[0][1];
+    if (pos1 == 9)
+    {
+        cout << "\n";
+    }
+    else
+    {
+        item = findItemName(pos1, pos2);
+        cout << item << "\n";
+    }
+    cout << "           Breast plate:  ";
+    pos1 = player_eplate[0][0];
+    pos2 = player_eplate[0][1];
+    if (pos1 == 9)
+    {
+        cout << "\n";
+    }
+    else
+    {
+        item = findItemName(pos1, pos2);
+        cout << item << "\n";
+    }
+    cout << "           Gauntlets:  ";
+    pos1 = player_egauntlets[0][0];
+    pos2 = player_egauntlets[0][1];
+    if (pos1 == 9)
+    {
+        cout << "\n";
+    }
+    else
+    {
+        item = findItemName(pos1, pos2);
+        cout << item << "\n";
+    }
+    cout << "           Boots:  ";
+    pos1 = player_eboots[0][0];
+    pos2 = player_eboots[0][1];
+    if (pos1 == 9)
+    {
+        cout << "\n\n";
+    }
+    else
+    {
+        item = findItemName(pos1, pos2);
+        cout << item << "\n\n";
+    }
+
     for (int i = 0; i < playerItemCount; i++ )
     {
         string tableName;
@@ -167,7 +246,7 @@ int displayInventory()
             else if (j == 1)
             {
                 pos2 = player_inv[i][j];
-                cout << "                   " << findItemName(pos1, pos2) << "\n";
+                cout << "                 " << findItemName(pos1, pos2) << "\n";
             }
         }
     }
@@ -310,26 +389,65 @@ void clearPlayerInv()
     playerItemCount = 0;
 }
 
+void equipMenu()
+{
+    system("clear");
+    cout << menuBar;
+    cout << "          Choose Item to equip / use:\n\n";
+    int startNumber = 0;
+    for (int i = 0; i < playerItemCount; i++)
+    {
+        string tableName;
+        for (int j = 0; j < 2; j++)
+        {
+            if (j == 0)
+            {
+                pos1 = player_inv[i][j];
+            }
+            else if (j == 1)
+            {
+                pos2 = player_inv[i][j];
+                startNumber++;
+                cout << "                 (" << startNumber << ")  " << findItemName(pos1, pos2) << "\n";
+            }
+        }
+    }
+    cout <<"\n";
+    cout << menuBar;
+    cin >> userInput;
+    itemNumber = userInput - 1;
+    pos1 = player_inv[itemNumber][0];
+    pos2 = player_inv[itemNumber][1];
+    item = findItemName(pos2, pos2);
+    equipItem(pos1,pos2);
+
+    system("clear");
+    cout << menuBar << "\n\n\n";
+    cout <<"              " << item << " has been equipped!\n\n\n\n";
+    cout << "                Press '1' to return.\n\n\n\n";
+    cout << menuBar;
+    cin >> userInput;
+}
 void equipItem(int table, int itemNumber)
 {
     item = findItemName(table, itemNumber);
-    if (item.find("Sword") || item.find("Axe") || item.find("Hammer") || item.find("Dart"))
+    if (item.find("Sword") != string::npos || item.find("Axe") != string::npos || item.find("Hammer") != string::npos || item.find("Dart") != string::npos )
     {
         equipWeapon(table, itemNumber);
     }
-    else if (item.find("Helm"))
+    else if (item.find("Helm") != string::npos)
     {
         equipHelm(table, itemNumber);
     }
-    else if (item.find("Gauntlets"))
+    else if (item.find("Gauntlets") != string::npos)
     {
         equipGauntlets(table, itemNumber);
     }
-    else if (item.find("Boots"))
+    else if (item.find("Boots") != string::npos)
     {
         equipBoots(table, itemNumber);
     }
-    else if (item.find("Plate"))
+    else if (item.find("Plate") != string::npos)
     {
         equipPlate(table, itemNumber);
     }
@@ -338,30 +456,37 @@ void equipWeapon(int table, int itemNumber)
 {
     player_eweapon[0][0] = table;
     player_eweapon[0][1] = itemNumber;
+    playersAttack = weapon_prop[itemNumber][1];
+    playersSpeed = weapon_prop[itemNumber][3];
+
 }
 
 void equipHelm(int table, int itemNumber)
 {
     player_ehelm[0][0] = table;
     player_ehelm[0][1] = itemNumber;
+    playersHelmAC = armor_prop[itemNumber][1];
 }
 
 void equipPlate(int table, int itemNumber)
 {
     player_eplate[0][0] = table;
     player_eplate[0][1] = itemNumber;
+    playersPlateAC = armor_prop[itemNumber][1];
 }
 
 void equipGauntlets(int table, int itemNumber)
 {
     player_egauntlets[0][0] = table;
     player_egauntlets[0][1] = itemNumber;
+    playersGauntletAC = armor_prop[itemNumber][1];
 }
 
 void equipBoots(int table, int itemNumber)
 {
     player_eboots[0][0] = table;
     player_eboots[0][1] = itemNumber;
+    playersBootAC = armor_prop[itemNumber][1];
 }
 
 void checkForItem()
