@@ -12,7 +12,7 @@ file explanations:
 
 need to:
 * remove system calls
-* impliment the inventory system <----(Need to update equip to auto-unequip currently equipped item) 
+* impliment the inventory system <----DONE 
 * add items in game randomly <----DONE
 * add a monetary exchange system
 * add a health system <----DONE

@@ -8,6 +8,8 @@ int itemType = 0;
 int itemNumber;
 int pos1;
 int pos2;
+int etable;
+int eitemNumber;
 int playersHelmAC = 0;
 int playersGauntletAC = 0;
 int playersPlateAC = 0;
@@ -15,6 +17,7 @@ int playersBootAC = 0;
 int playersAC = 0; 
 int playersSpeed = 1;
 int playersAttack = 1;
+int displayEquipped();
 string findItemName(int itemNumber, int table);
 string selection;
 string item;
@@ -157,8 +160,10 @@ int inventoryCheck()
     system("clear");
     cout << menuBar;
     cout << "                 Your health is " << playerHealth << "\n";
-    cout << "            You have " << moneybag << " gold pieces\n";
-    cout << "              Your inventory contains:\n\n";
+    cout << "            You have " << moneybag << " gold pieces\n\n";
+    cout << "              --Equipped--\n";
+    displayEquipped();
+    cout << "              --Inventory--\n";
     displayInventory();
     cout << "          (E)quip / Use Item (1)Return\n\n";
     cout << menuBar;
@@ -172,9 +177,8 @@ int inventoryCheck()
         return 0;
     }
 }
-int displayInventory()
+int displayEquipped()
 {
-    cout << "           Equipped:\n\n";
     cout << "           Weapon:  ";
     pos1 = player_eweapon[0][0];
     pos2 = player_eweapon[0][1];
@@ -236,6 +240,10 @@ int displayInventory()
         cout << item << "\n\n";
     }
 
+}
+
+int displayInventory()
+{
     for (int i = 0; i < playerItemCount; i++ )
     {
         string tableName;
@@ -457,6 +465,12 @@ void equipItem(int table, int itemNumber)
 }
 void equipWeapon(int table, int itemNumber)
 {
+    if (player_eweapon[0][0] != 9)
+    {
+        etable = player_eweapon[0][0];
+        eitemNumber = player_eweapon[0][1];
+        addInventory(etable, eitemNumber);
+    }
     player_eweapon[0][0] = table;
     player_eweapon[0][1] = itemNumber;
     playersAttack = weapon_prop[itemNumber][1];
@@ -466,6 +480,12 @@ void equipWeapon(int table, int itemNumber)
 
 void equipHelm(int table, int itemNumber)
 {
+    if (player_ehelm[0][0] != 9)
+    {
+        etable = player_ehelm[0][0];
+        eitemNumber = player_ehelm[0][1];
+        addInventory(etable, eitemNumber);
+    }
     player_ehelm[0][0] = table;
     player_ehelm[0][1] = itemNumber;
     playersHelmAC = armor_prop[itemNumber][1];
@@ -474,6 +494,12 @@ void equipHelm(int table, int itemNumber)
 
 void equipPlate(int table, int itemNumber)
 {
+    if (player_eplate[0][0] != 9)
+    {
+        etable = player_eplate[0][0];
+        eitemNumber = player_eplate[0][1];
+        addInventory(etable, eitemNumber);
+    }
     player_eplate[0][0] = table;
     player_eplate[0][1] = itemNumber;
     playersPlateAC = armor_prop[itemNumber][1];
@@ -483,6 +509,12 @@ void equipPlate(int table, int itemNumber)
 
 void equipGauntlets(int table, int itemNumber)
 {
+    if (player_egauntlets[0][0] != 9)
+    {
+        etable = player_egauntlets[0][0];
+        eitemNumber = player_egauntlets[0][1];
+        addInventory(etable, eitemNumber);
+    }
     player_egauntlets[0][0] = table;
     player_egauntlets[0][1] = itemNumber;
     playersGauntletAC = armor_prop[itemNumber][1];
@@ -491,6 +523,12 @@ void equipGauntlets(int table, int itemNumber)
 
 void equipBoots(int table, int itemNumber)
 {
+    if (player_eboots[0][0] != 9)
+    {
+        etable = player_eboots[0][0];
+        eitemNumber = player_eboots[0][1];
+        addInventory(etable, eitemNumber);
+    }
     player_eboots[0][0] = table;
     player_eboots[0][1] = itemNumber;
     playersBootAC = armor_prop[itemNumber][1];
