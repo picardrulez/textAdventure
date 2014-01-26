@@ -14,6 +14,12 @@ int itemRoll = 0;
 void checkForItem();
 int debugInventory();
 int inventoryCheck();
+void equipItem(int table, int itemNumber);
+void equipWeapon(int table, int itemNumber);
+void equipHelm(int table, int itemNumber);
+void equipPlate(int table, int itemNumber);
+void equipGauntlets(int table, int itemNumber);
+void equipBoots(int table, int itemNumber);
 void clearPlayerInv();
 
     const int NUM_WEAPONS = 13;
@@ -124,6 +130,14 @@ void clearPlayerInv();
     const int player_inv_row = MAX_PLAYER_INV;
 
     int player_inv[player_inv_row][player_inv_col];
+
+//Arrays for player's equipped items
+
+int player_eweapon[1][2];
+int player_ehelm[1][2];
+int player_egauntlets[1][2];
+int player_eboots[1][2];
+int player_eplate[1][2];
 
 int inventoryCheck()
 {
@@ -295,6 +309,61 @@ void clearPlayerInv()
     }
     playerItemCount = 0;
 }
+
+void equipItem(int table, int itemNumber)
+{
+    item = findItemName(table, itemNumber);
+    if (item.find("Sword") || item.find("Axe") || item.find("Hammer") || item.find("Dart"))
+    {
+        equipWeapon(table, itemNumber);
+    }
+    else if (item.find("Helm"))
+    {
+        equipHelm(table, itemNumber);
+    }
+    else if (item.find("Gauntlets"))
+    {
+        equipGauntlets(table, itemNumber);
+    }
+    else if (item.find("Boots"))
+    {
+        equipBoots(table, itemNumber);
+    }
+    else if (item.find("Plate"))
+    {
+        equipPlate(table, itemNumber);
+    }
+}
+void equipWeapon(int table, int itemNumber)
+{
+    player_eweapon[0][0] = table;
+    player_eweapon[0][1] = itemNumber;
+}
+
+void equipHelm(int table, int itemNumber)
+{
+    player_ehelm[0][0] = table;
+    player_ehelm[0][1] = itemNumber;
+}
+
+void equipPlate(int table, int itemNumber)
+{
+    player_eplate[0][0] = table;
+    player_eplate[0][1] = itemNumber;
+}
+
+void equipGauntlets(int table, int itemNumber)
+{
+    player_egauntlets[0][0] = table;
+    player_egauntlets[0][1] = itemNumber;
+}
+
+void equipBoots(int table, int itemNumber)
+{
+    player_eboots[0][0] = table;
+    player_eboots[0][1] = itemNumber;
+}
+
 void checkForItem()
 {
     string playerInput;
