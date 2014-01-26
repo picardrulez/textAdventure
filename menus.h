@@ -156,8 +156,9 @@ int controls()
     //resetChoice();
     cout << menuBar;
     cout << "                     Controls\n\n\n";
-    cout << "           'i' ==>  Display Inventory\n\n";
-    cout << "           Press '1' to return to settings.\n\n\n\n";
+    cout << "           'i' ==>  Display Inventory\n";
+    cout << "           'm' ==>  Display Menu\n\n";
+    cout << "           Press '1' to return to settings.\n\n\n";
     cout << menuBar;
     cin >> menuChoice;
     do

@@ -12,8 +12,8 @@ void createCharacter()
 {
     clearPlayerInv();
     cout << menuBar;
-    cout << "          Welcome to Geoff's Adventure.\n";
-    cout << "               What sex are you?\n\n\n";
+    cout << "         Welcome to Geoff's Text Adventure!\n\n";
+    cout << "               Choose your sex:\n\n";
     cout << "                 1:  Male\n";
     cout << "                 2:  Female\n\n\n\n";
     cout << menuBar;
@@ -21,7 +21,7 @@ void createCharacter()
     playerInfo[0] = userInput;
     system("clear");
     cout << menuBar;
-    cout << "            And what class are you?\n\n\n";
+    cout << "            Choose your class:\n\n\n";
     cout << "                 1:  Warrior\n";
     cout << "                 2:  Druid\n";
     cout << "                 3:  Thief\n\n\n\n";
@@ -33,9 +33,9 @@ void createCharacter()
     moneybag = initialFunds(playerInfo[1]);
     system("clear");
     cout << menuBar << "\n\n";
-    cout << "    Your initial funds are " << moneybag << " gold pieces.\n\n";
-    cout << "     New items have been added to your inventory!\n\n";
-    cout << "         Press 1 to start your adventure.\n\n\n";
+    cout << "      Your initial funds are " << moneybag << " gold pieces.\n\n";
+    cout << "   New items have been added to your inventory!\n\n";
+    cout << "         Press 1 to start your adventure!\n\n\n";
     cout << menuBar;
     cin >> userInput;
     return;
