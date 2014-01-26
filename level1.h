@@ -134,7 +134,7 @@ void level1()
                 cout << "You continue East on your path.\n";
                 cout << "A powerful wizard appears before you, extends\n";
                 cout << "his arms to reveal a large staff and crystal.\n";
-                cout << "He sings arcane tones and attacks!\n";
+                cout << "He sings arcane tones and attacks!\n\n\n";
                 cout << "               1:  Attack!\n";
                 cout << "               2:  Go West\n\n";
                 cout << menuBar;

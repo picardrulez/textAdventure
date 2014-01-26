@@ -37,22 +37,29 @@ int monsterAttack(int speed, int attack)
     {
         int damageDealt = damage(attack);
         playerHealth -= damageDealt;
-        cout << "You get hit for "<< damageDealt << " damage!\n\n";
-        cout << "Health is at "<< playerHealth << "!\n\n";
+        system("clear");
+        cout << menuBar << "\n\n";
+        cout << "             You get hit for "<< damageDealt << " damage!\n\n";
+        cout << "               Health is at "<< playerHealth << "!\n\n";
         if (playerHealth <= 0)
         {
-            cout << "Oh no!  You died!\n";
-            cout << "Press '1' to return to the Main Menu\n";
+            cout << "             Oh no!  You died!\n";
+            cout << "      Press '1' to return to the Main Menu\n\n\n";
+            cout << menuBar;
             cin >> playerchoice;
             return false;
         }
-        cout << "Press '1' to continue!\n";
+        cout << "              Press '1' to continue!\n\n\n";
+        cout << menuBar;
         cin >> playerchoice;
     }
     else
     {
-        cout << "He missed!\n\n";
-        cout << "Press '1' to continue!\n";
+        system("clear");
+        cout << menuBar << "\n\n";;
+        cout << "                   He missed!\n\n\n";
+        cout << "              Press '1' to continue!\n\n\n\n";
+        cout << menuBar;
         cin >> playerchoice;
     }
 }
@@ -64,21 +71,28 @@ int playerAttack(int speed, int attack)
     {
         int damageDealt = damage(attack);
         monsterHealth -= damageDealt;
-        cout << "You hit the monster for " << damageDealt << " damage!\n\n";
+        system("clear");
+        cout << menuBar << "\n\n";
+        cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
         if (monsterHealth <= 0)
         {
-            cout << "You defeated him!\n";
-            cout << "Press '1' to continue!\n\n";
+            cout << "             You defeated him!\n";
+            cout << "          Press '1' to continue!\n\n\n\n";
+            cout << menuBar;
             cin >> playerchoice;
             return false;
         }
-        cout << "Press '1' to continue!\n";
+        cout << "              Press '1' to continue!\n\n\n\n";
+        cout << menuBar;
         cin >> playerchoice;
     }
     else
     {
-        cout << "You missed!\n\n";
-        cout << "Press '1' to continue!\n";
+        system("clear");
+        cout << menuBar << "\n\n";
+        cout << "                   You missed!\n\n\n";
+        cout << "              Press '1' to continue!\n\n\n\n";
+        cout << menuBar;
         cin >> playerchoice;
     }
 }
