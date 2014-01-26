@@ -12,10 +12,11 @@ file explanations:
 
 need to:
 * remove system calls
-* impliment the inventory system <----DONE 
+* impliment the inventory system <----(everything complete except for ability to remove an item from the array) 
 * add items in game randomly <----DONE
+* add a monetary exchange system
 * add a health system <----DONE
-* add a fighting system <---- (Mostly done, function is taking hard coded numbers.  Need to pull speed and ac values from the array)
+* add a fighting system <---- DONE 
 * add a map
 * add an in game menu <----DONE
 * make different difficulties <----(difficulties are chooseable, they just don't do anything)
