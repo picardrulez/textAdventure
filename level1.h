@@ -5,7 +5,6 @@ void level1();
 void level1()
 {
     system("clear");
-    string playerInput;
     bool playerChoice = false;
     int outcome;
     int running = 1;

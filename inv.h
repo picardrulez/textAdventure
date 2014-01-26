@@ -2,6 +2,7 @@ using namespace std;
 
 // Management System for Weapon Items
 //int moneybag = 0;
+string playerInput;
 int userInput = 0;
 int itemType = 0;
 int itemNumber;
@@ -11,7 +12,7 @@ int playersHelmAC = 0;
 int playersGauntletAC = 0;
 int playersPlateAC = 0;
 int playersBootAC = 0;
-int playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC; 
+int playersAC = 0; 
 int playersSpeed = 1;
 int playersAttack = 1;
 string findItemName(int itemNumber, int table);
@@ -31,6 +32,7 @@ void equipHelm(int table, int itemNumber);
 void equipPlate(int table, int itemNumber);
 void equipGauntlets(int table, int itemNumber);
 void equipBoots(int table, int itemNumber);
+void dropItem(int itemNumber);
 void clearPlayerInv();
 
     const int NUM_WEAPONS = 13;
@@ -53,18 +55,18 @@ void clearPlayerInv();
     const int weapon_prop_col = 5;
     const int weapon_prop_row = NUM_WEAPONS;
     int weapon_prop[weapon_prop_row][weapon_prop_col] = {
-        {0, 2, 50, 6, 100} ,
-        {1, 5, 75, 4, 85} ,
-        {2, 8, 100, 3, 50} ,
-        {3, 12, 300, 1, 5},
-        {4, 4, 75, 8, 75} ,
-        {5, 6, 100, 6, 50} ,
-        {6, 8, 100, 5, 30} ,
-        {7, 14, 300, 4, 5} ,
-        {8, 6, 100, 10, 50} ,
-        {9, 8, 150, 8, 25} ,
-        {10, 10, 200, 7, 10} ,
-        {11, 16, 300, 6, 5} ,
+        {0, 5, 50, 6, 100} ,
+        {1, 11, 75, 4, 85} ,
+        {2, 17, 100, 3, 50} ,
+        {3, 25, 300, 1, 5},
+        {4, 8, 75, 8, 75} ,
+        {5, 15, 100, 6, 50} ,
+        {6, 23, 100, 5, 30} ,
+        {7, 30, 300, 4, 5} ,
+        {8, 12, 100, 10, 50} ,
+        {9, 18, 150, 8, 25} ,
+        {10, 27, 200, 7, 10} ,
+        {11, 40, 300, 6, 5} ,
         {12, 5, 1, 2, 40}
     };
 
@@ -158,14 +160,14 @@ int inventoryCheck()
     cout << "            You have " << moneybag << " gold pieces\n";
     cout << "              Your inventory contains:\n\n";
     displayInventory();
-    cout << "          (1)Equip / Use Item (2)Return\n\n";
+    cout << "          (E)quip / Use Item (1)Return\n\n";
     cout << menuBar;
-    cin >> userInput;
-    if (userInput == 1)
+    cin >> playerInput;
+    if (playerInput == "e")
     {
         equipMenu();
     }
-    else if (userInput == 2)
+    else if (playerInput == "1")
     {
         return 0;
     }
@@ -256,7 +258,7 @@ int displayInventory()
 int debugInventory()
 {
     int itemPos;
-    system("clear");
+//    system("clear");
     cout << "DEBUG INVENTORY\n";
     for (int i = 0; i < playerItemCount; i++)
     {
@@ -267,8 +269,8 @@ int debugInventory()
         }
         cout << "\n";
     }
-    cout << "Press '1' to continue\n";
-    cin >> userInput;
+//    cout << "Press '1' to continue\n";
+//    cin >> userInput;
 }
 
 string findItemName(int table, int itemNumber)
@@ -413,6 +415,7 @@ void equipMenu()
         }
     }
     cout <<"\n";
+    debugInventory();
     cout << menuBar;
     cin >> userInput;
     itemNumber = userInput - 1;
@@ -420,6 +423,7 @@ void equipMenu()
     pos2 = player_inv[itemNumber][1];
     item = findItemName(pos2, pos2);
     equipItem(pos1,pos2);
+    dropItem(itemNumber);
 
     system("clear");
     cout << menuBar << "\n\n\n";
@@ -466,6 +470,7 @@ void equipHelm(int table, int itemNumber)
     player_ehelm[0][0] = table;
     player_ehelm[0][1] = itemNumber;
     playersHelmAC = armor_prop[itemNumber][1];
+    playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
 
 void equipPlate(int table, int itemNumber)
@@ -473,6 +478,8 @@ void equipPlate(int table, int itemNumber)
     player_eplate[0][0] = table;
     player_eplate[0][1] = itemNumber;
     playersPlateAC = armor_prop[itemNumber][1];
+    playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
+
 }
 
 void equipGauntlets(int table, int itemNumber)
@@ -480,6 +487,7 @@ void equipGauntlets(int table, int itemNumber)
     player_egauntlets[0][0] = table;
     player_egauntlets[0][1] = itemNumber;
     playersGauntletAC = armor_prop[itemNumber][1];
+    playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
 
 void equipBoots(int table, int itemNumber)
@@ -487,6 +495,7 @@ void equipBoots(int table, int itemNumber)
     player_eboots[0][0] = table;
     player_eboots[0][1] = itemNumber;
     playersBootAC = armor_prop[itemNumber][1];
+    playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
 
 void checkForItem()
@@ -523,4 +532,18 @@ void checkForItem()
     {
         return;
     }
+}
+
+void dropItem(int itemNumber)
+{
+    for (int i = itemNumber; i < playerItemCount + 1; i++ )
+    {
+        int movingI = i + 1;
+        for (int j = 0; j < 2; j++)
+        {
+            player_inv[i][j] = player_inv[movingI][j];
+        }
+    }
+    playerItemCount = playerItemCount - 1;
+    debugInventory();
 }

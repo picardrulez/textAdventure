@@ -112,11 +112,11 @@ int findAttack(int itemNumber)
 
 bool thacoRoll(int ac, int speed)
 {
-    int thaco = (20 - speed - ac);
+    int thaco = (30 - speed - ac);
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
     int thacoRoll = (randomNumber % 20);
-    if (thacoRoll > thaco)
+    if (thacoRoll < thaco)
     {
         return true;
     }
