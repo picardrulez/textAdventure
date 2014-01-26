@@ -415,7 +415,6 @@ void equipMenu()
         }
     }
     cout <<"\n";
-    debugInventory();
     cout << menuBar;
     cin >> userInput;
     itemNumber = userInput - 1;
@@ -545,5 +544,4 @@ void dropItem(int itemNumber)
         }
     }
     playerItemCount = playerItemCount - 1;
-    debugInventory();
 }
