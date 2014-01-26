@@ -37,7 +37,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {
@@ -77,7 +77,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {
@@ -111,7 +111,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {
@@ -158,7 +158,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {
@@ -186,7 +186,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {
@@ -215,7 +215,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {
@@ -244,7 +244,7 @@ void level1()
                 }
                 else if (playerInput == "i")
                 {
-                    inventoryCheck();
+                    itemMenu();
                 }
                 else if (playerInput == "m")
                 {

@@ -3,17 +3,30 @@ using namespace std;
 int menuChoice = 0;
 string menuBar = "|--------------------------------------------------|\n\n";
 string difficultySetting = "Medium";
+string playerSelection;
 bool menuSelection = false;
 int madechoice = 0;
 int mainMenu();
 int settings();
 int credits();
 int difficulty();
+void itemMenu();
+void equipMenu();
+void equipmentMenu();
 int controls();
 int statusMenu();
 void gameMenu();
+int displayEquipped();
 int displayInventory();
+void inventoryMenu();
 int moneybag;
+int playersHelmAC = 0;
+int playersGauntletAC = 0;                                                     
+int playersPlateAC = 0;
+int playersBootAC = 0;
+int playersAC = 0;
+int playersSpeed = 1;
+int playersAttack = 1;
 int playerHealth = 100;
 
 int mainMenu()
@@ -257,10 +270,69 @@ int statusMenu()
     cout << "               Status\n\n";
     cout << "             Health:  " << playerHealth << "\n";
     cout << "             Gold:  " << moneybag << "\n";
-    cout << "              Your inventory contains:  \n\n";
-    displayInventory();
+    cout << "             Armor Class:  " << playersAC << "\n";
+    cout << "             Attack Speed:  " << playersSpeed << "\n";
+    cout << "             Maximum Damage:  " << playersAttack << "\n\n";
     cout << "               Press 1 to return to Menu\n\n";
     cout << menuBar;
     cin >> menuChoice;
     return 0;
+}
+
+void itemMenu()
+{
+    system("clear");
+    cout << menuBar;
+    cout << "                Item Management\n\n";
+    cout << "                 (e) Equipment\n";
+    cout << "                 (i) Inventory\n";
+    cout << "                 (s) Status\n\n";
+    cout << menuBar;
+    cin >> playerSelection;
+    if (playerSelection == "e")
+    {
+        equipmentMenu();
+    }
+    else if (playerSelection == "i")
+    {
+        inventoryMenu();
+    }
+    else if (playerSelection == "s")
+    {
+        statusMenu();
+    }
+}
+
+void inventoryMenu()
+{
+    system("clear");
+    cout << menuBar;
+    cout << "               --Inventory--\n\n";
+    displayInventory();
+    cout << "                   Press '1' to Return\n\n";
+    cout << menuBar;
+    cin >> playerSelection;
+    if (playerSelection == "1")
+    {
+        return;
+    }
+}
+
+void equipmentMenu()
+{
+    system("clear");
+    cout << menuBar;
+    cout << "               --Equipped--\n\n";
+    displayEquipped();
+    cout << "             (e) Equip / Use Item     (1) Return\n\n";
+    cout << menuBar;
+    cin >>  playerSelection;
+    if (playerSelection == "e")
+    {
+        equipMenu();
+    }
+    else
+    {
+        return;
+    }
 }
