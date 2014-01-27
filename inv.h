@@ -149,6 +149,9 @@ int player_eplate[1][2] = {9,9};
 
 int inventoryCheck()
 {
+    debugopen();
+    debugfile << "inventory check started\n";
+    debugclose();
     system("clear");
     cout << menuBar;
     cout << "                 Your health is " << playerHealth << "\n";
@@ -160,6 +163,9 @@ int inventoryCheck()
     cout << "          (E)quip / Use Item (1)Return\n\n";
     cout << menuBar;
     cin >> playerInput;
+    debugopen();
+    debugfile << "player chose " << playerInput << "\n";
+    debugclose();
     if (playerInput == "e")
     {
         equipMenu();
@@ -168,12 +174,21 @@ int inventoryCheck()
     {
         return 0;
     }
+    debugopen();
+    debugfile << "inventory check closed\n";
+    debugclose();
 }
 int displayEquipped()
 {
+    debugopen();
+    debugfile < "display equipped opened\n";
+    debugclose();
     cout << "           Weapon:  ";
     pos1 = player_eweapon[0][0];
     pos2 = player_eweapon[0][1];
+    debugopen();
+    debugfile << "player_eweapon[" << pos1 << "][" << pos2 << "]\n";
+    debugclose();
     if (pos1 == 9)
     {
         cout << "\n";
@@ -186,6 +201,9 @@ int displayEquipped()
     cout << "           Helm:  ";
     pos1 = player_ehelm[0][0];
     pos2 = player_ehelm[0][1];
+    debugopen();
+    debugfile << "player_ehelm[" << pos1 << "][" << pos2 << "]\n";
+    debugclose();
     if (pos1 == 9)
     {
         cout << "\n";
@@ -198,6 +216,9 @@ int displayEquipped()
     cout << "           Breast plate:  ";
     pos1 = player_eplate[0][0];
     pos2 = player_eplate[0][1];
+    debugopen();
+    debugfile << "player_eplate[" << pos1 << "][" << pos2 << "]\n";
+    debugclose();
     if (pos1 == 9)
     {
         cout << "\n";
@@ -210,6 +231,9 @@ int displayEquipped()
     cout << "           Gauntlets:  ";
     pos1 = player_egauntlets[0][0];
     pos2 = player_egauntlets[0][1];
+    debugopen();
+    debugfile << "player_egauntlets[" << pos1 << "][" << pos2 << "]\n";
+    debugclose();
     if (pos1 == 9)
     {
         cout << "\n";
@@ -222,6 +246,9 @@ int displayEquipped()
     cout << "           Boots:  ";
     pos1 = player_eboots[0][0];
     pos2 = player_eboots[0][1];
+    debugopen();
+    debugfile << "player_eboots[" << pos1 << "][" << pos2 << "]\n";
+    debugclose();
     if (pos1 == 9)
     {
         cout << "\n\n";
@@ -232,10 +259,16 @@ int displayEquipped()
         cout << item << "\n\n";
     }
 
+    debugopen();
+    debugfile << "display equipped closed\n";
+    debugclose();
 }
 
 int displayInventory()
 {
+    debugopen();
+    debugfile << "display inventory opened\n";
+    debugclose();
     for (int i = 0; i < playerItemCount; i++ )
     {
         string tableName;
@@ -249,10 +282,16 @@ int displayInventory()
             {
                 pos2 = player_inv[i][j];
                 cout << "                 " << findItemName(pos1, pos2) << "\n";
+                debugopen();
+                debugfile << "player_inv[" << i << "][" << j << "]\n";
+                debugclose();
             }
         }
     }
     cout << "\n";
+    debugopen();
+    debugfile << "display inventory closed\n";
+    debugclose();
 }
 
 int debugInventory()
@@ -292,15 +331,28 @@ string findItemName(int table, int itemNumber)
 
 void addInventory(int table, int item)
 {
+    debugopen();
+    debugfile << "add inventory started\n";
+    debugfile << "playerItemCount is " << playerItemCount << "\n";
+    debugclose();
     if (playerItemCount < MAX_PLAYER_INV )
     {
     player_inv[playerItemCount][0] = table;
     player_inv[playerItemCount][1] = item;
+    debugopen();
+    debugfile << "item ["  << table << "]["  << item << "] added to player_inv [" << playerItemCount << "]\n";
+    debugclose();
     playerItemCount++;
+    debugopen();
+    debugfile << "playerItemCount is now " << playerItemCount << "\n";
+    debugclose();
     }
     else
     {
         cout << "Inventory is full.";
+        debugopen();
+        debugfile << "item not added to player inventory\n";
+        debugclose();
     }
 }
 
@@ -312,35 +364,57 @@ void addPartyLiquor()
 }
 void createItem()
 {
+    debugopen();
+    debugfile << "createItem function started\n";
+    debugclose();
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
     itemType = (randomNumber % 3);
     int percentRoll = (randomNumber % 100) + 1;
+    debugopen();
+    debugfile << "itemType is " << itemType << "\n";
+    debugfile << "percentRoll is " << percentRoll << "\n";
+    debugclose();
     string itemArray;
 
     if (itemType == 0)
     {
         itemRoll = (randomNumber % NUM_WEAPONS);
+        debugopen();
+        debugfile << "itemRoll is " << itemRoll << "\n";
+        debugclose();
         bool wrongrare = true;
         while (wrongrare)
         {
             int checkItem = weapons[itemRoll][5];
             if (checkItem < percentRoll)
             {
+                debugopen();
+                debugfile << "item too rare \n";
+                debugclose();
                 srand(static_cast<unsigned int>(time(0)));
                 randomNumber = rand();
                 itemRoll = (randomNumber % NUM_WEAPONS);
+                debugopen();
+                debugfile << "itemRoll is now " << itemRoll << "\n";
+                debugclose();
             }
             else
             {
                 wrongrare = false;
             }
         }
+        debugopen();
+        debugfile << "create item has closed\n";
+        debugclose();
         return;
     }
     else if (itemType == 1)
     {
         itemRoll = (randomNumber % NUM_ARMOR);
+        debugopen();
+        debugfile << "itemRoll is " << itemRoll << "\n";
+        debugclose();
         bool wrongrare = true;
         while (wrongrare)
         {
@@ -350,17 +424,27 @@ void createItem()
                 srand(static_cast<unsigned int>(time(0)));
                 randomNumber = rand();
                 itemRoll = (randomNumber % NUM_ARMOR);
+                debugopen();
+                debugfile << "item is too rare\n";
+                debugfile << "itemRoll is now " << itemRoll << "\n";
+                debugclose();
             }
             else
             {
                 wrongrare = false;
             }
         }
+        debugopen();
+        debugfile << "createitem has ended\n";
+        debugclose();
         return;
     }
     else if (itemType == 2)
     {
         itemRoll = (randomNumber % NUM_CONSUM);
+        debugopen();
+        debugfile << "itemRoll is " << itemRoll << "\n";
+        debugclose();
         bool wrongrare = true;
         while (wrongrare)
         {
@@ -370,12 +454,19 @@ void createItem()
                 srand(static_cast<unsigned int>(time(0)));
                 randomNumber = rand();
                 itemRoll = (randomNumber % NUM_CONSUM);
+                debugopen();
+                debugfile << "item too rare\n";
+                debugfile << "itemRoll is now " << itemRoll << "\n";
+                debugclose();
             }
             else
             {
                 wrongrare = false;
             }
         }
+        debugopen();
+        debugfile << "createitem is closed\n";
+        debugclose();
         return;
     }
 }
@@ -389,10 +480,17 @@ void clearPlayerInv()
         }
     }
     playerItemCount = 0;
+    debugopen();
+    debugfile << "playerItemCount is " << playerItemCount <<"\n";
+    debugfile << "player inventory cleared\n";
+    debugclose();
 }
 
 int equipMenu()
 {
+    debugopen();
+    debugfile << "equipMenu started\n";
+    debugclose();
     doneEquiping = 0;
     while (doneEquiping == 0)
     {
@@ -413,6 +511,9 @@ int equipMenu()
                 {
                     pos2 = player_inv[i][j];
                     startNumber++;
+                    debugopen();
+                    debugfile << "player_inv[" << i << "][" << j << "]\n";
+                    debugclose();
                     cout << "                 (" << startNumber << ")  " << findItemName(pos1, pos2) << "\n";
                 }
             }
@@ -434,9 +535,15 @@ int equipMenu()
         cout << "                Press '2' to return to menu.\n\n\n\n";
         cout << menuBar;
         cin >> userInput;
+        debugopen();
+        debugfile << "userInput is " << userInput << "\n";
+        debugclose();
         if (userInput == 2)
         {
             doneEquiping = 1;
+            debugopen();
+            debugfile << "equipMenu closed\n";
+            debugclose();
             return 0;
         }
     }
@@ -444,6 +551,9 @@ int equipMenu()
 
 void equipItem(int table, int itemNumber)
 {
+    debugopen();
+    debugfile << "equipItem started\n";
+    debugclose();
     item = findItemName(table, itemNumber);
     if (item.find("Sword") != string::npos || item.find("Axe") != string::npos || item.find("Hammer") != string::npos || item.find("Dart") != string::npos )
     {
@@ -465,6 +575,9 @@ void equipItem(int table, int itemNumber)
     {
         equipPlate(table, itemNumber);
     }
+    debugopen();
+    debugfile << "equipItem closed\n";
+    debugclose();
 }
 void equipWeapon(int table, int itemNumber)
 {
@@ -478,6 +591,10 @@ void equipWeapon(int table, int itemNumber)
     player_eweapon[0][1] = itemNumber;
     playersAttack = weapon_prop[itemNumber][1];
     playersSpeed = weapon_prop[itemNumber][3];
+    debugopen();
+    debugfile << "playersAttack is " << playersAttack << "\n";
+    debugfile << "playersSpeed is " << playersSpeed << "\n";
+    debugclose();
 
 }
 
@@ -493,6 +610,10 @@ void equipHelm(int table, int itemNumber)
     player_ehelm[0][1] = itemNumber;
     playersHelmAC = armor_prop[itemNumber][1];
     playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
+    debugopen();
+    debugfile << "playersHelmAC is " << playersHelmAC << "\n";
+    debugfile << "playersAC is " << playersAC << "\n";
+    debugclose();
 }
 
 void equipPlate(int table, int itemNumber)
