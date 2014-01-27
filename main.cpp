@@ -2,6 +2,8 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include "debug.h"
 #include "menus.h"
 #include "money.h"
 #include "inv.h"
@@ -15,10 +17,19 @@ using namespace std;
 bool gameDone = false;
 int main()
 {
+debugopen();
+debugfile << "Game started\n";
+debugclose();
     while (gameDone == false)
     {
+debugopen();
+debugfile << "Game loop started\n";
+debugclose();
         system("clear");
         int playchoice = mainMenu();
+debugopen();
+debugfile << "Main Menu loaded\n";
+debugclose();
         if (playchoice == 0)
         {
             gameDone = true;
@@ -30,4 +41,7 @@ int main()
             level1();
         }
     }
+    debugopen();
+    debugfile << "Game exited\n";
+    debugclose();
 }

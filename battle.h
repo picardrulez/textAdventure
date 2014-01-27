@@ -13,9 +13,15 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
 
 int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack)
 {
+    debugopen();
+    debugfile << "battle function started\n";
+    debugclose();
     int battlerun = 1;
     while (battlerun == 1)
     {
+        debugopen();
+        debugfile << "battle loop started\n";
+        debugclose();
         stillAlive = playerAttack(playerspeed, playerattack);
         if (stillAlive == false)
         {

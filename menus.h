@@ -169,7 +169,7 @@ int controls()
     //resetChoice();
     cout << menuBar;
     cout << "                     Controls\n\n\n";
-    cout << "           'i' ==>  Display Inventory\n";
+    cout << "           'i' ==>  Item Management\n";
     cout << "           'm' ==>  Display Menu\n\n";
     cout << "           Press '1' to return to settings.\n\n\n";
     cout << menuBar;
@@ -285,12 +285,11 @@ int itemMenu()
     while (madechoice == 0)
     {
         system("clear");
-        cout << menuBar;
+        cout << menuBar << "\n";
         cout << "                Item Management\n\n";
         cout << "                 (e) Equipment\n";
         cout << "                 (i) Inventory\n";
-        cout << "                 (s) Status\n";
-        cout << "                 (1) return\n\n";
+        cout << "                 (1) return\n\n\n\n";
         cout << menuBar;
         cin >> playerSelection;
         if (playerSelection == "e")
@@ -300,10 +299,6 @@ int itemMenu()
         else if (playerSelection == "i")
         {
             madechoice = inventoryMenu();
-        }
-        else if (playerSelection == "s")
-        {
-            madechoice = statusMenu();
         }
         else
         {
@@ -317,7 +312,7 @@ int inventoryMenu()
     cout << menuBar;
     cout << "               --Inventory--\n\n";
     displayInventory();
-    cout << "                   Press '1' to Return\n\n";
+    cout << "              Press '1' to Return\n\n";
     cout << menuBar;
     cin >> playerSelection;
     if (playerSelection == "1")
@@ -334,7 +329,7 @@ int equipmentMenu()
         cout << menuBar;
         cout << "               --Equipped--\n\n";
         displayEquipped();
-        cout << "             (e) Equip / Use Item     (1) Return\n\n";
+        cout << "         (e) Equip / Use Item     (1) Return\n\n";
         cout << menuBar;
         cin >>  playerSelection;
         if (playerSelection == "e")
