@@ -1,7 +1,6 @@
 textAdventure
 =============
 My first c++ project.
-
 File Explanations:
 -----------------
 * main.cpp - main file, run this to create binary
@@ -15,9 +14,20 @@ File Explanations:
 To Do:
 ------------------
 * remove system calls
+    * system("clear"); is everywhere.  Need to replace it with a line delete
 * add a map system
+    * make a map menu pullable in game
+    * should only show areas player has been (using playerLocation variable)
 * add enemy system
+    * give enemies their own item arrays
+    * when enemies are defeated, add option to loot
+    * enemies should have their own location variable with a chance to change to an adjacent location each time player moves
+*  fighting system
+    * add more choices during battle
+        * access inventory
+        * use items
 * impliment the inventory system <----DONE 
+* replace stand in with game story
 * add items in game randomly <----DONE
 * add a monetary exchange system
 * add a health system <----DONE
