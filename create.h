@@ -7,9 +7,6 @@ void initialItems();
 
 void createCharacter() 
 {
-    debugopen();
-    debugfile << "character creation started\n";
-    debugclose();
     clearPlayerInv();
     cout << menuBar;
     cout << "         Welcome to Geoff's Text Adventure!\n\n";
@@ -18,9 +15,6 @@ void createCharacter()
     cout << "                 2:  Female\n\n\n\n";
     cout << menuBar;
     cin >> userInput;
-    debugopen();
-    debugfile << "user chose " << userInput << " for sex\n";
-    debugclose();
     playerInfo[0] = userInput;
     system("clear");
     cout << menuBar;
@@ -30,22 +24,10 @@ void createCharacter()
     cout << "                 3:  Thief\n\n\n\n";
     cout << menuBar;
     cin >> userInput;
-    debugopen();
-    debugfile << "user chose " << userInput << " for class\n";
-    debugclose();
     playerInfo[1] = userInput;
     playerLocation = 1;
-    debugopen();
-    debugfile << "player location is " << playerLocation << " \n";
-    debugclose();
     initialItems();
-    debugopen();
-    debugfile << "inital items added to inventory\n";
-    debugclose();
     moneybag = initialFunds(playerInfo[1]);
-    debugopen();
-    debugfile << "initial funds of " << moneybag << " goldpieces added\n";
-    debugclose();
     system("clear");
     cout << menuBar << "\n\n";
     cout << "      Your initial funds are " << moneybag << " gold pieces.\n\n";
@@ -53,9 +35,6 @@ void createCharacter()
     cout << "         Press 1 to start your adventure!\n\n\n";
     cout << menuBar;
     cin >> userInput;
-    debugopen();
-    debugfile << "character creation closed\n";
-    debugclose();
     return;
 }
 
@@ -73,9 +52,6 @@ void initialItems()
         //add boots
         addInventory(1, 6);
 
-        debugopen();
-        debugfile << "warrior initial items added successfully\n";
-        debugclose();
     }
     //Druid Creation
     else if (playerInfo[1] == 2)
@@ -88,9 +64,6 @@ void initialItems()
         addInventory(2,2);
         //add food
         addInventory(2,9);
-        debugopen();
-        debugfile << "druid iniital items added successfully\n";
-        debugclose();
     }
     //Thief Creation
     else if (playerInfo[1] == 3)
@@ -104,8 +77,5 @@ void initialItems()
         //add rations
         addInventory(2,7);
         addInventory(2,7);
-        debugopen();
-        debugfile << "thief initial items added successfully\n";
-        debugclose();
     }
 }

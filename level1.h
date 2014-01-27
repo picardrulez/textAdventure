@@ -4,27 +4,18 @@ void level1();
 
 void level1()
 {
-    debugopen();
-    debugfile << "level 1 loaded\n";
-    debugclose();
     system("clear");
     bool playerChoice = false;
     int outcome;
     int running = 1;
     while (running)
     {
-        debugopen();
-        debugfile << "level 1 loop started\n";
-        debugclose();
         if (playerLocation ==1) 
         {
             checkForItem();
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 1 loop started\n";
-                debugclose();
                 system("clear");
                 cout << menuBar << "\n";
                 cout << "    You are standing in the middle of a forest.\n";
@@ -33,24 +24,15 @@ void level1()
                 cout << "               2:  Go West\n\n\n";
                 cout << menuBar;
                 cin >> playerInput;
-                debugopen();
-                debugfile << "player chose " << playerInput << "\n";
-                debugclose();
         
                 if (playerInput == "1")
                 {
                     playerLocation = 2;
-                    debugopen();
-                    debugfile << "playerLocation is 2\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "2")
                 {
                     playerLocation = 3;
-                    debugopen();
-                    debugfile << "playerLocation is 3\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "i")
@@ -62,9 +44,6 @@ void level1()
                     gameMenu();
                 }
             }
-            debugopen();
-            debugfile << "location 2 loop ended\n";
-            debugclose();
         }
         else if (playerLocation == 2)
         {
@@ -72,9 +51,6 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 2 loop started\n";
-                debugclose();
                 system("clear");
                 cout << menuBar << "\n";
                 cout << "You travel deeper into the forest.\n";
@@ -84,31 +60,19 @@ void level1()
                 cout << "               3:  Go West\n\n";
                 cout << menuBar;
                 cin >> playerInput;
-                debugopen();
-                debugfile << "player chose " << playerInput << "\n";
-                debugclose();
                 if( playerInput == "1")
                 {
                     playerLocation = 4;
-                    debugopen();
-                    debugfile << "playerLocation is " << playerLocation << "\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "2")
                 {
                     playerLocation = 5;
-                    debugopen();
-                    debugfile << "playerLocation is 5\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "3")
                 {
                     playerLocation = 1;
-                    debugopen();
-                    debugfile << "playerLocation is 1\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "i")
@@ -127,9 +91,6 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 3 loop started\n";
-                debugclose();
                 system("clear");
                 cout << menuBar << "\n";
                 cout << "You go West.  A river is flowing in front of you.\n";
@@ -138,23 +99,14 @@ void level1()
                 cout << "               2:  Enter Conoe\n\n\n";
                 cout << menuBar;
                 cin >> playerInput;
-                debugopen();
-                debugfile << "player choice is " << playerInput << "\n";
-                debugclose();
                 if (playerInput == "1")
                 {
                     playerLocation = 6;
-                    debugopen();
-                    debugfile << "playerLocation is 6\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "2")
                 {
                     playerLocation = 7;
-                    debugopen();
-                    debugfile << "playerLocation is 7\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "i")
@@ -166,9 +118,6 @@ void level1()
                     gameMenu();
                 }
             }
-            debugopen();
-            debugfile << "location 3 loop ended\n";
-            debugclose();
         }
         else if (playerLocation == 4)
         {
@@ -176,9 +125,6 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 4 loop started\n";
-                debugclose();
                 system("clear");
                 enemy = 0;
                 monsterHealth = 20;
@@ -192,9 +138,6 @@ void level1()
                 cout << "               2:  Go West\n\n";
                 cout << menuBar;
                 cin >> playerInput;
-                debugopen();
-                debugfile << "player chose " << playerInput << "\n";
-                debugclose();
                 if (playerInput == "1")
                 {
                     outcome = battle(1, 25, playersSpeed, playersAttack);
@@ -222,9 +165,6 @@ void level1()
                     gameMenu();
                 }
             }
-            debugopen();
-            debugfile << "location 4 loop ended\n";
-            debugclose();
         }
         else if (playerLocation == 5)
         {
@@ -232,26 +172,15 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 5 loop started\n";
-                debugclose();
                 system("clear");
                 cout << menuBar << "\n\n";
                 cout << "You enter the hut.  A man is there selling items.\n\n\n";
                 cout << "               1:  Leave Hut\n\n\n\n";
                 cout << menuBar;
-                debugopen();
-                cin >> playerInput;
-                debugopen();
-                debugfile << "player chose " << playerInput << "\n";
-                debugclose();
         
                 if (playerInput == "1")
                 {
                     playerLocation = 2;
-                    debugopen();
-                    debugfile << "playerLocation is 2\n";
-                    debugclose();
                     playerChoice = true;
                 }
                 else if (playerInput == "i")
@@ -263,9 +192,6 @@ void level1()
                     gameMenu();
                 }
             }
-            debugopen();
-            debugfile << "location 5 loop closed\n";
-            debugclose();
         }
         else if (playerLocation == 6)
         {
@@ -273,9 +199,6 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 6 loop started\n";
-                debugclose();
                 system("clear");
                 cout << menuBar << "\n\n";
                 cout << "You begin to wade across the river.\n";
@@ -284,9 +207,6 @@ void level1()
                 cout << "               1:  Exit\n\n\n";
                 cout << menuBar;
                 cin >> playerInput;
-                debugopen();
-                debugfile << "player chose " << playerInput << "\n";
-                debugclose();
                 if (playerInput == "1")
                 {
                     running = 0;
@@ -301,9 +221,6 @@ void level1()
                     gameMenu();
                 }
             }
-            debugopen();
-            debugfile << "location 6 loop closed\n";
-            debugclose();
         }
         else if (playerLocation == 7)
         {
@@ -311,9 +228,6 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                debugopen();
-                debugfile << "location 7 loop started\n";
-                debugclose();
                 system("clear");
                 cout << menuBar << "\n";
                 cout << "You paddle down the river in the conoe.\n";
@@ -322,9 +236,6 @@ void level1()
                 cout << "               1:  Exit\n\n\n";
                 cout << menuBar;
                 cin >> playerInput;
-                debugopen();
-                debugfile << "player chose " << playerInput << "\n";
-                debugclose();
                 if (playerInput == "1")
                 {
                     running = 0;
@@ -339,12 +250,6 @@ void level1()
                     gameMenu();
                 }
             }
-            debugopen();
-            debugfile << "location 7 loop closed\n";
-            debugclose();
         }
     }
-    debugopen();
-    debugfile << "Level 1 loop closed\n";
-    debugclose();
 }
