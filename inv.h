@@ -6,6 +6,7 @@ string playerInput;
 int userInput = 0;
 int itemType = 0;
 int itemNumber;
+int doneEquiping;
 int pos1;
 int pos2;
 int etable;
@@ -390,46 +391,57 @@ void clearPlayerInv()
     playerItemCount = 0;
 }
 
-void equipMenu()
+int equipMenu()
 {
-    system("clear");
-    cout << menuBar;
-    cout << "          Choose Item to equip / use:\n\n";
-    int startNumber = 0;
-    for (int i = 0; i < playerItemCount; i++)
+    doneEquiping = 0;
+    while (doneEquiping == 0)
     {
-        string tableName;
-        for (int j = 0; j < 2; j++)
+        system("clear");
+        cout << menuBar;
+        cout << "          Choose Item to equip / use:\n\n";
+        int startNumber = 0;
+        for (int i = 0; i < playerItemCount; i++)
         {
-            if (j == 0)
+            string tableName;
+            for (int j = 0; j < 2; j++)
             {
-                pos1 = player_inv[i][j];
-            }
-            else if (j == 1)
-            {
-                pos2 = player_inv[i][j];
-                startNumber++;
-                cout << "                 (" << startNumber << ")  " << findItemName(pos1, pos2) << "\n";
+                if (j == 0)
+                {
+                    pos1 = player_inv[i][j];
+                }
+                else if (j == 1)
+                {
+                    pos2 = player_inv[i][j];
+                    startNumber++;
+                    cout << "                 (" << startNumber << ")  " << findItemName(pos1, pos2) << "\n";
+                }
             }
         }
+        cout <<"\n";
+        cout << menuBar;
+        cin >> userInput;
+        itemNumber = userInput - 1;
+        pos1 = player_inv[itemNumber][0];
+        pos2 = player_inv[itemNumber][1];
+        item = findItemName(pos2, pos2);
+        equipItem(pos1,pos2);
+        dropItem(itemNumber);
+    
+        system("clear");
+        cout << menuBar << "\n\n\n";
+        cout <<"              " << item << " has been equipped!\n\n\n\n";
+        cout << "                Press '1' to equip more items\n";
+        cout << "                Press '2' to return to menu.\n\n\n\n";
+        cout << menuBar;
+        cin >> userInput;
+        if (userInput == 2)
+        {
+            doneEquiping = 1;
+            return 0;
+        }
     }
-    cout <<"\n";
-    cout << menuBar;
-    cin >> userInput;
-    itemNumber = userInput - 1;
-    pos1 = player_inv[itemNumber][0];
-    pos2 = player_inv[itemNumber][1];
-    item = findItemName(pos2, pos2);
-    equipItem(pos1,pos2);
-    dropItem(itemNumber);
-
-    system("clear");
-    cout << menuBar << "\n\n\n";
-    cout <<"              " << item << " has been equipped!\n\n\n\n";
-    cout << "                Press '1' to return.\n\n\n\n";
-    cout << menuBar;
-    cin >> userInput;
 }
+
 void equipItem(int table, int itemNumber)
 {
     item = findItemName(table, itemNumber);
