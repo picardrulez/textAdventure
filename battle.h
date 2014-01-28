@@ -41,6 +41,7 @@ int monsterAttack(int speed, int attack)
         system("clear");
         cout << menuBar << "\n\n";
         cout << "             You get hit for "<< damageDealt << " damage!\n\n";
+        playerHealth = playerHealth - damageDealt;
         cout << "               Health is at "<< playerHealth << "!\n\n";
         if (playerHealth <= 0)
         {
@@ -74,6 +75,7 @@ int playerAttack(int speed, int attack)
         system("clear");
         cout << menuBar << "\n\n";
         cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
+        monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
         {
             cout << "             You defeated him!\n";
