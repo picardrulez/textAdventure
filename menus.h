@@ -17,7 +17,7 @@ int controls();
 int statusMenu();
 void gameMenu();
 int displayEquipped();
-int displayInventory();
+void displayInventory();
 int inventoryMenu();
 int moneybag;
 int playersHelmAC = 0;

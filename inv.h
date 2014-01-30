@@ -234,7 +234,7 @@ int displayEquipped()
 
 }
 
-int displayInventory()
+void displayInventory()
 {
     for (int i = 0; i < playerItemCount; i++ )
     {
