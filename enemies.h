@@ -8,6 +8,15 @@ void displayEnemyHit(string enemyType);
 
 //Wizard Stats
 int enemyWizardInfo[3] = {200,20,1};
+
+
+//int wizard_inv[3][2] = {
+//    {0,3},
+//    {2,3},
+//    {2,3},
+//    {2,9}
+//};
+
 string enemyWizardImage0 = "                       .        \n";
 string enemyWizardImage1 = "                       x.       \n";
 string enemyWizardImage2 = "                      '',       \n";

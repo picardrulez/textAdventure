@@ -4,8 +4,10 @@ int damage(int attack);
 int findAttack(int itemNumber);
 int monsterHealth;
 int playerchoice;
+void enemyDropItem(int itemNumber);
 int monsterAC;
 bool stillAlive = true;
+int lootEnemy(string enemy);
 bool thacoRoll(int ac, int speed);
 int monsterAttack(int speed, int attack, string enemyType);
 int playerAttack(int speed, int attack, string enemyType);
@@ -81,11 +83,26 @@ int playerAttack(int speed, int attack, string enemyType)
         monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
         {
-            cout << "             You defeated him!\n";
-            cout << "          Press '1' to continue!\n\n\n\n";
-            cout << menuBar;
-            cin >> playerchoice;
-            return false;
+            madechoice = 0;
+            while (madechoice == 0)
+            {
+                system("clear");
+                cout << menuBar << "\n\n";
+                cout << "             You defeated him!\n";
+                cout << "          Press '1' to continue!\n";
+                cout << "          Press '2' to loot for items!\n\n\n";
+                cout << menuBar;
+                cin >> playerchoice;
+                if (playerchoice == 2)
+                {
+                    madechoice = lootEnemy(enemyType);
+                }
+                else if (playerchoice == 1)
+                {
+                    madechoice = 1;
+                    return false;
+                }
+            }
         }
         cout << "              Press '1' to continue!\n\n\n\n";
         cout << menuBar;
@@ -130,4 +147,63 @@ bool thacoRoll(int ac, int speed)
     {
         return false;
     }
+}
+
+int lootEnemy(string enemy)
+{
+    makeEnemyInventory(enemy);
+    int doneLooting = 0;
+    while (doneLooting == 0)
+    {
+        system("clear");
+        cout << menuBar;
+        cout << "      Press '0' to exit\n";
+        cout << "    Choose Item to loot:\n\n";
+        int startNumber = 0;
+        for (int i = 0; i < enemyInventorySize; i++)
+        {
+            string tableName;
+            for (int j = 0; j < 2; j++)
+            {
+                if (j == 0)
+                {
+                    pos1 = enemy_inv[i][j];
+                }
+                else if (j == 1)
+                {
+                    pos2 = enemy_inv[i][j];
+                    startNumber++;
+                    cout << "               (" << startNumber << ")  " << findItemName(pos1,pos2) << "\n";
+                }
+            }
+        }
+        cout << "\n";
+        cout << menuBar;
+        cin >> userInput;
+        if (userInput == 0)
+        {
+            doneLooting = 1;
+        }
+        else if (userInput > 0)
+        {
+            itemNumber = userInput - 1;
+            pos1 = enemy_inv[itemNumber][0];
+            pos2 = enemy_inv[itemNumber][1];
+            addInventory(pos1,pos2);
+            enemyDropItem(itemNumber);
+        }
+    }
+}
+
+void enemyDropItem(int itemNumber)
+{
+   for (int i = itemNumber; i < enemyInventorySize + 1; i++ )
+   {
+       int movingI = i + 1;
+       for (int j = 0; j < 2; j++)
+       {
+           enemy_inv[i][j] = enemy_inv[movingI][j];
+       }
+   }
+   enemyInventorySize = enemyInventorySize - 1;
 }

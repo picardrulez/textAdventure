@@ -5,8 +5,11 @@ using namespace std;
 string playerInput;
 int userInput = 0;
 int itemType = 0;
+int enemy_inv[4][2]; 
 int itemNumber;
+int enemyInventorySize;
 int doneEquiping;
+int countloops = 0;
 int pos1;
 int pos2;
 int etable;
@@ -29,6 +32,12 @@ void equipGauntlets(int table, int itemNumber);
 void equipBoots(int table, int itemNumber);
 void dropItem(int itemNumber);
 void clearPlayerInv();
+int wizard_inv[4][2] = {
+    {0,3},
+    {2,3},
+    {2,3},
+    {2,9}
+};
 
     const int NUM_WEAPONS = 13;
     string weapons[NUM_WEAPONS] = {
@@ -629,3 +638,21 @@ void dropItem(int itemNumber)
     }
     playerItemCount = playerItemCount - 1;
 }
+
+void makeEnemyInventory(string enemy)
+{
+    countloops = 0;
+    if (enemy == "wizard")
+    {
+       for (int i=0; i < 4; i++)
+       {
+           countloops++;
+        for (int j = 0; j < 2; j++)
+        {
+            enemy_inv[i][j] = wizard_inv[i][j];
+        }
+       }
+    }
+    enemyInventorySize = countloops;
+}
+
