@@ -1,99 +1,105 @@
 using namespace std;
 int enemy;
+int enemyInfo[3] = {0,0,0};
+void enemyWizard();
+void displayEnemy(string enemyType);
+void displayEnemyShift(string enemyType);
+void displayEnemyHit(string enemyType);
 
-int enemyInfo[3] = {200,20,1};
+//Wizard Stats
+int enemyWizardInfo[3] = {200,20,1};
+string enemyWizardImage0 = "                       .        \n";
+string enemyWizardImage1 = "                       x.       \n";
+string enemyWizardImage2 = "                      '',       \n";
+string enemyWizardImage3 = "                ..   :  .:.     \n";
+string enemyWizardImage4 = "                .' 'Ox;,cO0.    \n";
+string enemyWizardImage5 = "                .kOKo:kxxkoXOc  \n";
+string enemyWizardImage6 = "                 ,k0.xxkO0.Kk   \n";
+string enemyWizardImage7 = "                 ...,0xxOK .,   \n";
+string enemyWizardImage8 = "                 .  x0kxkX.     \n";
+string enemyWizardImage9 = "                 .  0OkxkX      \n";
+string enemyWizardImage10 = "                 .  KkxkOK      \n";
+string enemyWizardImage11 = "                  ',. .,c.  '\n\n\n";
 
-void displayWizard();
-
-
-
-
-string wizardImage0 = "                       .        \n";
-string wizardImage1 = "                       x.       \n";
-string wizardImage2 = "                      '',       \n";
-string wizardImage3 = "                ..   :  .:.     \n";
-string wizardImage4 = "                .' 'Ox;,cO0.    \n";
-string wizardImage5 = "                .kOKo:kxxkoXOc  \n";
-string wizardImage6 = "                 ,k0.xxkO0.Kk   \n";
-string wizardImage7 = "                 ...,0xxOK .,   \n";
-string wizardImage8 = "                 .  x0kxkX.     \n";
-string wizardImage9 = "                 .  0OkxkX      \n";
-string wizardImage10 = "                 .  KkxkOK      \n";
-string wizardImage11 = "                  ',. .,c.  '\n\n\n";
-
-string wizardImageHit0 = "                    .        \n";
-string wizardImageHit1 = "                    x.       \n";
-string wizardImageHit2 = "                   '',       \n";
-string wizardImageHit3 = "             ..   :  .:.     \n";
-string wizardImageHit4 = "             .' 'Ox;,cO0.    \n";
-string wizardImageHit5 = "             .kOKo:kxxkoXOc  \n";
-string wizardImageHit6 = "              ,k0.xxkO0.Kk   \n";
-string wizardImageHit7 = "              ...,0xxOK .,   \n";
-string wizardImageHit8 = "              .  x0kxkX.     \n";
-string wizardImageHit9 = "              .  0OkxkX      \n";
-string wizardImageHit10 = "              .  KkxkOK      \n";
-string wizardImageHit11 = "              ',. .,c.  '\n\n\n";
-
-void displayWizard()
+string enemyWizardImageHit0 = "                    .        \n";
+string enemyWizardImageHit1 = "                    x.       \n";
+string enemyWizardImageHit2 = "                   '',       \n";
+string enemyWizardImageHit3 = "             ..   :  .:.     \n";
+string enemyWizardImageHit4 = "             .' 'Ox;,cO0.    \n";
+string enemyWizardImageHit5 = "             .kOKo:kxxkoXOc  \n";
+string enemyWizardImageHit6 = "              ,k0.xxkO0.Kk   \n";
+string enemyWizardImageHit7 = "              ...,0xxOK .,   \n";
+string enemyWizardImageHit8 = "              .  x0kxkX.     \n";
+string enemyWizardImageHit9 = "              .  0OkxkX      \n";
+string enemyWizardImageHit10 = "              .  KkxkOK      \n";
+string enemyWizardImageHit11 = "              ',. .,c.  '\n\n\n";
+    
+void displayEnemy(string enemyType)
 {
-    cout << wizardImage0;
-    cout << wizardImage1;
-    cout << wizardImage2;
-    cout << wizardImage3;
-    cout << wizardImage4;
-    cout << wizardImage5;
-    cout << wizardImage6;
-    cout << wizardImage7;
-    cout << wizardImage8;
-    cout << wizardImage9;
-    cout << wizardImage10;
-    cout << wizardImage11;
+    if (enemyType == "wizard")
+    {
+        cout << enemyWizardImage0;
+        cout << enemyWizardImage1;
+        cout << enemyWizardImage2;
+        cout << enemyWizardImage3;
+        cout << enemyWizardImage4;
+        cout << enemyWizardImage5;
+        cout << enemyWizardImage6;
+        cout << enemyWizardImage7;
+        cout << enemyWizardImage8;
+        cout << enemyWizardImage9;
+        cout << enemyWizardImage10;
+        cout << enemyWizardImage11;
+    }
+ }
+    
+void displayEnemyShift(string enemyType)
+{
+    if (enemyType == "wizard")
+    {
+        cout << enemyWizardImageHit0;
+        cout << enemyWizardImageHit1;
+        cout << enemyWizardImageHit2;
+        cout << enemyWizardImageHit3;
+        cout << enemyWizardImageHit4;
+        cout << enemyWizardImageHit5;
+        cout << enemyWizardImageHit6;
+        cout << enemyWizardImageHit7;
+        cout << enemyWizardImageHit8;
+        cout << enemyWizardImageHit9;
+        cout << enemyWizardImageHit10;
+        cout << enemyWizardImageHit11;
+    }
 }
 
-void displayWizardShift()
-{
-    cout << wizardImageHit0;
-    cout << wizardImageHit1;
-    cout << wizardImageHit2;
-    cout << wizardImageHit3;
-    cout << wizardImageHit4;
-    cout << wizardImageHit5;
-    cout << wizardImageHit6;
-    cout << wizardImageHit7;
-    cout << wizardImageHit8;
-    cout << wizardImageHit9;
-    cout << wizardImageHit10;
-    cout << wizardImageHit11;
-}
-
-void displayWizardHit()
+void displayEnemyHit(string enemyType)
 {
     system("clear");
-    cout << menuBar;
-    displayWizardShift();
-    cout << menuBar;
+    cout << menuBar << "\n\n";
+    displayEnemyShift(enemyType);
+    cout << menuBar << "\n\n";
     usleep(300000);
     system("clear");
-    cout << menuBar;
-    displayWizard();
-    cout << menuBar;
+    cout << menuBar << "\n\n";
+    displayEnemy(enemyType);
+    cout << menuBar << "\n\n";
     usleep(300000);
     system("clear");
-    cout << menuBar;
-    displayWizardShift();
-    cout << menuBar;
+    cout << menuBar << "\n\n";
+    displayEnemyShift(enemyType);
+    cout << menuBar << "\n\n";
     usleep(300000);
     system("clear");
-    cout << menuBar;
-    displayWizard();
-    cout << menuBar;
+    cout << menuBar << "\n\n";
+    displayEnemy(enemyType);
+    cout << menuBar << "\n\n";
     usleep(300000);
     system("clear");
-    cout << menuBar;
-    displayWizardShift();
-    cout << menuBar;
+    cout << menuBar << "\n\n";
+    displayEnemyShift(enemyType);
+    cout << menuBar << "\n\n";
     usleep(300000);
     system("clear");
-    cout << menuBar;
-    displayWizard();
+    cout << menuBar << "\n\n";
+    displayEnemy(enemyType);
 }

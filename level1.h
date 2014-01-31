@@ -140,7 +140,7 @@ void level1()
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
-                    outcome = battle(1, 25, playersSpeed, playersAttack);
+                    outcome = battle(1, 25, playersSpeed, playersAttack, "wizard");
                     if (outcome == 1)
                     {
                         running = 0;

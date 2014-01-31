@@ -7,22 +7,22 @@ int playerchoice;
 int monsterAC;
 bool stillAlive = true;
 bool thacoRoll(int ac, int speed);
-int monsterAttack(int speed, int attack);
-int playerAttack(int speed, int attack);
-int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack);
+int monsterAttack(int speed, int attack, string enemyType);
+int playerAttack(int speed, int attack, string enemyType);
+int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack, string enemyType);
 
-int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack)
+int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack, string enemyType)
 {
     int battlerun = 1;
     while (battlerun == 1)
     {
-        stillAlive = playerAttack(playerspeed, playerattack);
+        stillAlive = playerAttack(playerspeed, playerattack, enemyType);
         if (stillAlive == false)
         {
             battlerun = 0;
             return 0;
         }
-        stillAlive = monsterAttack(monsterspeed, monsterattack);
+        stillAlive = monsterAttack(monsterspeed, monsterattack, enemyType);
         if (stillAlive == false)
         {
             battlerun = 0;
@@ -30,7 +30,7 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
         }
     }
 }
-int monsterAttack(int speed, int attack)
+int monsterAttack(int speed, int attack, string enemyType)
 {
 
     bool findhit = thacoRoll(playersAC, speed);
@@ -40,7 +40,7 @@ int monsterAttack(int speed, int attack)
         int damageDealt = damage(attack);
         system("clear");
         cout << menuBar << "\n\n";
-        displayWizard();
+        displayEnemy(enemyType);
         cout << "             You get hit for "<< damageDealt << " damage!\n\n";
         playerHealth = playerHealth - damageDealt;
         cout << "               Health is at "<< playerHealth << "!\n\n";
@@ -60,7 +60,7 @@ int monsterAttack(int speed, int attack)
     {
         system("clear");
         cout << menuBar << "\n\n";;
-        displayWizard();
+        displayEnemy(enemyType);
         cout << "                   He missed!\n\n\n";
         cout << "              Press '1' to continue!\n\n\n\n";
         cout << menuBar;
@@ -68,7 +68,7 @@ int monsterAttack(int speed, int attack)
     }
 }
 
-int playerAttack(int speed, int attack)
+int playerAttack(int speed, int attack, string enemyType)
 {
     bool findhit = thacoRoll(monsterAC, speed);
     if (findhit)
@@ -76,7 +76,7 @@ int playerAttack(int speed, int attack)
         int damageDealt = damage(attack);
         system("clear");
         cout << menuBar << "\n\n";
-        displayWizardHit();
+        displayEnemyHit(enemyType);
         cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
         monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
@@ -95,7 +95,7 @@ int playerAttack(int speed, int attack)
     {
         system("clear");
         cout << menuBar << "\n\n";
-        displayWizard();
+        displayEnemy(enemyType);
         cout << "                   You missed!\n\n\n";
         cout << "              Press '1' to continue!\n\n\n\n";
         cout << menuBar;
