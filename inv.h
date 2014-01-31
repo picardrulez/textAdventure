@@ -442,6 +442,49 @@ int equipMenu()
     }
 }
 
+int dropItemMenu()
+{
+    int itemSelection;
+    madechoice = 0;
+    while (madechoice == 0)
+    {
+        system("clear");
+        cout << menuBar;
+        cout << "              Press '0' To Return\n";
+        cout << "              Choose Item To Drop:\n\n";
+        int startNumber = 0;
+        for (int i = 0; i < playerItemCount; i++)
+        {
+            string tableName;
+            for (int j = 0; j < 2; j++)
+            {
+                if (j == 0)
+                {
+                    pos1 = player_inv[i][j];
+                }
+                else if (j == 1)
+                {
+                    pos2 = player_inv[i][j];
+                    startNumber++;
+                    cout << "                       (" << startNumber << ")  " << findItemName(pos1, pos2) << "\n";
+                }
+            }
+        }
+        cout << "\n";
+        cout << menuBar;
+        cin >> itemSelection;
+        if (itemSelection == 0)
+        {
+            madechoice = 1;
+            return 0;
+        }
+        else
+        {
+            itemNumber = itemSelection - 1;
+            dropItem(itemNumber);
+        }
+    }
+}
 void equipItem(int table, int itemNumber)
 {
     item = findItemName(table, itemNumber);

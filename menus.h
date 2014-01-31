@@ -14,6 +14,7 @@ int itemMenu();
 int equipMenu();
 int equipmentMenu();
 int controls();
+int dropItemMenu();
 int statusMenu();
 void gameMenu();
 int displayEquipped();
@@ -308,16 +309,26 @@ int itemMenu()
 }
 int inventoryMenu()
 {
-    system("clear");
-    cout << menuBar;
-    cout << "               --Inventory--\n\n";
-    displayInventory();
-    cout << "              Press '1' to Return\n\n";
-    cout << menuBar;
-    cin >> playerSelection;
-    if (playerSelection == "1")
+    madechoice = 0;
+    while (madechoice == 0)
     {
-        return 0;
+        system("clear");
+        cout << menuBar;
+        cout << "               --Inventory--\n\n";
+        displayInventory();
+        cout << "              Press '1' to Return\n";
+        cout << "              (d)rop item\n\n";
+        cout << menuBar;
+        cin >> playerSelection;
+        if (playerSelection == "1")
+        {
+            madechoice = 1;
+            return 0;
+        }
+        else if (playerSelection == "d")
+        {
+            madechoice = dropItemMenu();
+        }
     }
 }
 
