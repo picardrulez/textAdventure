@@ -40,6 +40,7 @@ int monsterAttack(int speed, int attack)
         int damageDealt = damage(attack);
         system("clear");
         cout << menuBar << "\n\n";
+        displayWizard();
         cout << "             You get hit for "<< damageDealt << " damage!\n\n";
         playerHealth = playerHealth - damageDealt;
         cout << "               Health is at "<< playerHealth << "!\n\n";
@@ -59,6 +60,7 @@ int monsterAttack(int speed, int attack)
     {
         system("clear");
         cout << menuBar << "\n\n";;
+        displayWizard();
         cout << "                   He missed!\n\n\n";
         cout << "              Press '1' to continue!\n\n\n\n";
         cout << menuBar;
@@ -74,6 +76,7 @@ int playerAttack(int speed, int attack)
         int damageDealt = damage(attack);
         system("clear");
         cout << menuBar << "\n\n";
+        displayWizardHit();
         cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
         monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
@@ -92,6 +95,7 @@ int playerAttack(int speed, int attack)
     {
         system("clear");
         cout << menuBar << "\n\n";
+        displayWizard();
         cout << "                   You missed!\n\n\n";
         cout << "              Press '1' to continue!\n\n\n\n";
         cout << menuBar;

@@ -1,14 +1,15 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <unistd.h>
 #include <ctime>
 #include <fstream>
 #include "menus.h"
 #include "money.h"
 #include "inv.h"
 #include "create.h"
-#include "battle.h"
 #include "enemies.h"
+#include "battle.h"
 #include "level1.h"
 
 string answer;
