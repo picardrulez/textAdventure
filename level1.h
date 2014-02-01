@@ -96,7 +96,8 @@ void level1()
                 cout << "You go West.  A river is flowing in front of you.\n";
                 cout << "There is a small dock with a conoe.\n\n\n";
                 cout << "               1:  Cross River\n";
-                cout << "               2:  Enter Conoe\n\n\n";
+                cout << "               2:  Enter Conoe\n";
+                cout << "               3:  Go Back East\n\n";
                 cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")
@@ -107,6 +108,11 @@ void level1()
                 else if (playerInput == "2")
                 {
                     playerLocation = 7;
+                    playerChoice = true;
+                }
+                else if (playerInput == "3")
+                {
+                    playerLocation = 1;
                     playerChoice = true;
                 }
                 else if (playerInput == "i")
