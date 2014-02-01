@@ -398,6 +398,16 @@ void clearPlayerInv()
         }
     }
     playerItemCount = 0;
+    player_eweapon[0][0] = 9;
+    player_eweapon[0][1] = 9;
+    player_ehelm[0][0] = 9;
+    player_ehelm[0][1] = 9;
+    player_egauntlets[0][0] = 9;
+    player_egauntlets[0][1] = 9;
+    player_eboots[0][0] = 9;
+    player_eboots[0][1] = 9;
+    player_eplate[0][0] = 9;
+    player_eplate[0][1] = 9;
 }
 
 int equipMenu()
