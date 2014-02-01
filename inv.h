@@ -417,6 +417,7 @@ int equipMenu()
     {
         system("clear");
         cout << menuBar;
+        cout << "          Press '0' to return.\n";
         cout << "          Choose Item to equip / use:\n\n";
         int startNumber = 0;
         for (int i = 0; i < playerItemCount; i++)
@@ -439,6 +440,10 @@ int equipMenu()
         cout <<"\n";
         cout << menuBar;
         cin >> userInput;
+        if (userInput == 0)
+        {
+            return 0;
+        }
         itemNumber = userInput - 1;
         pos1 = player_inv[itemNumber][0];
         pos2 = player_inv[itemNumber][1];
