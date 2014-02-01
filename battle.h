@@ -18,6 +18,31 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
     int battlerun = 1;
     while (battlerun == 1)
     {
+        madechoice = 0;
+        while (madechoice == 0)
+        {
+            system("clear");
+            cout << menuBar;
+            cout << "       " << enemyType << "Battle \n\n";
+            displayEnemy(enemyType);
+            cout << "           (1) Attack\n";
+            cout << "           (2) Item Menu\n";
+            cout << "           (3) Run Away\n\n";
+            cout << menuBar;
+            cin >> playerchoice;
+            if (playerchoice == 2)
+            {
+                itemMenu();
+            }
+            else if (playerchoice == 3)
+            {
+                return 0;
+            }
+            else
+            {
+                madechoice = 1;
+            }
+        }
         stillAlive = playerAttack(playerspeed, playerattack, enemyType);
         if (stillAlive == false)
         {
@@ -207,3 +232,4 @@ void enemyDropItem(int itemNumber)
    }
    enemyInventorySize = enemyInventorySize - 1;
 }
+
