@@ -12,7 +12,9 @@ int doneEquiping;
 int countloops = 0;
 int pos1;
 int pos2;
+int buyItem(int itemTable, int itemNumber, int invnumber);
 int etable;
+int storeBuyMenu();
 int eitemNumber;
 string findItemName(int itemNumber, int table);
 string selection;
@@ -24,6 +26,7 @@ int itemRoll = 0;
 void checkForItem();
 int debugInventory();
 int inventoryCheck();
+void displayInventory();
 void equipItem(int table, int itemNumber);
 void equipWeapon(int table, int itemNumber);
 void equipHelm(int table, int itemNumber);
@@ -671,3 +674,92 @@ void makeEnemyInventory(string enemy)
     enemyInventorySize = countloops;
 }
 
+int hutGuyItemCount = 10;
+int hutGuy_inv[10][2] = {
+    {0,1},
+    {0,6},
+    {0,11},
+    {1,2},
+    {1,4},
+    {1,9},
+    {1,10},
+    {2,0},
+    {2,3},
+    {2,6}
+};
+
+void displayHutInventory()
+{
+    for (int i = 0; i < hutGuyItemCount; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            if (j == 0)
+            {
+                pos1 = hutGuy_inv[i][j];
+            }
+            else if (j == 1)
+            {
+                pos2 = hutGuy_inv[i][j];
+                cout << "                    " << findItemName(pos1,pos2) << "\n";
+            }
+        }
+    }
+    cout << "\n";
+}
+
+int storeBuyMenu()
+{
+    int doneBuying = 0;
+    while (doneBuying == 0)
+    {
+        system("clear");
+        cout << menuBar;
+        cout << "       Press '0' to return.\n";
+        cout << "       Choose Item to Purchase:\n\n";
+        int startNumber = 0;
+        for (int i = 0; i < hutGuyItemCount; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                if (j == 0)
+                {
+                    pos1 = hutGuy_inv[i][j];
+                }
+                else if (j == 1)
+                {
+                    pos2 = hutGuy_inv[i][j];
+                    startNumber++;
+                    cout << "             (" << startNumber << ") " << findItemName(pos1,pos2) << "\n";
+                }
+            }
+        }
+        cout << "\n";
+        cout << menuBar;
+        cin >> userInput;
+        if (userInput == 0)
+        {
+            doneBuying = 1;
+            return 0;
+        }
+        int itemnumber = userInput - 1;
+        pos1 = hutGuy_inv[itemnumber][0];
+        pos2 = hutGuy_inv[itemnumber][1];
+        item = findItemName(pos1,pos2);
+        buyItem(pos1,pos2,itemnumber);
+    }
+}
+
+int buyItem(int itemTable, int itemNumber, int invnumber)
+{
+    for (int i = invnumber; i < hutGuyItemCount + 1; i++ )
+    {
+        int movingI = i + 1;
+        for (int j = 0; j < 2; j++)
+        {
+            hutGuy_inv[i][j] = hutGuy_inv[movingI][j];
+        }
+    }
+    hutGuyItemCount = hutGuyItemCount - 1;
+    addInventory(itemTable, itemNumber);
+}

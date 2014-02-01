@@ -179,9 +179,13 @@ void level1()
             while (playerChoice == false)
             {
                 system("clear");
-                cout << menuBar << "\n\n";
-                cout << "You enter the hut.  A man is there selling items.\n\n\n";
-                cout << "               1:  Leave Hut\n\n\n\n";
+                cout << menuBar;
+                cout << "You enter the hut.  A man is there selling items.\n\n";
+                cout << "                  Hut Guy's Inventory:\n\n";
+                displayHutInventory();
+                cout << "               1:  Leave Hut\n";
+                cout << "               2:  Buy Item\n";
+                cout << "               3:  Sell Item\n\n\n";
                 cout << menuBar;
                 cin >> playerInput;
         
@@ -189,6 +193,10 @@ void level1()
                 {
                     playerLocation = 2;
                     playerChoice = true;
+                }
+                if (playerInput == "2")
+                {
+                    storeBuyMenu();
                 }
                 else if (playerInput == "i")
                 {
