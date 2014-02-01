@@ -183,6 +183,7 @@ void level1()
                 cout << "You enter the hut.  A man is there selling items.\n\n\n";
                 cout << "               1:  Leave Hut\n\n\n\n";
                 cout << menuBar;
+                cin >> playerInput;
         
                 if (playerInput == "1")
                 {
