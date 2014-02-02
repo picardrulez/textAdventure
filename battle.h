@@ -121,6 +121,7 @@ int playerAttack(int speed, int attack, string enemyType)
                 if (playerchoice == 2)
                 {
                     madechoice = lootEnemy(enemyType);
+                    return false;
                 }
                 else if (playerchoice == 1)
                 {
@@ -208,6 +209,7 @@ int lootEnemy(string enemy)
         if (userInput == 0)
         {
             doneLooting = 1;
+            return 1;
         }
         else if (userInput > 0)
         {
