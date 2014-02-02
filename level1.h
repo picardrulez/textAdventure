@@ -194,9 +194,13 @@ void level1()
                     playerLocation = 2;
                     playerChoice = true;
                 }
-                if (playerInput == "2")
+                else if (playerInput == "2")
                 {
                     storeBuyMenu();
+                }
+                else if (playerInput == "3")
+                {
+                    storeSellMenu();
                 }
                 else if (playerInput == "i")
                 {

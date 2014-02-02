@@ -9,9 +9,12 @@ int enemy_inv[4][2];
 int itemNumber;
 int enemyInventorySize;
 int doneEquiping;
+int findItemValue(int table, int itemNumber);
 int countloops = 0;
 int pos1;
+int sellItem(int itemTable, int itemNumber, int invnumber);
 int pos2;
+int storeSellMenu();
 int buyItem(int itemTable, int itemNumber, int invnumber);
 int etable;
 int storeBuyMenu();
@@ -30,6 +33,7 @@ void displayInventory();
 void equipItem(int table, int itemNumber);
 void equipWeapon(int table, int itemNumber);
 void equipHelm(int table, int itemNumber);
+int findItemPrice(int table, int itemNumber);
 void equipPlate(int table, int itemNumber);
 void equipGauntlets(int table, int itemNumber);
 void equipBoots(int table, int itemNumber);
@@ -59,22 +63,22 @@ int wizard_inv[4][2] = {
         "Dart"
     };
     
-    const int weapon_prop_col = 5;
+    const int weapon_prop_col = 6;
     const int weapon_prop_row = NUM_WEAPONS;
     int weapon_prop[weapon_prop_row][weapon_prop_col] = {
-        {0, 5, 50, 6, 100} ,
-        {1, 11, 75, 4, 85} ,
-        {2, 17, 100, 3, 50} ,
-        {3, 25, 300, 1, 5},
-        {4, 8, 75, 8, 75} ,
-        {5, 15, 100, 6, 50} ,
-        {6, 23, 100, 5, 30} ,
-        {7, 30, 300, 4, 5} ,
-        {8, 12, 100, 10, 50} ,
-        {9, 18, 150, 8, 25} ,
-        {10, 27, 200, 7, 10} ,
-        {11, 40, 300, 6, 5} ,
-        {12, 5, 1, 2, 40}
+        {0, 5, 50, 6, 100, 3} ,
+        {1, 11, 75, 4, 85, 7} ,
+        {2, 17, 100, 3, 50, 10} ,
+        {3, 25, 300, 1, 5, 15},
+        {4, 8, 75, 8, 75, 5} ,
+        {5, 15, 100, 6, 50, 9} ,
+        {6, 23, 100, 5, 30, 12} ,
+        {7, 30, 300, 4, 5, 17} ,
+        {8, 12, 100, 10, 50, 7} ,
+        {9, 18, 150, 8, 25, 11} ,
+        {10, 27, 200, 7, 10, 15} ,
+        {11, 40, 300, 6, 5, 20} ,
+        {12, 5, 1, 2, 40, 2}
     };
 
 
@@ -99,19 +103,19 @@ int wizard_inv[4][2] = {
     const int armor_prop_col = 5;
     const int armor_prop_row = NUM_ARMOR;
     int armor_prop[armor_prop_row][armor_prop_col] = {
-        {0, 3, 50, 100} ,
-        {1, 5, 75, 75} ,
-        {2, 7, 100, 50} ,
-        {3, 1, 50, 100} ,
-        {4, 3, 75, 75} ,
-        {5, 4, 100, 50} ,
-        {6, 1, 50, 100} ,
-        {7, 1, 20, 75} ,
-        {8, 4, 75, 75} ,
-        {9, 7, 100, 50} ,
-        {10, 5, 50, 100} ,
-        {11, 7, 75, 75} ,
-        {12, 9, 100, 50}
+        {0, 3, 50, 100, 5} ,
+        {1, 5, 75, 75, 7} ,
+        {2, 7, 100, 50, 10} ,
+        {3, 1, 50, 100, 2} ,
+        {4, 3, 75, 75, 5} ,
+        {5, 4, 100, 50, 8} ,
+        {6, 1, 50, 100, 2} ,
+        {7, 1, 20, 75, 5} ,
+        {8, 4, 75, 75, 5} ,
+        {9, 7, 100, 50, 7} ,
+        {10, 5, 50, 100, 10} ,
+        {11, 7, 75, 75, 13} ,
+        {12, 9, 100, 50, 17}
     };
 
     const int NUM_CONSUM = 10;
@@ -128,19 +132,19 @@ int wizard_inv[4][2] = {
         "Mushrooms"
     };
 
-    const int consum_prop_col = 5;
+    const int consum_prop_col = 6;
     const int consum_prop_row = NUM_CONSUM;
     int consum_prop[consum_prop_row][consum_prop_col] = {
-        {0, 2, 0, 1, 70} ,
-        {1, 5, 0, 3, 30} ,
-        {2, 2, 0, 1, 70} ,
-        {3, 5, 0, 3, 30} ,
-        {4, 4, 1, 1, 70} ,
-        {5, 8, 4, 10, 20} ,
-        {6, 8, 4, 10, 20} ,
-        {7, 4, 0, 1, 55} ,
-        {8, 8, 0, 1, 35} ,
-        {9, 5, 2, 1, 50}
+        {0, 2, 0, 1, 70, 5} ,
+        {1, 5, 0, 3, 30, 8} ,
+        {2, 2, 0, 1, 70, 5} ,
+        {3, 5, 0, 3, 30, 8} ,
+        {4, 4, 1, 1, 70, 1} ,
+        {5, 8, 4, 10, 20, 10} ,
+        {6, 8, 4, 10, 20, 10} ,
+        {7, 4, 0, 1, 55, 1} ,
+        {8, 8, 0, 1, 35, 5} ,
+        {9, 5, 2, 1, 50, 3}
         };
 
 //Array for maintaining the player's inventory.
@@ -674,8 +678,10 @@ void makeEnemyInventory(string enemy)
     enemyInventorySize = countloops;
 }
 
+int hutGuyMoneybag = 1000;
+const int MAX_HUTGUY_INV = 20;
 int hutGuyItemCount = 10;
-int hutGuy_inv[10][2] = {
+int hutGuy_inv[MAX_HUTGUY_INV][2] = {
     {0,1},
     {0,6},
     {0,11},
@@ -730,7 +736,7 @@ int storeBuyMenu()
                 {
                     pos2 = hutGuy_inv[i][j];
                     startNumber++;
-                    cout << "             (" << startNumber << ") " << findItemName(pos1,pos2) << "\n";
+                    cout << "             (" << startNumber << ") " << findItemName(pos1,pos2) << ": " << findItemPrice(pos1,pos2) << " GP" << "\n";
                 }
             }
         }
@@ -746,7 +752,22 @@ int storeBuyMenu()
         pos1 = hutGuy_inv[itemnumber][0];
         pos2 = hutGuy_inv[itemnumber][1];
         item = findItemName(pos1,pos2);
-        buyItem(pos1,pos2,itemnumber);
+        if (playerItemCount >= MAX_PLAYER_INV)
+        {
+            cout << "Inventory is Full\n";
+            cout << "Press '1' to continue";
+            cin >> userInput;
+        }
+        else if (findItemPrice(pos1,pos2) > moneybag)
+        {
+            cout << "Not enough money\n";
+            cout << "Press '1' to continue";
+            cin >> userInput;
+        }
+        else
+        {
+            buyItem(pos1,pos2,itemnumber);
+        }
     }
 }
 
@@ -761,5 +782,96 @@ int buyItem(int itemTable, int itemNumber, int invnumber)
         }
     }
     hutGuyItemCount = hutGuyItemCount - 1;
+    moneybag = moneybag - findItemPrice(itemTable, itemNumber);
     addInventory(itemTable, itemNumber);
+}
+
+int storeSellMenu()
+{
+    int doneSelling = 0;
+    while (doneSelling == 0)
+    {
+        system("clear");
+        cout << menuBar;
+        cout << "         Press '0' to return.\n";
+        cout << "         Choose Item to Sell:\n\n";
+        int startNumber = 0;
+        for (int i = 0; i < playerItemCount; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                if (j == 0)
+                {
+                    pos1 = player_inv[i][j];
+                }
+                else if (j == 1)
+                {
+                    pos2 = player_inv[i][j];
+                    startNumber++;
+                    cout << "            (" << startNumber << ") " << findItemName(pos1,pos2) << ": " << findItemValue(pos1,pos2) << " GP" << "\n";
+                }
+            }
+        }
+        cout << "\n";
+        cout << menuBar;
+        cin >> userInput;
+        if (userInput == 0)
+        {
+            doneSelling = 1;
+            return 0;
+        }
+        int itemnumber = userInput - 1;
+        pos1 = player_inv[itemnumber][0];
+        pos2 = player_inv[itemnumber][1];
+        item = findItemName(pos1,pos2);
+        if (hutGuyItemCount >= MAX_HUTGUY_INV)
+        {
+            cout << "Shop is full\n";
+            cout << "Press '1' to continue";
+            cin >> userInput;
+        }
+        else if (findItemValue(pos1,pos2) > hutGuyMoneybag)
+        {
+            cout << "Store doesn't have enough money\n";
+            cout << "Press '1' to continue";
+            cin >> userInput;
+        }
+        else
+        {
+            sellItem(pos1,pos2,itemnumber);
+        }
+    }
+}
+int sellItem(int itemTable, int itemNumber, int invnumber)
+{
+    hutGuy_inv[hutGuyItemCount][0] = itemTable;
+    hutGuy_inv[hutGuyItemCount][1] = itemNumber;
+    hutGuyItemCount++;
+    dropItem(invnumber);
+    hutGuyMoneybag = hutGuyMoneybag - findItemValue(itemTable, itemNumber);
+    moneybag = moneybag + findItemValue(itemTable, itemNumber);
+}
+
+int findItemPrice(int table, int itemNumber)
+{
+    int price;
+    if (table == 0)
+    {
+        price = weapon_prop[itemNumber][5];
+    }
+    else if (table == 1)
+    {
+        price = armor_prop[itemNumber][4];
+    }
+    else if (table == 2)
+    {
+        price = consum_prop[itemNumber][5];
+    }
+    return price;
+}
+
+int findItemValue(int table, int itemNumber)
+{
+    int price = findItemPrice(table, itemNumber) / 2;
+    return price;
 }
