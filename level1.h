@@ -1,6 +1,7 @@
 using namespace std;
 
 void level1();
+void menuChoices();
 
 void level1()
 {
@@ -35,14 +36,7 @@ void level1()
                     playerLocation = 3;
                     playerChoice = true;
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();                
             }
         }
         else if (playerLocation == 2)
@@ -75,14 +69,7 @@ void level1()
                     playerLocation = 1;
                     playerChoice = true;
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();
             }
         }
         else if (playerLocation == 3)
@@ -115,14 +102,7 @@ void level1()
                     playerLocation = 1;
                     playerChoice = true;
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();
             }
         }
         else if (playerLocation == 4)
@@ -162,14 +142,7 @@ void level1()
                     playerLocation = 2;
                     playerChoice = true;
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();
             }
         }
         else if (playerLocation == 5)
@@ -202,14 +175,7 @@ void level1()
                 {
                     storeSellMenu();
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();
             }
         }
         else if (playerLocation == 6)
@@ -231,14 +197,7 @@ void level1()
                     running = 0;
                     playerChoice = true;
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();
             }
         }
         else if (playerLocation == 7)
@@ -260,15 +219,24 @@ void level1()
                     running = 0;
                     playerChoice = true;
                 }
-                else if (playerInput == "i")
-                {
-                    itemMenu();
-                }
-                else if (playerInput == "m")
-                {
-                    gameMenu();
-                }
+                menuChoices();
             }
         }
+    }
+}
+
+void menuChoices()
+{
+    if (playerInput == "i")
+    {
+        itemMenu();
+    }
+    else if (playerInput == "m")
+    {
+        gameMenu();
+    }
+    else if (playerInput == "e")
+    {
+        equipMenu();
     }
 }
