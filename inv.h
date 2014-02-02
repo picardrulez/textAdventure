@@ -449,6 +449,7 @@ int equipMenu()
         cin >> userInput;
         if (userInput == 0)
         {
+            doneEquiping = 1;
             return 0;
         }
         itemNumber = userInput - 1;
@@ -457,19 +458,6 @@ int equipMenu()
         item = findItemName(pos2, pos2);
         equipItem(pos1,pos2);
         dropItem(itemNumber);
-    
-        system("clear");
-        cout << menuBar << "\n\n\n";
-        cout <<"              " << item << " has been equipped!\n\n\n\n";
-        cout << "                Press '1' to equip more items\n";
-        cout << "                Press '2' to return to menu.\n\n\n\n";
-        cout << menuBar;
-        cin >> userInput;
-        if (userInput == 2)
-        {
-            doneEquiping = 1;
-            return 0;
-        }
     }
 }
 

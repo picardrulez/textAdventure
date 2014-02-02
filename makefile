@@ -1,2 +1,2 @@
 all:
-	g++ -o game main.cpp
+	g++ -o /usr/local/bin/txtadv main.cpp
