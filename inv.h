@@ -6,9 +6,12 @@ string playerInput;
 int userInput = 0;
 int itemType = 0;
 int enemy_inv[4][2]; 
+int userMessage = 0;
 int itemNumber;
 int enemyInventorySize;
 int doneEquiping;
+void equipMessage();
+void healthMessage();
 int findItemValue(int table, int itemNumber);
 int countloops = 0;
 int pos1;
@@ -20,6 +23,7 @@ void useItem(int itemNumber);
 int etable;
 int storeBuyMenu();
 int eitemNumber;
+string lastEquipped;
 string findItemName(int itemNumber, int table);
 string selection;
 string item;
@@ -447,6 +451,15 @@ int equipMenu()
         }
         cout <<"\n";
         cout << menuBar;
+        if (userMessage == 1)
+        {
+            equipMessage();    
+        }
+        else if (userMessage == 2)
+        {
+            healthMessage();
+        }
+        userMessage = 0;
         cin >> userInput;
         if (userInput == 0)
         {
@@ -457,7 +470,7 @@ int equipMenu()
         pos1 = player_inv[itemNumber][0];
         pos2 = player_inv[itemNumber][1];
         item = findItemName(pos2, pos2);
-        if (pos1 = 2)
+        if (pos1 == 2)
         {
             useItem(pos2);
         }
@@ -515,6 +528,8 @@ int dropItemMenu()
 void equipItem(int table, int itemNumber)
 {
     item = findItemName(table, itemNumber);
+    lastEquipped = item;
+    userMessage = 1;
     if (item.find("Sword") != string::npos || item.find("Axe") != string::npos || item.find("Hammer") != string::npos || item.find("Dart") != string::npos )
     {
         equipWeapon(table, itemNumber);
@@ -879,4 +894,14 @@ void useItem(int itemNumber)
     {
         playerHealth = 100;
     }
+    userMessage = 2;
+}
+void healthMessage()
+{
+    cout << "Health is now " << playerHealth << "\n";
+}
+
+void equipMessage()
+{
+    cout << lastEquipped << " has been equipped\n";
 }
