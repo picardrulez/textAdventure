@@ -28,6 +28,7 @@ int playersBootAC = 0;
 int playersAC = 0;
 int playersSpeed = 1;
 int playersAttack = 1;
+int playerDrunk = 0;
 int playerHealth = 100;
 
 int mainMenu()

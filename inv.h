@@ -16,6 +16,7 @@ int sellItem(int itemTable, int itemNumber, int invnumber);
 int pos2;
 int storeSellMenu();
 int buyItem(int itemTable, int itemNumber, int invnumber);
+void useItem(int itemNumber);
 int etable;
 int storeBuyMenu();
 int eitemNumber;
@@ -456,7 +457,14 @@ int equipMenu()
         pos1 = player_inv[itemNumber][0];
         pos2 = player_inv[itemNumber][1];
         item = findItemName(pos2, pos2);
+        if (pos1 = 2)
+        {
+            useItem(pos2);
+        }
+        else
+        {
         equipItem(pos1,pos2);
+        }
         dropItem(itemNumber);
     }
 }
@@ -862,4 +870,13 @@ int findItemValue(int table, int itemNumber)
 {
     int price = findItemPrice(table, itemNumber) / 2;
     return price;
+}
+void useItem(int itemNumber)
+{
+    playerHealth = playerHealth + consum_prop[itemNumber][1];
+    playerDrunk = playerDrunk + consum_prop[itemNumber][2];
+    if (playerHealth > 100)
+    {
+        playerHealth = 100;
+    }
 }
