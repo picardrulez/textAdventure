@@ -6,6 +6,7 @@ string difficultySetting = "Medium";
 string playerSelection;
 bool menuSelection = false;
 int madechoice = 0;
+int playerMana;
 int mainMenu();
 int settings();
 int credits();
@@ -271,6 +272,8 @@ int statusMenu()
     cout << menuBar;
     cout << "               Status\n\n";
     cout << "             Health:  " << playerHealth << "\n";
+    cout << "             Magic:  " << playerMana << "\n";
+    cout << "             Innebriation:  " << playerDrunk << "\n";
     cout << "             Gold:  " << moneybag << "\n";
     cout << "             Armor Class:  " << playersAC << "\n";
     cout << "             Attack Speed:  " << playersSpeed << "\n";

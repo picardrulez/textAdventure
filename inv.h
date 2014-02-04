@@ -12,6 +12,8 @@ int enemyInventorySize;
 int doneEquiping;
 void equipMessage();
 void healthMessage();
+void magicMessage();
+void drunkMessage();
 int findItemValue(int table, int itemNumber);
 int countloops = 0;
 int pos1;
@@ -137,19 +139,19 @@ int wizard_inv[4][2] = {
         "Mushrooms"
     };
 
-    const int consum_prop_col = 6;
+    const int consum_prop_col = 7;
     const int consum_prop_row = NUM_CONSUM;
     int consum_prop[consum_prop_row][consum_prop_col] = {
-        {0, 2, 0, 1, 70, 5} ,
-        {1, 5, 0, 3, 30, 8} ,
-        {2, 2, 0, 1, 70, 5} ,
-        {3, 5, 0, 3, 30, 8} ,
-        {4, 4, 1, 1, 70, 1} ,
-        {5, 8, 4, 10, 20, 10} ,
-        {6, 8, 4, 10, 20, 10} ,
-        {7, 4, 0, 1, 55, 1} ,
-        {8, 8, 0, 1, 35, 5} ,
-        {9, 5, 2, 1, 50, 3}
+        {0, 2, 0, 0, 1, 70, 5} ,
+        {1, 5, 0, 0, 3, 30, 8} ,
+        {2, 0, 2, 0, 1, 70, 5} ,
+        {3, 0, 5, 0, 3, 30, 8} ,
+        {4, 4, 0, 1, 1, 70, 1} ,
+        {5, 8, 0, 4, 10, 20, 10} ,
+        {6, 8, 0, 4, 10, 20, 10} ,
+        {7, 4, 0, 0, 1, 55, 1} ,
+        {8, 8, 0, 0, 1, 35, 5} ,
+        {9, 5, 5, 2, 1, 50, 3}
         };
 
 //Array for maintaining the player's inventory.
@@ -385,7 +387,7 @@ void createItem()
         bool wrongrare = true;
         while (wrongrare)
         {
-            int checkItem = inv_consum[itemRoll][5];
+            int checkItem = inv_consum[itemRoll][6];
             if (checkItem < percentRoll)
             {
                 srand(static_cast<unsigned int>(time(0)));
@@ -458,6 +460,14 @@ int equipMenu()
         else if (userMessage == 2)
         {
             healthMessage();
+        }
+        else if (userMessage == 3)
+        {
+            magicMessage();
+        }
+        else if (userMessage == 4)
+        {
+            drunkMessage();
         }
         userMessage = 0;
         cin >> userInput;
@@ -876,7 +886,7 @@ int findItemPrice(int table, int itemNumber)
     }
     else if (table == 2)
     {
-        price = consum_prop[itemNumber][5];
+        price = consum_prop[itemNumber][6];
     }
     return price;
 }
@@ -889,12 +899,24 @@ int findItemValue(int table, int itemNumber)
 void useItem(int itemNumber)
 {
     playerHealth = playerHealth + consum_prop[itemNumber][1];
-    playerDrunk = playerDrunk + consum_prop[itemNumber][2];
+    playerDrunk = playerDrunk + consum_prop[itemNumber][3];
+    playerMana = playerMana + consum_prop[itemNumber][2];
     if (playerHealth > 100)
     {
         playerHealth = 100;
     }
-    userMessage = 2;
+    if ((consum_prop[itemNumber][1] != 0) && (consum_prop[itemNumber][2] == 0) && (consum_prop[itemNumber][3] == 0))
+    {
+        userMessage = 2;
+    }
+    else if (consum_prop[itemNumber][1] == 0)
+    {
+        userMessage = 3;
+    }
+    else if (consum_prop[itemNumber][3] !=0)
+    {
+        userMessage = 4;
+    }
 }
 void healthMessage()
 {
@@ -904,4 +926,16 @@ void healthMessage()
 void equipMessage()
 {
     cout << lastEquipped << " has been equipped\n";
+}
+
+void magicMessage()
+{
+    cout << "Magic is now " << playerMana <<"\n";
+}
+
+void drunkMessage()
+{
+    cout << "Health is now " << playerHealth << "\n";
+    cout << "Magic is " << playerMana << "\n";
+    cout << "Innebriation is now " << playerDrunk << "\n";
 }
