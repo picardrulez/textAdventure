@@ -9,6 +9,7 @@ int enemy_inv[4][2];
 int userMessage = 0;
 int itemNumber;
 int enemyInventorySize;
+int percentRoll = 25;
 int doneEquiping;
 void equipMessage();
 void healthMessage();
@@ -339,7 +340,26 @@ void createItem()
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
     itemType = (randomNumber % 3);
-    int percentRoll = (randomNumber % 100) + 1;
+    if (difficultySetting == "Easy")
+    {
+        percentRoll = ((randomNumber % 100) + 1) - 20;
+    }
+    else if (difficultySetting == "Medium")
+    {
+        percentRoll = (randomNumber % 100) + 1;
+    }
+    else if (difficultySetting == "Hard")
+    {
+        percentRoll = (randomNumber % 100) + 1;
+        if (percentRoll > 10)
+        {
+            percentRoll = percentRoll + 10;
+        }
+    }
+    else if (difficultySetting == "easy")
+    {
+        percentRoll = 25;
+    }
     string itemArray;
 
     if (itemType == 0)
@@ -640,8 +660,20 @@ void checkForItem()
     srand(static_cast<unsigned int>(time(0)));
     int randomNumber = rand();
     int percentRoll = (randomNumber % 100) + 1;
-    if ( percentRoll < 25 )
+    int difficultyPercentage;
+    if (difficultySetting == "Easy")
     {
+        difficultyPercentage = 50;
+    }
+    else if (difficultySetting == "Medium")
+    {
+        difficultyPercentage = 25;
+    }
+    else if (difficultySetting == "Hard")
+    {
+        difficultyPercentage = 5;
+    }
+    if ( percentRoll < difficultyPercentage ) {
         system("clear");
         createItem();
         item = findItemName(itemType, itemRoll); 

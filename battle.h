@@ -65,6 +65,22 @@ int monsterAttack(int speed, int attack, string enemyType)
     {
 
         int damageDealt = damage(attack);
+        if ((difficultySetting == "Medium") && (damageDealt < 100))
+        {
+            damageDealt = damageDealt + 10;
+        }
+        else if ((difficultySetting == "Medium") && (damageDealt >=100))
+        {
+            damageDealt = damageDealt * 1.5;
+        }
+        else if ((difficultySetting == "Hard") && (damageDealt < 100))
+        {
+            damageDealt = damageDealt + 25;
+        }
+        else if ((difficultySetting == "Hard") && (damageDealt >=100))
+        {
+            damageDealt = damageDealt * 2.5;
+        }
         system("clear");
         cout << menuBar << "\n\n";
         displayEnemy(enemyType);
