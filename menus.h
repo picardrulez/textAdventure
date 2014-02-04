@@ -5,6 +5,7 @@ string menuBar = "|--------------------------------------------------|\n\n";
 string difficultySetting = "Medium";
 string playerSelection;
 bool menuSelection = false;
+int xp;
 int madechoice = 0;
 int playerMana;
 int mainMenu();
@@ -39,6 +40,10 @@ int mainMenu()
     {
         cout << menuBar;
         cout << "         Welcome to Geoff's Text Adventure!\n\n\n";
+        if (xp != 0)
+        {
+            cout << "        Previous Experience Points was:  " << xp << "\n\n";
+        }
         cout << "                   (1) Start Game\n";
         cout << "                   (2) Settings\n";
         cout << "                   (3) Credits\n";
@@ -271,6 +276,7 @@ int statusMenu()
     system("clear");
     cout << menuBar;
     cout << "               Status\n\n";
+    cout << "             Experience Points:  " << xp << "\n";
     cout << "             Health:  " << playerHealth << "\n";
     cout << "             Magic:  " << playerMana << "\n";
     cout << "             Innebriation:  " << playerDrunk << "\n";

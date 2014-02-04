@@ -7,6 +7,7 @@ void initialItems();
 
 void createCharacter() 
 {
+    xp = 0;
     clearPlayerInv();
     cout << menuBar;
     cout << "         Welcome to Geoff's Text Adventure!\n\n";

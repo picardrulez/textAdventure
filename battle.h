@@ -105,10 +105,12 @@ int playerAttack(int speed, int attack, string enemyType)
         cout << menuBar << "\n\n";
         displayEnemyHit(enemyType);
         cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
+        xp = xp + damageDealt;
         monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
         {
             madechoice = 0;
+            xp = xp + 100;
             while (madechoice == 0)
             {
                 system("clear");
@@ -168,6 +170,7 @@ bool thacoRoll(int ac, int speed)
     if (thacoRoll < thaco)
     {
         return true;
+        xp = xp + 1;
     }
     else
     {

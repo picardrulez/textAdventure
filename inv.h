@@ -320,6 +320,7 @@ void addInventory(int table, int item)
     player_inv[playerItemCount][0] = table;
     player_inv[playerItemCount][1] = item;
     playerItemCount++;
+    xp = xp + 1;
     }
     else
     {
@@ -805,6 +806,7 @@ int buyItem(int itemTable, int itemNumber, int invnumber)
     hutGuyItemCount = hutGuyItemCount - 1;
     moneybag = moneybag - findItemPrice(itemTable, itemNumber);
     addInventory(itemTable, itemNumber);
+    xp = xp + findItemPrice(itemTable, itemNumber);
 }
 
 int storeSellMenu()
@@ -871,6 +873,7 @@ int sellItem(int itemTable, int itemNumber, int invnumber)
     dropItem(invnumber);
     hutGuyMoneybag = hutGuyMoneybag - findItemValue(itemTable, itemNumber);
     moneybag = moneybag + findItemValue(itemTable, itemNumber);
+    xp = xp + findItemValue(itemTable, itemNumber);
 }
 
 int findItemPrice(int table, int itemNumber)
@@ -898,6 +901,7 @@ int findItemValue(int table, int itemNumber)
 }
 void useItem(int itemNumber)
 {
+    xp = 5;
     playerHealth = playerHealth + consum_prop[itemNumber][1];
     playerDrunk = playerDrunk + consum_prop[itemNumber][3];
     playerMana = playerMana + consum_prop[itemNumber][2];
