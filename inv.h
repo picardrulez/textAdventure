@@ -10,6 +10,7 @@ int userMessage = 0;
 int itemNumber;
 int enemyInventorySize;
 int percentRoll = 25;
+int itemUses;
 int doneEquiping;
 void equipMessage();
 void healthMessage();
@@ -38,6 +39,7 @@ void checkForItem();
 int debugInventory();
 int inventoryCheck();
 void displayInventory();
+int findItemUses(int table, int itemNumber);
 void equipItem(int table, int itemNumber);
 void equipWeapon(int table, int itemNumber);
 void equipHelm(int table, int itemNumber);
@@ -158,18 +160,18 @@ int wizard_inv[4][2] = {
 //Array for maintaining the player's inventory.
     int playerItemCount = 0;
     const int MAX_PLAYER_INV = 25;
-    const int player_inv_col = 2;
+    const int player_inv_col = 3;
     const int player_inv_row = MAX_PLAYER_INV;
 
     int player_inv[player_inv_row][player_inv_col];
 
 //Arrays for player's equipped items
 
-int player_eweapon[1][2] = {9,9};
-int player_ehelm[1][2] = {9,9};
-int player_egauntlets[1][2] = {9,9};
-int player_eboots[1][2] = {9,9};
-int player_eplate[1][2] = {9,9};
+int player_eweapon[1][3] = {9,9,9};
+int player_ehelm[1][3] = {9,9,9};
+int player_egauntlets[1][3] = {9,9,9};
+int player_eboots[1][3] = {9,9,9};
+int player_eplate[1][3] = {9,9,9};
 
 int inventoryCheck()
 {
@@ -263,7 +265,7 @@ void displayInventory()
     for (int i = 0; i < playerItemCount; i++ )
     {
         string tableName;
-        for (int j = 0; j < 2; j++)
+        for (int j = 0; j < 3; j++)
         {
             if (j == 0)
             {
@@ -271,8 +273,12 @@ void displayInventory()
             }
             else if (j == 1)
             {
-                pos2 = player_inv[i][j];
-                cout << "                 " << findItemName(pos1, pos2) << "\n";
+               pos2 = player_inv[i][j];
+            }
+            else if (j == 2)
+            {
+                itemUses = player_inv[i][j];
+                cout << "                 " << findItemName(pos1, pos2) << " Uses " << itemUses << "\n";
             }
         }
     }
@@ -318,8 +324,10 @@ void addInventory(int table, int item)
 {
     if (playerItemCount < MAX_PLAYER_INV )
     {
+    itemUses = findItemUses(table, item);
     player_inv[playerItemCount][0] = table;
     player_inv[playerItemCount][1] = item;
+    player_inv[playerItemCount][2] = itemUses;
     playerItemCount++;
     xp = xp + 1;
     }
@@ -974,4 +982,21 @@ void drunkMessage()
     cout << "Health is now " << playerHealth << "\n";
     cout << "Magic is " << playerMana << "\n";
     cout << "Innebriation is now " << playerDrunk << "\n";
+}
+
+int findItemUses(int table, int itemNumber)
+{
+    if (table == 0)
+    {
+        itemUses = weapon_prop[itemNumber][2];
+    }
+    else if (table == 1)
+    {
+        itemUses = armor_prop[itemNumber][2];
+    }
+    else if (table == 2)
+    {
+        itemUses = consum_prop[itemNumber][4];
+    }
+    return itemUses;
 }
