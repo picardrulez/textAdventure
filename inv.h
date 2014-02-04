@@ -11,6 +11,7 @@ int itemNumber;
 int enemyInventorySize;
 int percentRoll = 25;
 int itemUses;
+int uses;
 int doneEquiping;
 void equipMessage();
 void healthMessage();
@@ -31,22 +32,23 @@ string lastEquipped;
 string findItemName(int itemNumber, int table);
 string selection;
 string item;
-void addInventory(int table, int item);
+void addInventory(int table, int item, int itemUses);
 void createItem();
 void addPartyLiquor();
+int euses;
 int itemRoll = 0;
 void checkForItem();
 int debugInventory();
 int inventoryCheck();
 void displayInventory();
 int findItemUses(int table, int itemNumber);
-void equipItem(int table, int itemNumber);
-void equipWeapon(int table, int itemNumber);
-void equipHelm(int table, int itemNumber);
+void equipItem(int table, int itemNumber, int uses);
+void equipWeapon(int table, int itemNumber, int uses);
+void equipHelm(int table, int itemNumber, int uses);
 int findItemPrice(int table, int itemNumber);
-void equipPlate(int table, int itemNumber);
-void equipGauntlets(int table, int itemNumber);
-void equipBoots(int table, int itemNumber);
+void equipPlate(int table, int itemNumber, int uses);
+void equipGauntlets(int table, int itemNumber, int uses);
+void equipBoots(int table, int itemNumber, int uses);
 void dropItem(int itemNumber);
 void clearPlayerInv();
 int wizard_inv[4][2] = {
@@ -200,6 +202,7 @@ int displayEquipped()
     cout << "           Weapon:  ";
     pos1 = player_eweapon[0][0];
     pos2 = player_eweapon[0][1];
+    itemUses = player_eweapon[0][2];
     if (pos1 == 9)
     {
         cout << "\n";
@@ -207,11 +210,12 @@ int displayEquipped()
     else
     {
         item = findItemName(pos1, pos2);
-        cout << item << "\n";
+        cout << item <<  "     uses:  " << itemUses << "\n";
     }
     cout << "           Helm:  ";
     pos1 = player_ehelm[0][0];
     pos2 = player_ehelm[0][1];
+    itemUses = player_ehelm[0][2];
     if (pos1 == 9)
     {
         cout << "\n";
@@ -219,11 +223,12 @@ int displayEquipped()
     else
     {
         item = findItemName(pos1, pos2);
-        cout << item << "\n";
+        cout << item << "     uses:  " << itemUses << "\n";
     }
     cout << "           Breast plate:  ";
     pos1 = player_eplate[0][0];
     pos2 = player_eplate[0][1];
+    itemUses = player_eplate[0][2];
     if (pos1 == 9)
     {
         cout << "\n";
@@ -231,11 +236,12 @@ int displayEquipped()
     else
     {
         item = findItemName(pos1, pos2);
-        cout << item << "\n";
+        cout << item << "     uses:  " << itemUses << "\n";
     }
     cout << "           Gauntlets:  ";
     pos1 = player_egauntlets[0][0];
     pos2 = player_egauntlets[0][1];
+    itemUses = player_egauntlets[0][2];
     if (pos1 == 9)
     {
         cout << "\n";
@@ -243,11 +249,12 @@ int displayEquipped()
     else
     {
         item = findItemName(pos1, pos2);
-        cout << item << "\n";
+        cout << item << "     uses:  " << itemUses << "\n";
     }
     cout << "           Boots:  ";
     pos1 = player_eboots[0][0];
     pos2 = player_eboots[0][1];
+    itemUses = player_eboots[0][2];
     if (pos1 == 9)
     {
         cout << "\n\n";
@@ -255,7 +262,7 @@ int displayEquipped()
     else
     {
         item = findItemName(pos1, pos2);
-        cout << item << "\n\n";
+        cout << item << "     uses:  " << itemUses << "\n\n";
     }
 
 }
@@ -320,11 +327,10 @@ string findItemName(int table, int itemNumber)
     return item;
 }
 
-void addInventory(int table, int item)
+void addInventory(int table, int item, int itemUses)
 {
     if (playerItemCount < MAX_PLAYER_INV )
     {
-    itemUses = findItemUses(table, item);
     player_inv[playerItemCount][0] = table;
     player_inv[playerItemCount][1] = item;
     player_inv[playerItemCount][2] = itemUses;
@@ -466,7 +472,7 @@ int equipMenu()
         for (int i = 0; i < playerItemCount; i++)
         {
             string tableName;
-            for (int j = 0; j < 2; j++)
+            for (int j = 0; j < 3; j++)
             {
                 if (j == 0)
                 {
@@ -475,6 +481,10 @@ int equipMenu()
                 else if (j == 1)
                 {
                     pos2 = player_inv[i][j];
+                }
+                else if (j == 2)
+                {
+                    itemUses = player_inv[i][j];
                     startNumber++;
                     cout << "                 (" << startNumber << ")  " << findItemName(pos1, pos2) << "\n";
                 }
@@ -515,7 +525,7 @@ int equipMenu()
         }
         else
         {
-        equipItem(pos1,pos2);
+        equipItem(pos1,pos2, itemUses);
         }
         dropItem(itemNumber);
     }
@@ -564,100 +574,110 @@ int dropItemMenu()
         }
     }
 }
-void equipItem(int table, int itemNumber)
+void equipItem(int table, int itemNumber, int uses)
 {
     item = findItemName(table, itemNumber);
     lastEquipped = item;
     userMessage = 1;
     if (item.find("Sword") != string::npos || item.find("Axe") != string::npos || item.find("Hammer") != string::npos || item.find("Dart") != string::npos )
     {
-        equipWeapon(table, itemNumber);
+        equipWeapon(table, itemNumber, uses);
     }
     else if (item.find("Helm") != string::npos)
     {
-        equipHelm(table, itemNumber);
+        equipHelm(table, itemNumber, uses);
     }
     else if (item.find("Gauntlets") != string::npos)
     {
-        equipGauntlets(table, itemNumber);
+        equipGauntlets(table, itemNumber, uses);
     }
     else if (item.find("Boots") != string::npos)
     {
-        equipBoots(table, itemNumber);
+        equipBoots(table, itemNumber, uses);
     }
     else if (item.find("Plate") != string::npos)
     {
-        equipPlate(table, itemNumber);
+        equipPlate(table, itemNumber, uses);
     }
 }
-void equipWeapon(int table, int itemNumber)
+void equipWeapon(int table, int itemNumber, int uses)
 {
     if (player_eweapon[0][0] != 9)
     {
         etable = player_eweapon[0][0];
         eitemNumber = player_eweapon[0][1];
-        addInventory(etable, eitemNumber);
+        euses = player_eweapon[0][2];
+        addInventory(etable, eitemNumber, euses);
     }
     player_eweapon[0][0] = table;
     player_eweapon[0][1] = itemNumber;
+    player_eweapon[0][2] = uses;
     playersAttack = weapon_prop[itemNumber][1];
     playersSpeed = weapon_prop[itemNumber][3];
 
 }
 
-void equipHelm(int table, int itemNumber)
+void equipHelm(int table, int itemNumber, int uses)
 {
     if (player_ehelm[0][0] != 9)
     {
         etable = player_ehelm[0][0];
         eitemNumber = player_ehelm[0][1];
-        addInventory(etable, eitemNumber);
+        euses = player_ehelm[0][2];
+        addInventory(etable, eitemNumber, euses);
     }
     player_ehelm[0][0] = table;
     player_ehelm[0][1] = itemNumber;
+    player_ehelm[0][2] = uses;
     playersHelmAC = armor_prop[itemNumber][1];
     playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
 
-void equipPlate(int table, int itemNumber)
+void equipPlate(int table, int itemNumber, int uses)
 {
     if (player_eplate[0][0] != 9)
     {
         etable = player_eplate[0][0];
         eitemNumber = player_eplate[0][1];
-        addInventory(etable, eitemNumber);
+        euses = player_eplate[0][2];
+        addInventory(etable, eitemNumber, euses);
     }
     player_eplate[0][0] = table;
     player_eplate[0][1] = itemNumber;
+    player_eplate[0][2] = uses;
     playersPlateAC = armor_prop[itemNumber][1];
     playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 
 }
 
-void equipGauntlets(int table, int itemNumber)
+void equipGauntlets(int table, int itemNumber, int uses)
 {
     if (player_egauntlets[0][0] != 9)
     {
         etable = player_egauntlets[0][0];
         eitemNumber = player_egauntlets[0][1];
-        addInventory(etable, eitemNumber);
+        euses = player_egauntlets[0][2];
+        addInventory(etable, eitemNumber, euses);
     }
     player_egauntlets[0][0] = table;
     player_egauntlets[0][1] = itemNumber;
+    player_egauntlets[0][2] = uses;
     playersGauntletAC = armor_prop[itemNumber][1];
     playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
 
-void equipBoots(int table, int itemNumber)
+void equipBoots(int table, int itemNumber, int uses)
 {
     if (player_eboots[0][0] != 9)
     {
         etable = player_eboots[0][0];
         eitemNumber = player_eboots[0][1];
-        addInventory(etable, eitemNumber);
+        euses = player_eboots[0][2];
+        addInventory(etable, eitemNumber, euses);
     }
     player_eboots[0][0] = table;
     player_eboots[0][1] = itemNumber;
+    player_eboots[0][2] = uses;
     playersBootAC = armor_prop[itemNumber][1];
     playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
@@ -693,7 +713,8 @@ void checkForItem()
         cin >> playerInput;
         if (playerInput == "1")
         {
-            addInventory(itemType, itemRoll);
+            itemUses = findItemUses(itemType, itemRoll);
+            addInventory(itemType, itemRoll, itemUses);
         }
         else if (playerInput == "2")
         {
@@ -845,7 +866,8 @@ int buyItem(int itemTable, int itemNumber, int invnumber)
     }
     hutGuyItemCount = hutGuyItemCount - 1;
     moneybag = moneybag - findItemPrice(itemTable, itemNumber);
-    addInventory(itemTable, itemNumber);
+    uses = findItemUses(itemTable, itemNumber);
+    addInventory(itemTable, itemNumber, uses);
     xp = xp + findItemPrice(itemTable, itemNumber);
 }
 

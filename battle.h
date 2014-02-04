@@ -86,6 +86,29 @@ int monsterAttack(int speed, int attack, string enemyType)
         displayEnemy(enemyType);
         cout << "             You get hit for "<< damageDealt << " damage!\n\n";
         playerHealth = playerHealth - damageDealt;
+        srand(static_cast<unsigned int>(time(0)));
+        int randomNumber = rand();
+        int armorSelection = (randomNumber % 4);
+        if (armorSelection == 0)
+        {
+            itemUses = player_ehelm[0][2];
+            player_ehelm[0][2] = itemUses - 1;
+        }
+        else if (armorSelection == 1)
+        {
+            itemUses = player_eplate[0][2];
+            player_eplate[0][2] = itemUses - 1;
+        }
+        else if (armorSelection == 2)
+        {
+            itemUses = player_egauntlets[0][2];
+            player_egauntlets[0][2] = itemUses - 1;
+        }
+        else if (armorSelection == 3)
+        {
+            itemUses = player_eboots[0][2];
+            player_eboots[0][2] = itemUses;
+        }
         cout << "               Health is at "<< playerHealth << "!\n\n";
         if (playerHealth <= 0)
         {
@@ -122,6 +145,8 @@ int playerAttack(int speed, int attack, string enemyType)
         displayEnemyHit(enemyType);
         cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
         xp = xp + damageDealt;
+        itemUses = player_eweapon[0][2];
+        player_eweapon[0][2] = itemUses - 1;
         monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
         {
@@ -235,7 +260,8 @@ int lootEnemy(string enemy)
             itemNumber = userInput - 1;
             pos1 = enemy_inv[itemNumber][0];
             pos2 = enemy_inv[itemNumber][1];
-            addInventory(pos1,pos2);
+            itemUses = (findItemUses(pos1,pos2) / 2);
+            addInventory(pos1,pos2, itemUses);
             enemyDropItem(itemNumber);
         }
     }

@@ -45,38 +45,38 @@ void initialItems()
     if (playerInfo[1] == 1)
     {
         //add sword
-        addInventory(0, 0);
+        addInventory(0, 0, 50);
         //add helm
-        addInventory(1, 0);
+        addInventory(1, 0, 50);
         //add gauntlets
-        addInventory(1, 3);
+        addInventory(1, 3, 50);
         //add boots
-        addInventory(1, 6);
+        addInventory(1, 6, 50);
 
     }
     //Druid Creation
     else if (playerInfo[1] == 2)
     {
         //add riding boots
-        addInventory(1, 7);
+        addInventory(1, 7, 20);
         //add magic potions
-        addInventory(2, 2);
-        addInventory(2, 2);
-        addInventory(2,2);
+        addInventory(2, 2, 1);
+        addInventory(2, 2, 1);
+        addInventory(2, 2, 1);
         //add food
-        addInventory(2,9);
+        addInventory(2, 9, 1);
     }
     //Thief Creation
     else if (playerInfo[1] == 3)
     {
         //Add axe
-        addInventory(0,4);
+        addInventory(0,4,75);
         //add booze collection
-        addInventory(2,4);
-        addInventory(2,4);
-        addInventory(2,4);
+        addInventory(2,4,1);
+        addInventory(2,4,1);
+        addInventory(2,4,1);
         //add rations
-        addInventory(2,7);
-        addInventory(2,7);
+        addInventory(2,7,1);
+        addInventory(2,7,1);
     }
 }
