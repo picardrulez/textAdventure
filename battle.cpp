@@ -8,7 +8,6 @@ int xp = 5;
 int playerchoice = 0;
 int monsterHealth = 0;
 int monsterAC = 0;
-bool stillAlive = true;
 int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack, string enemyType)
 {
     int battlerun = 1;
@@ -39,7 +38,7 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
                 madechoice = 1;
             }
         }
-        stillAlive = playerAttack(playerspeed, playerattack, enemyType);
+        bool stillAlive = playerAttack(playerspeed, playerattack, enemyType);
         if (stillAlive == false)
         {
             battlerun = 0;
