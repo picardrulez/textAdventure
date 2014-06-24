@@ -5,6 +5,7 @@
 
 int playerLocation = 0;
 int playerInfo[2] = { 0, 0 };
+void clearPlayerInv();
 
 void createCharacter() 
 {
