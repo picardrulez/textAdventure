@@ -3,6 +3,12 @@
 #include "menus.h"
 #include "battle.h"
 
+int madechoice = 0;
+int xp = 5;
+int playerchoice = 0;
+int monsterHealth = 0;
+int monsterAC = 0;
+bool stillAlive = true;
 int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack, string enemyType)
 {
     int battlerun = 1;

@@ -3,6 +3,9 @@
 #include "inv.h"
 #include "create.h"
 
+int playerLocation = 0;
+int playerInfo[2] = { 0, 0 };
+
 void createCharacter() 
 {
     xp = 0;

@@ -4,6 +4,148 @@
 //Arrays for player's equipped items
 
 
+int playersHelmAC = 0;                                                         
+int playersGauntletAC = 0;                                                     
+int playersPlateAC = 0;                                                        
+int playersBootAC = 0;                                                         
+int playersAC = 0;                                                             
+int playersSpeed = 1;                                                          
+int playersAttack = 1;                                                         
+int playerDrunk = 0;                                                           
+int playerHealth = 100;
+int userMessage = 0;
+int percentRoll = 25;
+int playerItemCount = 0;
+int euses = 0;
+string playerInput = "e";
+int eitemNumber = 0;
+int itemType = 0;
+int countloops = 0;
+int itemNumber = 0;
+int pos1 = 0;
+int pos2 = 0;
+int itemUses = 0;
+int enemyInventorySize = 0;
+int doneEquiping = 0;
+int etable = 0;
+int uses = 0;
+int userInput = 0;
+int enemy_inv[4][2] = {
+    {0,0},
+    {0,0},
+    {0,0},
+    {0,0}
+};
+string lastEquipped = "";
+string item = "";
+int itemRoll = 0;
+int player_inv[player_inv_row][player_inv_col] = {
+        {0,0}
+};
+
+int player_eweapon[1][3] = {9,9,9};                                            
+int player_ehelm[1][3] = {9,9,9};                                              
+int player_egauntlets[1][3] = {9,9,9};                                         
+int player_eboots[1][3] = {9,9,9};                                             
+int player_eplate[1][3] = {9,9,9};                                             
+int wizard_inv[4][2] = {                                                       
+    {0,3},                                                                     
+    {2,3},                                                                     
+    {2,3},                                                                     
+    {2,9}                                                                      
+ };  
+
+
+string weapons[NUM_WEAPONS] = {                                            
+    "Sword",                                                               
+    "Iron Sword",                                                          
+    "Steel Sword",                                                         
+    "Great Sword",                                                         
+    "Axe",                                                                 
+    "Iron Axe",                                                            
+    "Steel Axe",                                                           
+    "Great Axe",                                                           
+    "Hammer",                                                              
+    "Iron Hammer",                                                         
+    "Steel Hammer",                                                        
+    "Great Hammer",                                                        
+    "Dart"                                                                 
+}; 
+
+int weapon_prop[weapon_prop_row][weapon_prop_col] = {                          
+     {0, 5, 50, 6, 100, 3} ,                                                    
+     {1, 11, 75, 4, 85, 7} ,                                                    
+     {2, 17, 100, 3, 50, 10} ,                                                  
+     {3, 25, 300, 1, 5, 15},                                                    
+     {4, 8, 75, 8, 75, 5} ,                                                     
+     {5, 15, 100, 6, 50, 9} ,                                                   
+     {6, 23, 100, 5, 30, 12} ,                                                  
+     {7, 30, 300, 4, 5, 17} ,                                                   
+     {8, 12, 100, 10, 50, 7} ,                                                  
+     {9, 18, 150, 8, 25, 11} ,                                                  
+     {10, 27, 200, 7, 10, 15} ,                                                 
+     {11, 40, 300, 6, 5, 20} ,                                                  
+     {12, 5, 1, 2, 40, 2}                                                       
+};    
+
+string inv_armor[NUM_ARMOR] = {                                            
+      "Helm",                                                                
+      "Iron Helm",                                                           
+      "Steel Helm",                                                          
+      "Gauntlets",                                                           
+      "Iron Gauntlets",                                                      
+      "Steel Gauntlets",                                                     
+      "Boots",                                                               
+      "Riding Boots",                                                        
+      "Iron Boots",                                                          
+      "Steel Boots",                                                         
+      "Breast Plate",                                                        
+      "Iron Breast Plate",                                                   
+      "Steel Breast Plate"                                                   
+};   
+
+int armor_prop[armor_prop_row][armor_prop_col] = {                                                          
+    {0, 3, 50, 100, 5} ,                                                   
+    {1, 5, 75, 75, 7} ,                                                    
+    {2, 7, 100, 50, 10} ,                                                  
+    {3, 1, 50, 100, 2} ,                                                   
+    {4, 3, 75, 75, 5} ,                                                    
+    {5, 4, 100, 50, 8} ,                                                   
+    {6, 1, 50, 100, 2} ,                                                   
+    {7, 1, 20, 75, 5} ,                                                    
+    {8, 4, 75, 75, 5} ,                                                    
+    {9, 7, 100, 50, 7} ,                                                   
+    {10, 5, 50, 100, 10} ,                                                 
+    {11, 7, 75, 75, 13} ,                                                  
+    {12, 9, 100, 50, 17}                                                   
+};
+
+string inv_consum[NUM_CONSUM] = {                                              
+    "Healing Potion",                                                                                          
+    "Greater Healing Potion",                                              
+    "Magic Potion",                                                        
+    "Greater Magic Potion",                                                
+    "Booze",                                                               
+    "Party Liquor Brown",                                                  
+    "Party Liquor Clear",                                                  
+    "Small Rations",                                                       
+    "Large Rations",                                                       
+    "Mushrooms"                                                            
+};  
+
+int consum_prop[consum_prop_row][consum_prop_col] = { 
+    {0, 2, 0, 0, 1, 70, 5} ,                                               
+    {1, 5, 0, 0, 3, 30, 8} ,                                               
+    {2, 0, 2, 0, 1, 70, 5} ,                                               
+    {3, 0, 5, 0, 3, 30, 8} ,                                               
+    {4, 4, 0, 1, 1, 70, 1} ,                                               
+    {5, 8, 0, 4, 10, 20, 10} ,                                             
+    {6, 8, 0, 4, 10, 20, 10} ,                                             
+    {7, 4, 0, 0, 1, 55, 1} ,                                               
+    {8, 8, 0, 0, 1, 35, 5} ,                                               
+    {9, 5, 5, 2, 1, 50, 3}                                                 
+}; 
+
 int inventoryCheck()
 {
     system("clear");
@@ -290,7 +432,6 @@ void clearPlayerInv()
 
 int equipMenu()
 {
-    doneEquiping = 0;
     while (doneEquiping == 0)
     {
         system("clear");
@@ -575,7 +716,6 @@ void dropItem(int itemNumber)
 
 void makeEnemyInventory(string enemy)
 {
-    countloops = 0;
     if (enemy == "wizard")
     {
        for (int i=0; i < 4; i++)

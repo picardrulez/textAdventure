@@ -1,4 +1,13 @@
+#include <string>
 #include "menus.h"
+
+string menuBar = "|--------------------------------------------------|\n\n";
+string difficultySetting = "Medium";
+bool menuSelection = false;
+int playerMana = 0;
+int menuChoice = 0;
+string playerSelection = "i";
+int moneybag = 0;
 
 int mainMenu()
 {

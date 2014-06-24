@@ -1,9 +1,6 @@
-#ifndef HEADER_H_
-#define HEADER_H_
 using namespace std;
 
-int playerInfo[2];
-int playerLocation = 0;
+extern int playerInfo[2];
+extern int playerLocation;
 void createCharacter();
 void initialItems();
-#endif

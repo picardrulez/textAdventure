@@ -5,6 +5,8 @@
 #include "menus.h"
 #include "enemies.h"
 
+int enemy = 0;
+int enemyInfo[3] = {0,0,0};
 //Wizard Stats
 int enemyWizardInfo[3] = {200,20,1};
 
