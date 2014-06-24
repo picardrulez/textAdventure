@@ -17,7 +17,7 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
         madechoice = 0;
         while (madechoice == 0)
         {
-            system("clear");
+            clearScreen();
             cout << menuBar;
             cout << "       " << enemyType << "Battle \n\n";
             displayEnemy(enemyType);
@@ -77,7 +77,7 @@ int monsterAttack(int speed, int attack, string enemyType)
         {
             damageDealt = damageDealt * 2.5;
         }
-        system("clear");
+        clearScreen();
         cout << menuBar << "\n\n";
         displayEnemy(enemyType);
         cout << "             You get hit for "<< damageDealt << " damage!\n\n";
@@ -120,7 +120,7 @@ int monsterAttack(int speed, int attack, string enemyType)
     }
     else
     {
-        system("clear");
+        clearScreen();
         cout << menuBar << "\n\n";;
         displayEnemy(enemyType);
         cout << "                   He missed!\n\n\n";
@@ -136,7 +136,7 @@ int playerAttack(int speed, int attack, string enemyType)
     if (findhit)
     {
         int damageDealt = damage(attack);
-        system("clear");
+        clearScreen();
         cout << menuBar << "\n\n";
         displayEnemyHit(enemyType);
         cout << "         You hit the monster for " << damageDealt << " damage!\n\n\n";
@@ -150,7 +150,7 @@ int playerAttack(int speed, int attack, string enemyType)
             xp = xp + 100;
             while (madechoice == 0)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar << "\n\n";
                 cout << "             You defeated him!\n";
                 cout << "          Press '1' to continue!\n";
@@ -175,7 +175,7 @@ int playerAttack(int speed, int attack, string enemyType)
     }
     else
     {
-        system("clear");
+        clearScreen();
         cout << menuBar << "\n\n";
         displayEnemy(enemyType);
         cout << "                   You missed!\n\n\n";
@@ -221,7 +221,7 @@ int lootEnemy(string enemy)
     int doneLooting = 0;
     while (doneLooting == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "      Press '0' to exit\n";
         cout << "    Choose Item to loot:\n\n";

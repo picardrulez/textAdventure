@@ -148,7 +148,7 @@ int consum_prop[consum_prop_row][consum_prop_col] = {
 
 int inventoryCheck()
 {
-    system("clear");
+    clearScreen();
     cout << menuBar;
     cout << "                 Your health is " << playerHealth << "\n";
     cout << "            You have " << moneybag << " gold pieces\n\n";
@@ -266,7 +266,7 @@ void displayInventory()
 int debugInventory()
 {
     int itemPos;
-//    system("clear");
+//    clearScreen();
     cout << "DEBUG INVENTORY\n";
     for (int i = 0; i < playerItemCount; i++)
     {
@@ -434,7 +434,7 @@ int equipMenu()
 {
     while (doneEquiping == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "          Press '0' to return.\n";
         cout << "          Choose Item to equip / use:\n\n";
@@ -507,7 +507,7 @@ int dropItemMenu()
     madechoice = 0;
     while (madechoice == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "              Press '0' To Return\n";
         cout << "              Choose Item To Drop:\n\n";
@@ -672,7 +672,7 @@ void checkForItem()
         difficultyPercentage = 5;
     }
     if ( percentRoll < difficultyPercentage ) {
-        system("clear");
+        clearScreen();
         createItem();
         item = findItemName(itemType, itemRoll); 
         cout << menuBar << "\n";
@@ -771,7 +771,7 @@ int storeBuyMenu()
     int doneBuying = 0;
     while (doneBuying == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "       Press '0' to return.\n";
         cout << "       Choose Item to Purchase:\n\n";
@@ -845,7 +845,7 @@ int storeSellMenu()
     int doneSelling = 0;
     while (doneSelling == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "         Press '0' to return.\n";
         cout << "         Choose Item to Sell:\n\n";

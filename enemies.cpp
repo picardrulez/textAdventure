@@ -84,32 +84,32 @@ void displayEnemyShift(string enemyType)
 
 void displayEnemyHit(string enemyType)
 {
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     displayEnemyShift(enemyType);
     cout << menuBar << "\n\n";
     usleep(300000);
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     displayEnemy(enemyType);
     cout << menuBar << "\n\n";
     usleep(300000);
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     displayEnemyShift(enemyType);
     cout << menuBar << "\n\n";
     usleep(300000);
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     displayEnemy(enemyType);
     cout << menuBar << "\n\n";
     usleep(300000);
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     displayEnemyShift(enemyType);
     cout << menuBar << "\n\n";
     usleep(300000);
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     displayEnemy(enemyType);
 }

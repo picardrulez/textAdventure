@@ -19,7 +19,7 @@ int main()
 {
     while (gameDone == false)
     {
-        system("clear");
+        clearScreen();
         int playchoice = mainMenu();
         if (playchoice == 0)
         {

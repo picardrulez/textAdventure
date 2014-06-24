@@ -18,7 +18,7 @@ void createCharacter()
     cout << menuBar;
     cin >> userInput;
     playerInfo[0] = userInput;
-    system("clear");
+    clearScreen();
     cout << menuBar;
     cout << "            Choose your class:\n\n\n";
     cout << "                 1:  Warrior\n";
@@ -30,7 +30,7 @@ void createCharacter()
     playerLocation = 1;
     initialItems();
     moneybag = initialFunds(playerInfo[1]);
-    system("clear");
+    clearScreen();
     cout << menuBar << "\n\n";
     cout << "      Your initial funds are " << moneybag << " gold pieces.\n\n";
     cout << "   New items have been added to your inventory!\n\n";

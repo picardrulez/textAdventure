@@ -30,23 +30,23 @@ int mainMenu()
         {
             if (menuChoice == 1)
             {
-                system("clear");
+                clearScreen();
                 madechoice = 1;
                 return 1;
             }
             else if (menuChoice == 2)
             {
-                system("clear");
+                clearScreen();
                 madechoice = settings();
             }
             else if (menuChoice == 3)
             {
-                system("clear");
+                clearScreen();
                 credits();
             }
             else if (menuChoice == 4)
             {
-                system("clear");
+                clearScreen();
                 madechoice = 1;
                 return 0;
             }
@@ -76,17 +76,17 @@ int settings()
         {
             if (menuChoice == 1)
             {
-                system("clear");
+                clearScreen();
                 madechoice = difficulty();
             }
             else if (menuChoice == 2)
             {
-                system("clear");
+                clearScreen();
                 madechoice = controls();
             }
             else if (menuChoice == 3)
             {
-                system("clear");
+                clearScreen();
                 madechoice = 1;
                 return 0;
             }
@@ -118,22 +118,22 @@ int difficulty()
         {
             if (menuChoice == 1)
             {
-                system("clear");
+                clearScreen();
                 difficultySetting = "Easy";
             }
             else if (menuChoice == 2)
             {
-                system("clear");
+                clearScreen();
                 difficultySetting = "Medium";
             }
             else if (menuChoice == 3)
             {
-                system("clear");
+                clearScreen();
                 difficultySetting = "Hard";
             }
             else if (menuChoice == 4)
             {
-                system("clear");
+                clearScreen();
                 madechoice = 1;
                 return 0;
             }
@@ -162,7 +162,7 @@ int controls()
     {
         if (menuChoice == 1)
         {
-            system("clear");
+            clearScreen();
             return 0;
         }
         else
@@ -187,7 +187,7 @@ int credits()
     {
         if (menuChoice == 1)
         {
-            system("clear");
+            clearScreen();
             return 0;
         }
         else
@@ -205,7 +205,7 @@ void gameMenu()
     madechoice = 0;
     while (madechoice == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "                   Menu\n\n";
         cout << "            (1) Status\n";
@@ -219,22 +219,22 @@ void gameMenu()
         {
             if (menuChoice == 1)
             {
-                system("clear");
+                clearScreen();
                 madechoice = statusMenu();
             }
             else if (menuChoice == 2)
             {
-                system("clear");
+                clearScreen();
                 madechoice = difficulty();
             }
             else if (menuChoice == 3)
             {
-                system("clear");
+                clearScreen();
                 madechoice = controls();
             }
             else if (menuChoice == 4)
             {
-                system("clear");
+                clearScreen();
                 madechoice = 1;
             }
             else
@@ -249,7 +249,7 @@ void gameMenu()
 }
 int statusMenu()
 {
-    system("clear");
+    clearScreen();
     cout << menuBar;
     cout << "               Status\n\n";
     cout << "             Experience Points:  " << xp << "\n";
@@ -271,7 +271,7 @@ int itemMenu()
     madechoice = 0;
     while (madechoice == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar << "\n";
         cout << "                Item Management\n\n";
         cout << "                 (e) Equipment\n";
@@ -298,7 +298,7 @@ int inventoryMenu()
     madechoice = 0;
     while (madechoice == 0)
     {
-        system("clear");
+        clearScreen();
         cout << menuBar;
         cout << "               --Inventory--\n\n";
         displayInventory();
@@ -322,7 +322,7 @@ int equipmentMenu()
 {
     while (madechoice == 0)
     {
-       system("clear");
+       clearScreen();
         cout << menuBar;
         cout << "               --Equipped--\n\n";
         displayEquipped();
@@ -340,3 +340,8 @@ int equipmentMenu()
         }
     }
 }
+
+void clearScreen()                                                             
+{                                                                              
+    cout << string( 100, '\n' );                                               
+}     

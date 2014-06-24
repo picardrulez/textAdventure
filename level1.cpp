@@ -7,7 +7,7 @@
 
 void level1()
 {
-    system("clear");
+    clearScreen();
     bool playerChoice = false;
     int outcome;
     int running = 1;
@@ -19,7 +19,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar << "\n";
                 cout << "    You are standing in the middle of a forest.\n";
                 cout << "    A path veers off to the East and to the west\n\n\n";
@@ -47,7 +47,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar << "\n";
                 cout << "You travel deeper into the forest.\n";
                 cout << "The path continues East, but there is a wooden hut.\n\n\n";
@@ -80,7 +80,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar << "\n";
                 cout << "You go West.  A river is flowing in front of you.\n";
                 cout << "There is a small dock with a conoe.\n\n\n";
@@ -113,7 +113,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 enemy = 0;
                 monsterHealth = 20;
                 monsterAC = 10;
@@ -153,7 +153,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar;
                 cout << "You enter the hut.  A man is there selling items.\n\n";
                 cout << "                  Hut Guy's Inventory:\n\n";
@@ -186,7 +186,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar << "\n\n";
                 cout << "You begin to wade across the river.\n";
                 cout << "Out of the bushes on either side mud people\n";
@@ -208,7 +208,7 @@ void level1()
             playerChoice = false;
             while (playerChoice == false)
             {
-                system("clear");
+                clearScreen();
                 cout << menuBar << "\n";
                 cout << "You paddle down the river in the conoe.\n";
                 cout << "As the river gets faster you realize the \n";

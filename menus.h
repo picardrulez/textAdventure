@@ -11,6 +11,7 @@ extern bool menuSelection;
 extern int xp;
 extern int madechoice;
 extern int playerMana;
+void clearScreen();
 int mainMenu();
 int settings();
 int credits();
