@@ -435,7 +435,7 @@ int equipMenu()
     doneEquiping = 0;
     while (doneEquiping == 0)
     {
-        clearScreen();
+//        clearScreen();
         cout << menuBar;
         cout << "          Press '0' to return.\n";
         cout << "          Choose Item to equip / use:\n\n";
@@ -489,6 +489,7 @@ int equipMenu()
         itemNumber = userInput - 1;
         pos1 = player_inv[itemNumber][0];
         pos2 = player_inv[itemNumber][1];
+        itemUses = player_inv[itemNumber][2];
         item = findItemName(pos2, pos2);
         if (pos1 == 2)
         {
@@ -496,6 +497,7 @@ int equipMenu()
         }
         else
         {
+            cout << "itemUses is " << itemUses << "\n";
         equipItem(pos1,pos2, itemUses);
         }
         dropItem(itemNumber);
