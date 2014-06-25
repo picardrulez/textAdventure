@@ -8,7 +8,7 @@ int xp = 5;
 int playerchoice = 0;
 int monsterHealth = 0;
 int monsterAC = 0;
-int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack, string enemyType)
+int battle(int monsterspeed, int monsterattack, string enemyType)
 {
     int battlerun = 1;
     while (battlerun == 1)
@@ -20,6 +20,9 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
             cout << menuBar;
             cout << "       " << enemyType << "Battle \n\n";
             displayEnemy(enemyType);
+            cout << "Your attack is " << playersAttack << "\n";
+            cout << "Your speed  is " << playersSpeed << "\n";
+            cout << "Your AC is " << playersAC << "\n";
             cout << "           (1) Attack\n";
             cout << "           (2) Item Menu\n";
             cout << "           (3) Run Away\n\n";
@@ -38,7 +41,7 @@ int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattac
                 madechoice = 1;
             }
         }
-        bool stillAlive = playerAttack(playerspeed, playerattack, enemyType);
+        bool stillAlive = playerAttack(playersSpeed, playersAttack, enemyType);
         if (stillAlive == false)
         {
             battlerun = 0;

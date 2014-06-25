@@ -14,4 +14,4 @@ int lootEnemy(string enemy);
 bool thacoRoll(int ac, int speed);
 int monsterAttack(int speed, int attack, string enemyType);
 int playerAttack(int speed, int attack, string enemyType);
-int battle(int monsterspeed, int monsterattack, int playerspeed, int playerattack, string enemyType);
+int battle(int monsterspeed, int monsterattack, string enemyType);
