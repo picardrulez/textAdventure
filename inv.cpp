@@ -432,6 +432,7 @@ void clearPlayerInv()
 
 int equipMenu()
 {
+    doneEquiping = 0;
     while (doneEquiping == 0)
     {
         clearScreen();

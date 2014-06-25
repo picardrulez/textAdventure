@@ -320,6 +320,7 @@ int inventoryMenu()
 
 int equipmentMenu()
 {
+    madechoice = 0;
     while (madechoice == 0)
     {
        clearScreen();
