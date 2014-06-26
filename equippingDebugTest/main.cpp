@@ -6,14 +6,14 @@
 using namespace std;
 
 int player_inv[25][3] = {
-    {0,1,50},
-    {0,2,75},
-    {0,3,100},
-    {0,4,300},
-    {0,5,75},
-    {0,6,100},
-    {0,7,250},
-    {0,8,500}
+    {0,0,50},
+    {0,1,75},
+    {0,2,100},
+    {0,3,300},
+    {0,4,75},
+    {0,5,100},
+    {0,6,250},
+    {0,7,500}
 };
 
 int player_eweapon[1][3] = {69,69,69};
@@ -218,7 +218,10 @@ void displayInventory()
             else if (j == 2)
             {
                 itemUses = player_inv[i][j];
+                cout << "         " << "Item Location:  player_inv[" << pos1 << "][" << pos2 << "]\n";
+                cout << "         " << "Uses Location:  player_inv[" << i << "][" << j <<"]\n";
                 cout << "         " << findItemName(pos1, pos2) << " Uses " << itemUses << "\n";
+                cout << "//////////\n";
             }
         }
     }
