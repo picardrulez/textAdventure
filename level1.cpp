@@ -157,8 +157,9 @@ void level1()
                 clearScreen();
                 cout << menuBar;
                 cout << "You enter the hut.  A man is there selling items.\n\n";
-                cout << "                  Hut Guy's Inventory:\n\n";
+                cout << "                  Hut Guy's Inventory:\n";
                 displayHutInventory();
+	    	cout << "                 Moneybag:  " << moneybag << " GP\n";
                 cout << "               1:  Leave Hut\n";
                 cout << "               2:  Buy Item\n";
                 cout << "               3:  Sell Item\n\n\n";

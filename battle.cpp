@@ -22,6 +22,9 @@ int battle(int monsterspeed, int monsterattack, string enemyType)
             cout << menuBar;
             cout << "       " << enemyType << "Battle \n\n";
             displayEnemy(enemyType);
+//	    healthMessage();
+//	    magicMessage();
+	    drunkMessage();
             cout << "Your attack is " << playersAttack << "\n";
             cout << "Your speed  is " << playersSpeed << "\n";
             cout << "Your AC is " << playersAC << "\n";

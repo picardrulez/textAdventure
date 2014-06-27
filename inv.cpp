@@ -828,6 +828,7 @@ int storeBuyMenu()
             }
         }
         cout << "\n";
+	cout << "Moneybag:  " << moneybag << " GP\n";
         cout << menuBar;
         cin >> userInput;
         if (userInput == 0)
@@ -903,6 +904,7 @@ int storeSellMenu()
             }
         }
         cout << "\n";
+	cout << "Moneybag:  " << moneybag << " GP \n";
         cout << menuBar;
         cin >> userInput;
         if (userInput == 0)
