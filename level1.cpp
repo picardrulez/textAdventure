@@ -189,16 +189,33 @@ void level1()
             while (playerChoice == false)
             {
                 clearScreen();
+                enemy = 0;
+                monsterHealth = 20;
+                monsterAC = 10;
                 cout << menuBar << "\n\n";
                 cout << "You begin to wade across the river.\n";
-                cout << "Out of the bushes on either side mud people\n";
-                cout << "appear and shoot you with blowguns.  You pass out.\n\n";
-                cout << "               1:  Exit\n\n\n";
+                cout << "Out of the bushes on either side an orc attacks!\n";
+                cout << "           1:  Attack!\n";
+                cout << "           2:  Go East\n\n";
                 cout << menuBar;
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
-                    running = 0;
+                    //orc battle
+                    outcome = battle(5, 5, "orc");
+                    if (outcome == 1)
+                    {
+                        running = 0;
+                        playerChoice = true;
+                    }
+                    else if (outcome == 0)
+                    {
+                        playerChoice = true;
+                    }
+                }
+                if (playerInput == "2")
+                {
+                    playerLocation = 3;
                     playerChoice = true;
                 }
                 menuChoices();

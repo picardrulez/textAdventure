@@ -44,6 +44,54 @@ string enemyWizardImageHit9 = "              .  0OkxkX      \n";
 string enemyWizardImageHit10 = "              .  KkxkOK      \n";
 string enemyWizardImageHit11 = "              ',. .,c.  '\n\n\n";
     
+
+ string enemyOrcImage0 = "                \n";
+ string enemyOrcImage1 = "                        coxxdoc:, \n";
+ string enemyOrcImage2 = "                      ;xdxxxxxdllcc; \n";
+ string enemyOrcImage3 = "                      oxdxkkxdolcllol, \n";
+ string enemyOrcImage4 = "                   ,cdkddddxxdxxddooc:,\n";
+ string enemyOrcImage5 = "                  lkooodxcdoxdxxkxxocc: \n";
+ string enemyOrcImage6 = "                 ;l,,;lod;clcc:llooc:c:: \n";
+ string enemyOrcImage7 = "                ,c;.   ...............ccclc:, \n";
+ string enemyOrcImage8 = "                  ;';. .,lll;,,;:l:'.,:; \n";
+ string enemyOrcImage9 = "                  cc,;;..:cc;,::co,''oc. \n";
+string enemyOrcImage10 = "                  ,dcdll:;:cclc:;l:;;cc,\n";
+string enemyOrcImage11 = "                 locdodxkkOOOxo:cllddccc; \n";
+string enemyOrcImage12 = "                ,xllllodoodxkkkkkkkxdlcoxkl' \n";
+string enemyOrcImage13 = "                ,l;:::cloldxxddddollcccoOOOk; \n";
+string enemyOrcImage14 = "               '',,..';clcldolc;'...'';000OOxc \n";
+string enemyOrcImage15 = "           ,:colco.  .'.,,,,'.     ..:dk00K0koo::coc \n";
+string enemyOrcImage16 = "         :odddol:..           ..';cdoloxkkkxxoc::lodx; \n";
+string enemyOrcImage17 = "        :dooddoc:;;'.      ..,;:ldxxo:oxdddol:::loxkkxc \n";
+string enemyOrcImage18 = "        :lollc:::c:::;,;llllooccoxkxoclcccc::::clodOOkd; \n";
+string enemyOrcImage19 = "          .',,;codddddollolcll:cddddddxdddollcldddxxdl:      \n";
+string enemyOrcImage20 = "              ..,cooddddxxo;:;oxOOO000000Okxo:,,'          \n";
+string enemyOrcImage21 = "                        ''.. .';:::::::;,  \n";
+
+string enemyOrcImageHit0 = "                     \n";                                
+string enemyOrcImageHit1 = "                             coxxdoc:, \n";               
+string enemyOrcImageHit2 = "                           ;xdxxxxxdllcc; \n";            
+string enemyOrcImageHit3 = "                           oxdxkkxdolcllol, \n";          
+string enemyOrcImageHit4 = "                        ,cdkddddxxdxxddooc:,\n";          
+string enemyOrcImageHit5 = "                       lkooodxcdoxdxxkxxocc: \n";         
+string enemyOrcImageHit6 = "                      ;l,,;lod;clcc:llooc:c:: \n";        
+string enemyOrcImageHit7 = "                     ,c;.   ...............ccclc:, \n";   
+string enemyOrcImageHit8 = "                       ;';. .,lll;,,;:l:'.,:; \n";        
+string enemyOrcImageHit9 = "                       cc,;;..:cc;,::co,''oc. \n";        
+string enemyOrcImageHit10 = "                       ,dcdll:;:cclc:;l:;;cc,\n";         
+string enemyOrcImageHit11 = "                      locdodxkkOOOxo:cllddccc; \n";       
+string enemyOrcImageHit12 = "                     ,xllllodoodxkkkkkkkxdlcoxkl' \n";    
+string enemyOrcImageHit13 = "                     ,l;:::cloldxxddddollcccoOOOk; \n";   
+string enemyOrcImageHit14 = "                    '',,..';clcldolc;'...'';000OOxc \n";  
+string enemyOrcImageHit15 = "                ,:colco.  .'.,,,,'.     ..:dk00K0koo::coc \n";
+string enemyOrcImageHit16 = "              :odddol:..           ..';cdoloxkkkxxoc::lodx; \n";
+string enemyOrcImageHit17 = "             :dooddoc:;;'.      ..,;:ldxxo:oxdddol:::loxkkxc \n";
+string enemyOrcImageHit18 = "             :lollc:::c:::;,;llllooccoxkxoclcccc::::clodOOkd; \n";
+string enemyOrcImageHit19 = "               .',,;codddddollolcll:cddddddxdddollcldddxxdl:      \n";
+string enemyOrcImageHit20 = "                   ..,cooddddxxo;:;oxOOO000000Okxo:,,'          \n";
+string enemyOrcImageHit21 = "                             ''.. .';:::::::;,  \n";  
+
+
 //displays picture of enemy
 void displayEnemy(string enemyType)
 {
@@ -61,6 +109,31 @@ void displayEnemy(string enemyType)
         cout << enemyWizardImage9;
         cout << enemyWizardImage10;
         cout << enemyWizardImage11;
+    }
+    else if (enemyType == "orc")
+    {
+        cout << enemyOrcImage0;
+        cout << enemyOrcImage1;
+        cout << enemyOrcImage2;
+        cout << enemyOrcImage3;
+        cout << enemyOrcImage4;
+        cout << enemyOrcImage5;
+        cout << enemyOrcImage6;
+        cout << enemyOrcImage7;
+        cout << enemyOrcImage8;
+        cout << enemyOrcImage9;
+        cout << enemyOrcImage10;
+        cout << enemyOrcImage11;
+        cout << enemyOrcImage12;
+        cout << enemyOrcImage13;
+        cout << enemyOrcImage14;
+        cout << enemyOrcImage15;
+        cout << enemyOrcImage16;
+        cout << enemyOrcImage17;
+        cout << enemyOrcImage18;
+        cout << enemyOrcImage19;
+        cout << enemyOrcImage20;
+        cout << enemyOrcImage21;
     }
  }
     
@@ -81,6 +154,31 @@ void displayEnemyShift(string enemyType)
         cout << enemyWizardImageHit9;
         cout << enemyWizardImageHit10;
         cout << enemyWizardImageHit11;
+    }
+    else if (enemyType == "orc")
+    {
+        cout << enemyOrcImageHit0;
+        cout << enemyOrcImageHit1;
+        cout << enemyOrcImageHit2;
+        cout << enemyOrcImageHit3;
+        cout << enemyOrcImageHit4;
+        cout << enemyOrcImageHit5;
+        cout << enemyOrcImageHit6;
+        cout << enemyOrcImageHit7;
+        cout << enemyOrcImageHit8;
+        cout << enemyOrcImageHit9;
+        cout << enemyOrcImageHit10;
+        cout << enemyOrcImageHit11;
+        cout << enemyOrcImageHit12;
+        cout << enemyOrcImageHit13;
+        cout << enemyOrcImageHit14;
+        cout << enemyOrcImageHit15;
+        cout << enemyOrcImageHit16;
+        cout << enemyOrcImageHit17;
+        cout << enemyOrcImageHit18;
+        cout << enemyOrcImageHit19;
+        cout << enemyOrcImageHit20;
+        cout << enemyOrcImageHit21;
     }
 }
 
