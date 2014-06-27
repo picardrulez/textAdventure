@@ -54,6 +54,10 @@ void initialItems()
         addInventory(1, 3, 50);
         //add boots
         addInventory(1, 6, 50);
+	
+	addInventory(0, 3, 300);
+	addInventory(0, 8, 100);
+	addInventory(0, 4, 75);
 
     }
     //Druid Creation
