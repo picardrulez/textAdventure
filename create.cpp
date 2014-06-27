@@ -55,7 +55,7 @@ void initialItems()
     if (playerInfo[1] == 1)
     {
         //add sword
-        addInventory(0, 0, 1);
+        addInventory(0, 0, 50);
         //add helm
         addInventory(1, 0, 50);
         //add gauntlets

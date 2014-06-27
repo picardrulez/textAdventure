@@ -76,7 +76,7 @@ string weapons[NUM_WEAPONS] = {
 
 //weapon's properties:  item number, max damage, uses, speed, rarity, price
 int weapon_prop[weapon_prop_row][weapon_prop_col] = {                          
-     {0, 5, 1, 6, 100, 3} ,                                                    
+     {0, 5, 50, 6, 100, 3} ,                                                    
      {1, 11, 75, 4, 85, 7} ,                                                    
      {2, 17, 100, 3, 50, 10} ,                                                  
      {3, 25, 300, 1, 5, 15},                                                    
