@@ -102,21 +102,49 @@ int monsterAttack(int speed, int attack, string enemyType)
         {
             itemUses = player_ehelm[0][2];
             player_ehelm[0][2] = itemUses - 1;
+            if (player_ehelm[0][2] = 0)
+            {
+                cout << findItemName(player_ehelm[0][0], player_ehelm[0][1]) << " has been destroyed!\n";
+                player_ehelm[0][0] = 69;
+                player_ehelm[0][1] = 69;
+                player_ehelm[0][2] = 69;
+            }
         }
         else if (armorSelection == 1)
         {
             itemUses = player_eplate[0][2];
             player_eplate[0][2] = itemUses - 1;
+            if (player_eplate[0][2] == 0)
+            {
+                cout << findItemName(player_eplate[0][0], player_eplate[0][1]) << " has been destroyed!\n";
+                player_eplate[0][0] = 69;
+                player_eplate[0][1] = 69;
+                player_eplate[0][2] = 69;
+            }
         }
         else if (armorSelection == 2)
         {
             itemUses = player_egauntlets[0][2];
             player_egauntlets[0][2] = itemUses - 1;
+            if (player_egauntlets[0][2] = 0)
+            {
+            cout << findItemName(player_egauntlets[0][0], player_egauntlets[0][1]) << " has been destroyed!\n";
+            player_egauntlets[0][0] = 69;
+            player_egauntlets[0][1] = 69;
+            player_egauntlets[0][2] = 69;
+            }
         }
         else if (armorSelection == 3)
         {
             itemUses = player_eboots[0][2];
             player_eboots[0][2] = itemUses;
+            if (player_eboots[0][2] = 0)
+            {
+                cout << findItemName(player_eboots[0][0], player_eboots[0][1]) << " has been destroyed!\n";
+                player_eboots[0][0] = 69;
+                player_eboots[0][1] = 69;
+                player_eboots[0][2] = 69;
+            }
         }
         cout << "               Health is at "<< playerHealth << "!\n\n";
         if (playerHealth <= 0)
@@ -156,6 +184,14 @@ int playerAttack(int speed, int attack, string enemyType)
         xp = xp + damageDealt;
         itemUses = player_eweapon[0][2];
         player_eweapon[0][2] = itemUses - 1;
+        if (player_eweapon[0][2] == 0)
+        {
+            cout << findItemName(player_eweapon[0][0], player_eweapon[0][1]) << " has been destroyed!\n";
+            player_eweapon[0][0] = 69;
+            player_eweapon[0][1] = 69;
+            player_eweapon[0][2] = 69;
+            playersAttack = 1;
+        }
         monsterHealth = monsterHealth - damageDealt;
         if (monsterHealth <= 0)
         {

@@ -45,11 +45,11 @@ int player_inv[player_inv_row][player_inv_col] = {
 };
 
 //creates player's equipped items array
-int player_eweapon[1][3] = {9,9,9};                                            
-int player_ehelm[1][3] = {9,9,9};                                              
-int player_egauntlets[1][3] = {9,9,9};                                         
-int player_eboots[1][3] = {9,9,9};                                             
-int player_eplate[1][3] = {9,9,9};                                             
+int player_eweapon[1][3] = {69,69,69};                                            
+int player_ehelm[1][3] = {69,69,69};                                              
+int player_egauntlets[1][3] = {69,69,69};                                         
+int player_eboots[1][3] = {69,69,69};                                             
+int player_eplate[1][3] = {69,69,69};                                             
 int wizard_inv[4][2] = {                                                       
     {0,3},                                                                     
     {2,3},                                                                     
@@ -76,7 +76,7 @@ string weapons[NUM_WEAPONS] = {
 
 //weapon's properties:  item number, max damage, uses, speed, rarity, price
 int weapon_prop[weapon_prop_row][weapon_prop_col] = {                          
-     {0, 5, 50, 6, 100, 3} ,                                                    
+     {0, 5, 1, 6, 100, 3} ,                                                    
      {1, 11, 75, 4, 85, 7} ,                                                    
      {2, 17, 100, 3, 50, 10} ,                                                  
      {3, 25, 300, 1, 5, 15},                                                    
@@ -436,16 +436,16 @@ void clearPlayerInv()
         }
     }
     playerItemCount = 0;
-    player_eweapon[0][0] = 9;
-    player_eweapon[0][1] = 9;
-    player_ehelm[0][0] = 9;
-    player_ehelm[0][1] = 9;
-    player_egauntlets[0][0] = 9;
-    player_egauntlets[0][1] = 9;
-    player_eboots[0][0] = 9;
-    player_eboots[0][1] = 9;
-    player_eplate[0][0] = 9;
-    player_eplate[0][1] = 9;
+    player_eweapon[0][0] = 69;
+    player_eweapon[0][1] = 69;
+    player_ehelm[0][0] = 69;
+    player_ehelm[0][1] = 69;
+    player_egauntlets[0][0] = 69;
+    player_egauntlets[0][1] = 69;
+    player_eboots[0][0] = 69;
+    player_eboots[0][1] = 69;
+    player_eplate[0][0] = 69;
+    player_eplate[0][1] = 69;
 }
 
 
@@ -602,7 +602,7 @@ void equipItem(int table, int itemNumber, int uses)
 
 void equipWeapon(int table, int itemNumber, int uses)
 {
-    if (player_eweapon[0][0] != 9)
+    if (player_eweapon[0][0] != 69)
     {
         etable = player_eweapon[0][0];
         eitemNumber = player_eweapon[0][1];
@@ -619,7 +619,7 @@ void equipWeapon(int table, int itemNumber, int uses)
 
 void equipHelm(int table, int itemNumber, int uses)
 {
-    if (player_ehelm[0][0] != 9)
+    if (player_ehelm[0][0] != 69)
     {
         etable = player_ehelm[0][0];
         eitemNumber = player_ehelm[0][1];
@@ -635,7 +635,7 @@ void equipHelm(int table, int itemNumber, int uses)
 
 void equipPlate(int table, int itemNumber, int uses)
 {
-    if (player_eplate[0][0] != 9)
+    if (player_eplate[0][0] != 69)
     {
         etable = player_eplate[0][0];
         eitemNumber = player_eplate[0][1];
@@ -652,7 +652,7 @@ void equipPlate(int table, int itemNumber, int uses)
 
 void equipGauntlets(int table, int itemNumber, int uses)
 {
-    if (player_egauntlets[0][0] != 9)
+    if (player_egauntlets[0][0] != 69)
     {
         etable = player_egauntlets[0][0];
         eitemNumber = player_egauntlets[0][1];
@@ -668,7 +668,7 @@ void equipGauntlets(int table, int itemNumber, int uses)
 
 void equipBoots(int table, int itemNumber, int uses)
 {
-    if (player_eboots[0][0] != 9)
+    if (player_eboots[0][0] != 69)
     {
         etable = player_eboots[0][0];
         eitemNumber = player_eboots[0][1];
