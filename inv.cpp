@@ -266,7 +266,7 @@ void displayInventory()
 int debugInventory()
 {
     int itemPos;
-//    clearScreen();
+    clearScreen();
     cout << "DEBUG INVENTORY\n";
     for (int i = 0; i < playerItemCount; i++)
     {
@@ -435,7 +435,7 @@ int equipMenu()
     doneEquiping = 0;
     while (doneEquiping == 0)
     {
-//        clearScreen();
+        clearScreen();
         cout << menuBar;
         cout << "          Press '0' to return.\n";
         cout << "          Choose Item to equip / use:\n\n";
@@ -487,6 +487,9 @@ int equipMenu()
             return 0;
         }
         itemNumber = userInput - 1;
+	cout << "player_inv[" << itemNumber << "][0] is " << player_inv[itemNumber][0] << "\n";
+	cout << "player_inv[" << itemNumber << "][1] is " << player_inv[itemNumber][1] << "\n";
+	cout << "player_inv[" << itemNumber << "][2] is " << player_inv[itemNumber][2] << "\n";
         pos1 = player_inv[itemNumber][0];
         pos2 = player_inv[itemNumber][1];
         itemUses = player_inv[itemNumber][2];
@@ -497,7 +500,7 @@ int equipMenu()
         }
         else
         {
-            cout << "itemUses is " << itemUses << "\n";
+            cout << "itemUses for item being equipped is " << itemUses << "\n";
         equipItem(pos1,pos2, itemUses);
         }
         dropItem(itemNumber);
@@ -709,7 +712,7 @@ void dropItem(int itemNumber)
     for (int i = itemNumber; i < playerItemCount + 1; i++ )
     {
         int movingI = i + 1;
-        for (int j = 0; j < 2; j++)
+        for (int j = 0; j < 3; j++)
         {
             player_inv[i][j] = player_inv[movingI][j];
         }

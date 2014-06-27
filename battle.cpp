@@ -4,7 +4,7 @@
 #include "battle.h"
 
 int madechoice = 0;
-int xp = 5;
+int xp = 0;
 int playerchoice = 0;
 int monsterHealth = 0;
 int monsterAC = 0;

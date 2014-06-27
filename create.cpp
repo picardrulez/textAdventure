@@ -10,6 +10,14 @@ void clearPlayerInv();
 void createCharacter() 
 {
     xp = 0;
+    playerHealth = 100;
+    playersHelmAC = 0;
+    playersPlateAC = 0;
+    playersBootAC = 0;
+    playersAC = 0;
+    playersSpeed = 1;
+    playersAttack = 1;
+    playerDrunk = 0;
     clearPlayerInv();
     cout << menuBar;
     cout << "         Welcome to Geoff's Text Adventure!\n\n";
