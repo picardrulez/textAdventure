@@ -17,6 +17,7 @@ using namespace std;
 bool gameDone = false;
 int main()
 {
+    //main game loop
     while (gameDone == false)
     {
         clearScreen();

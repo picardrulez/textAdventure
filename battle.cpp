@@ -11,12 +11,14 @@ int monsterAC = 0;
 int battle(int monsterspeed, int monsterattack, string enemyType)
 {
     int battlerun = 1;
+    //Battle Loop
     while (battlerun == 1)
     {
         madechoice = 0;
         while (madechoice == 0)
         {
             clearScreen();
+	    //Main Battle Menu
             cout << menuBar;
             cout << "       " << enemyType << "Battle \n\n";
             displayEnemy(enemyType);
@@ -41,12 +43,14 @@ int battle(int monsterspeed, int monsterattack, string enemyType)
                 madechoice = 1;
             }
         }
+	//Checks if player's alive after player attack function
         bool stillAlive = playerAttack(playersSpeed, playersAttack, enemyType);
         if (stillAlive == false)
         {
             battlerun = 0;
             return 0;
         }
+	//Checks if monster's alive after monster attack function
         stillAlive = monsterAttack(monsterspeed, monsterattack, enemyType);
         if (stillAlive == false)
         {
@@ -55,13 +59,16 @@ int battle(int monsterspeed, int monsterattack, string enemyType)
         }
     }
 }
+//monster Attack function.  determines if monster hits and how much damage is done
 int monsterAttack(int speed, int attack, string enemyType)
 {
 
+    //findhit is a booleon determined by whether or not thac0 roll is successfl
     bool findhit = thacoRoll(playersAC, speed);
     if (findhit)
     {
 
+	//damageDealt is the output of the damage function which is then modified by the game's difficulty setting
         int damageDealt = damage(attack);
         if ((difficultySetting == "Medium") && (damageDealt < 100))
         {
@@ -84,6 +91,7 @@ int monsterAttack(int speed, int attack, string enemyType)
         displayEnemy(enemyType);
         cout << "             You get hit for "<< damageDealt << " damage!\n\n";
         playerHealth = playerHealth - damageDealt;
+	//on successful hit by monster a use is taken away from a random armor piece on the player
         srand(static_cast<unsigned int>(time(0)));
         int randomNumber = rand();
         int armorSelection = (randomNumber % 4);
@@ -186,6 +194,7 @@ int playerAttack(int speed, int attack, string enemyType)
         cin >> playerchoice;
     }
 }
+//determines damage done on successful attack
 int damage(int attack)
 {
     srand(static_cast<unsigned int>(time(0)));
@@ -200,6 +209,7 @@ int findAttack(int itemNumber)
     return attack;
 }
 
+//determines if character hits. classic 2e "to hit armor class 0"
 bool thacoRoll(int ac, int speed)
 {
     int thaco = (30 - speed - ac);
@@ -217,6 +227,7 @@ bool thacoRoll(int ac, int speed)
     }
 }
 
+//creates an inventory for the enemy and then gives and option to the player to loot them.
 int lootEnemy(string enemy)
 {
     makeEnemyInventory(enemy);
@@ -265,6 +276,7 @@ int lootEnemy(string enemy)
     }
 }
 
+//managing enemy's inventory
 void enemyDropItem(int itemNumber)
 {
    for (int i = itemNumber; i < enemyInventorySize + 1; i++ )

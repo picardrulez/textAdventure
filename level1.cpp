@@ -128,6 +128,7 @@ void level1()
                 cin >> playerInput;
                 if (playerInput == "1")
                 {
+		    //wizard battle
                     outcome = battle(1, 25, "wizard");
                     if (outcome == 1)
                     {

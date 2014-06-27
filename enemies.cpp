@@ -44,6 +44,7 @@ string enemyWizardImageHit9 = "              .  0OkxkX      \n";
 string enemyWizardImageHit10 = "              .  KkxkOK      \n";
 string enemyWizardImageHit11 = "              ',. .,c.  '\n\n\n";
     
+//displays picture of enemy
 void displayEnemy(string enemyType)
 {
     if (enemyType == "wizard")
@@ -63,6 +64,7 @@ void displayEnemy(string enemyType)
     }
  }
     
+//displays shifted picture of enemy
 void displayEnemyShift(string enemyType)
 {
     if (enemyType == "wizard")
@@ -82,6 +84,7 @@ void displayEnemyShift(string enemyType)
     }
 }
 
+//animates images of enemy
 void displayEnemyHit(string enemyType)
 {
     clearScreen();

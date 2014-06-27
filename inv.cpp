@@ -39,10 +39,12 @@ int enemy_inv[4][2] = {
 string lastEquipped = "";
 string item = "";
 int itemRoll = 0;
+//creates player's inventory
 int player_inv[player_inv_row][player_inv_col] = {
         {0,0}
 };
 
+//creates player's equipped items array
 int player_eweapon[1][3] = {9,9,9};                                            
 int player_ehelm[1][3] = {9,9,9};                                              
 int player_egauntlets[1][3] = {9,9,9};                                         
@@ -72,6 +74,7 @@ string weapons[NUM_WEAPONS] = {
     "Dart"                                                                 
 }; 
 
+//weapon's properties:  item number, max damage, uses, speed, rarity, price
 int weapon_prop[weapon_prop_row][weapon_prop_col] = {                          
      {0, 5, 50, 6, 100, 3} ,                                                    
      {1, 11, 75, 4, 85, 7} ,                                                    
@@ -104,6 +107,7 @@ string inv_armor[NUM_ARMOR] = {
       "Steel Breast Plate"                                                   
 };   
 
+//armor properties:  item number, armor class, uses, rarity, price
 int armor_prop[armor_prop_row][armor_prop_col] = {                                                          
     {0, 3, 50, 100, 5} ,                                                   
     {1, 5, 75, 75, 7} ,                                                    
@@ -133,6 +137,7 @@ string inv_consum[NUM_CONSUM] = {
     "Mushrooms"                                                            
 };  
 
+//consumable properties:  item number, health adjustment, magic adjustment, hinderence points, uses, rarity, price
 int consum_prop[consum_prop_row][consum_prop_col] = { 
     {0, 2, 0, 0, 1, 70, 5} ,                                               
     {1, 5, 0, 0, 3, 30, 8} ,                                               
@@ -146,6 +151,7 @@ int consum_prop[consum_prop_row][consum_prop_col] = {
     {9, 5, 5, 2, 1, 50, 3}                                                 
 }; 
 
+//displays inventory menu
 int inventoryCheck()
 {
     clearScreen();
@@ -168,6 +174,9 @@ int inventoryCheck()
         return 0;
     }
 }
+
+
+//displays equipped items on screen
 int displayEquipped()
 {
     cout << "           Weapon:  ";
@@ -238,6 +247,7 @@ int displayEquipped()
 
 }
 
+//displays inventory array on screen
 void displayInventory()
 {
     for (int i = 0; i < playerItemCount; i++ )
@@ -263,6 +273,7 @@ void displayInventory()
     cout << "\n";
 }
 
+//debug function I was using for inventory bugs
 int debugInventory()
 {
     int itemPos;
@@ -281,6 +292,7 @@ int debugInventory()
 //    cin >> userInput;
 }
 
+//function used to find an item's name
 string findItemName(int table, int itemNumber)
 {
     if (table == 0)
@@ -298,6 +310,7 @@ string findItemName(int table, int itemNumber)
     return item;
 }
 
+//function used for adding an item to the player's inventory
 void addInventory(int table, int item, int itemUses)
 {
     if (playerItemCount < MAX_PLAYER_INV )
@@ -314,12 +327,15 @@ void addInventory(int table, int item, int itemUses)
     }
 }
 
+//function used to add party liquore to the player's inventory
 void addPartyLiquor()
 {
     player_inv[playerItemCount][0] = 2;
     player_inv[playerItemCount][1] = 5;
     playerItemCount++;
 }
+
+//function is called by checkForItem() if player successfully finds an item.  it determines a rarity and loops through items until it finds one matching the rarity before passing it back to the calling function
 void createItem()
 {
     srand(static_cast<unsigned int>(time(0)));
@@ -408,6 +424,8 @@ void createItem()
         return;
     }
 }
+
+//function used to clear the player's inventory.  called at the beginning of character creation in case player restarted game.
 void clearPlayerInv()
 {
     for (int i=0; i < playerItemCount; ++i )
@@ -430,6 +448,8 @@ void clearPlayerInv()
     player_eplate[0][1] = 9;
 }
 
+
+//displays the equipping menu
 int equipMenu()
 {
     doneEquiping = 0;
@@ -507,6 +527,7 @@ int equipMenu()
     }
 }
 
+//displays the drop item menu
 int dropItemMenu()
 {
     int itemSelection;
@@ -550,6 +571,8 @@ int dropItemMenu()
         }
     }
 }
+
+//function used to move an item from the inventory into the equipped items array (calls a function that actually does this depending on what type of item is being equipped)
 void equipItem(int table, int itemNumber, int uses)
 {
     item = findItemName(table, itemNumber);
@@ -576,6 +599,7 @@ void equipItem(int table, int itemNumber, int uses)
         equipPlate(table, itemNumber, uses);
     }
 }
+
 void equipWeapon(int table, int itemNumber, int uses)
 {
     if (player_eweapon[0][0] != 9)
@@ -658,6 +682,7 @@ void equipBoots(int table, int itemNumber, int uses)
     playersAC = playersHelmAC + playersGauntletAC + playersPlateAC + playersBootAC;
 }
 
+//function is called every time a player moves places.  it determines whether or not the player finds an item and then uses the createItem() function to find what item to offer the player
 void checkForItem()
 {
     string playerInput;
@@ -707,6 +732,7 @@ void checkForItem()
     }
 }
 
+//used to remove an item from the inventory and then fill in the empty space of the array
 void dropItem(int itemNumber)
 {
     for (int i = itemNumber; i < playerItemCount + 1; i++ )
@@ -720,6 +746,7 @@ void dropItem(int itemNumber)
     playerItemCount = playerItemCount - 1;
 }
 
+//creates an enemy's inventory
 void makeEnemyInventory(string enemy)
 {
     if (enemy == "wizard")
@@ -739,6 +766,8 @@ void makeEnemyInventory(string enemy)
 int hutGuyMoneybag = 1000;
 const int MAX_HUTGUY_INV = 20;
 int hutGuyItemCount = 10;
+
+//hutguy's inventory
 int hutGuy_inv[MAX_HUTGUY_INV][2] = {
     {0,1},
     {0,6},
@@ -829,6 +858,7 @@ int storeBuyMenu()
     }
 }
 
+//used when player buy's an item.  updates hutguy's inventory and fixes the player's
 int buyItem(int itemTable, int itemNumber, int invnumber)
 {
     for (int i = invnumber; i < hutGuyItemCount + 1; i++ )
@@ -902,6 +932,8 @@ int storeSellMenu()
         }
     }
 }
+
+//takes item from player's inventory and puts it in the hutguy's while updating money stuff
 int sellItem(int itemTable, int itemNumber, int invnumber)
 {
     hutGuy_inv[hutGuyItemCount][0] = itemTable;
@@ -931,11 +963,14 @@ int findItemPrice(int table, int itemNumber)
     return price;
 }
 
+//reduces the value of an item by half if the player wants to sell one of his items
 int findItemValue(int table, int itemNumber)
 {
     int price = findItemPrice(table, itemNumber) / 2;
     return price;
 }
+
+//used if the player takes one of their consumables
 void useItem(int itemNumber)
 {
     xp = 5;
@@ -959,6 +994,8 @@ void useItem(int itemNumber)
         userMessage = 4;
     }
 }
+
+//displays player's health
 void healthMessage()
 {
     cout << "Health is now " << playerHealth << "\n";
@@ -969,11 +1006,13 @@ void equipMessage()
     cout << lastEquipped << " has been equipped\n";
 }
 
+//displays player's magic
 void magicMessage()
 {
     cout << "Magic is now " << playerMana <<"\n";
 }
 
+//displays player's innebriateion
 void drunkMessage()
 {
     cout << "Health is now " << playerHealth << "\n";
@@ -981,6 +1020,7 @@ void drunkMessage()
     cout << "Innebriation is now " << playerDrunk << "\n";
 }
 
+//determines how many uses an item has left
 int findItemUses(int table, int itemNumber)
 {
     if (table == 0)
